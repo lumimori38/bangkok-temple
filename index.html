@@ -1031,7 +1031,7 @@ async function drawCard(n){
   return c.toDataURL('image/png')}
 let resURL='';
 async function showResult(quiet){resURL=await drawCard(SI.no);$('resImg').src=resURL;if(quiet)return;$('result').classList.add('on');$('result').scrollTop=0;sfx.porch()}
-function resultText(){const f=siamF(SI.no);return `${L('shareHead',{t:f.t,n:SI.no,lv:lvName(f.lv)})}\n${f.d}\n\n${SITE_SHORT}\n\n#루미오락실 #방콕템플 #러이끄라통`}
+function resultText(){const f=siamF(SI.no);return `${L('shareHead',{t:f.t,n:SI.no,lv:lvName(f.lv)})}\n${f.d}\n\n🔗 ${SITE_SHORT}\n\n#루미오락실 #방콕템플 #러이끄라통`}
 function flashBtn(b,txt){const o=b.textContent;b.textContent=txt;setTimeout(()=>b.textContent=o,1500)}
 function bubble(b,txt){const el=$('bubble'),r=b.getBoundingClientRect(),ar=$('app').getBoundingClientRect();el.textContent=txt;el.style.left=(r.left-ar.left+r.width/2)+'px';el.style.top=(r.top-ar.top-8)+'px';el.classList.add('on');clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('on'),2000)}
 $('saveBtn').onclick=()=>{const ua=navigator.userAgent;const ios=/iPhone|iPad|iPod/.test(ua)||(/Mac/.test(ua)&&'ontouchend' in document);const inapp=/KAKAOTALK|Instagram|FBAN|FBAV|Twitter|Line\//i.test(ua);
