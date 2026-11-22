@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>방콕 템플 - 러이끄라통 소원 띄우기 | 루미 오락실</title>
+<meta name="description" content="끄라통 띄우고 씨암시 뽑는 블록 태국 사원">
+<meta name="author" content="lumimori38">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="루미 오락실">
+<meta property="og:title" content="방콕 템플 - 러이끄라통 소원 띄우기 | 루미 오락실">
+<meta property="og:description" content="끄라통 띄우고 씨암시 뽑는 블록 태국 사원">
+<meta property="og:url" content="https://lumimori38.github.io/bangkok-temple/">
+<meta property="og:image" content="https://lumimori38.github.io/bangkok-temple/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@lumimori38">
+<meta name="twitter:creator" content="@lumimori38">
+<link rel="icon" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Dodum&family=Mitr:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+html,body{height:100%;background:#0b1034;overscroll-behavior:none}
+body{display:flex;justify-content:center;font-family:'Gowun Dodum',sans-serif;color:#f6eedb}
+.app{position:relative;width:100%;max-width:430px;height:100dvh;min-height:560px;overflow:hidden;display:flex;flex-direction:column;background:#0b1034}
+.stage{position:relative;flex:1;min-height:0;overflow:hidden}
+#cv{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none}
+.ui{display:none}
+body[data-mode=start] .ui.m-start,body[data-mode=home] .ui.m-home,body[data-mode=deco] .ui.m-deco,body[data-mode=kt] .ui.m-kt,body[data-mode=lan] .ui.m-lan{display:flex}
+body[data-mode=home] .ui.m-home.blk,body[data-mode=deco] .ui.m-deco.blk,body[data-mode=kt] .ui.m-kt.blk,body[data-mode=lan] .ui.m-lan.blk{display:block}
+.top{position:absolute;top:0;left:0;right:0;z-index:3;align-items:center;gap:10px;padding:14px 16px;pointer-events:none}
+.top>*{pointer-events:auto}
+.icon-btn{width:38px;height:38px;border-radius:50%;border:1px solid rgba(232,184,74,.4);background:rgba(10,14,40,.7);color:#f6eedb;font-size:16px;display:grid;place-items:center;cursor:pointer;flex:none}
+.icon-btn.off{opacity:.45;position:relative}.icon-btn.off::after{content:'';position:absolute;width:26px;height:2px;background:#f6eedb;transform:rotate(-45deg)}
+.top h2{font:22px 'Do Hyeon',sans-serif;color:#fff5dc;white-space:nowrap;font-weight:400}
+.top .sp{flex:1;pointer-events:none}
+.pill{height:38px;padding:0 16px;border:0;border-radius:999px;background:#e8b84a;color:#1a1640;font:17px 'Do Hyeon',sans-serif;cursor:pointer;white-space:nowrap}
+.hint{position:absolute;top:62px;left:50%;transform:translateX(-50%);z-index:3;font-size:13px;color:#f6eedb;background:rgba(10,14,40,.7);border:1px solid rgba(232,184,74,.3);border-radius:999px;padding:5px 12px;white-space:nowrap;pointer-events:none;transition:opacity .3s}
+.hint.hide{opacity:0}
+.float{position:absolute;right:14px;bottom:12px;z-index:3;flex-direction:column;gap:8px}
+.float .icon-btn{width:44px;height:44px;font-size:19px}
+.start{position:absolute;left:0;right:0;bottom:0;z-index:3;flex-direction:column;align-items:center;padding:60px 24px 0;text-align:center;background:linear-gradient(to top,rgba(9,13,38,.96) 55%,rgba(9,13,38,0))}
+.start h1{font:56px/1.05 'Do Hyeon',sans-serif;font-weight:400;color:#fff5dc;white-space:nowrap}
+.start .sub{margin-top:10px;font:19px 'Do Hyeon',sans-serif;color:#e8b84a;white-space:nowrap}
+.start .btn{margin-top:22px}
+.lumi-ft{--ft:#9b9cc6;padding:16px 0 20px;text-align:center;font-size:12px;line-height:1.7;color:var(--ft)}
+.lumi-ft a{color:inherit;font-weight:400;text-decoration:underline;text-decoration-color:color-mix(in srgb,currentColor 45%,transparent);text-underline-offset:3px}
+.btn{display:block;width:100%;height:52px;border:0;border-radius:8px;background:#e8b84a;color:#1a1640;font:20px 'Do Hyeon',sans-serif;cursor:pointer;white-space:nowrap}
+.btn:disabled{opacity:.4}
+.btn.line{background:none;border:1px solid rgba(232,184,74,.6);color:#f6eedb}
+.btn:active,.card:active,.kt:active,.chip:active,.act:active,.icon-btn:active{transform:scale(.97)}
+.home{flex:none;background:#0e1440;border-top:1px solid rgba(232,184,74,.2);padding:12px 16px 18px}
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.act{height:54px;border-radius:12px;border:1px solid rgba(232,184,74,.4);background:#18215e;color:#f6eedb;font:18px 'Do Hyeon',sans-serif;cursor:pointer;white-space:nowrap}
+.act.main{background:#e8b84a;border-color:#e8b84a;color:#1a1640}
+.tray{flex:none;background:#0e1440;border-top:1px solid rgba(232,184,74,.2);padding:8px 0 14px}
+.tabs{display:flex;gap:4px;padding:0 10px 8px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:none;border:0;background:none;color:#9b9cc6;font:16px 'Do Hyeon',sans-serif;padding:6px 11px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.tab.on{background:#e8b84a;color:#1a1640}
+.cards{display:flex;gap:8px;padding:2px 12px;overflow-x:auto;touch-action:pan-x;scrollbar-width:none}
+.cards::-webkit-scrollbar{display:none}
+.card{flex:none;width:76px;border:1px solid rgba(232,184,74,.22);background:#18215e;border-radius:12px;padding:5px 2px 7px;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;color:#f6eedb;font:12px 'Gowun Dodum',sans-serif;touch-action:pan-x}
+.card.on{border-color:#e8b84a;background:#2a357e}
+.card canvas{width:64px;height:54px;pointer-events:none}
+.card span{white-space:nowrap;letter-spacing:-.3px;pointer-events:none;max-width:100%;overflow:hidden}
+.pop{position:absolute;z-index:4;display:none;transform:translate(-50%,-100%);background:#fff5dc;border-radius:12px;padding:4px;gap:2px}
+.pop.on{display:flex}
+.pop::after{content:'';position:absolute;left:50%;bottom:-6px;transform:translateX(-50%);border:6px solid transparent;border-bottom:0;border-top-color:#fff5dc}
+.pop button{border:0;background:none;color:#1a1640;font:14px 'Do Hyeon',sans-serif;padding:7px 10px;border-radius:8px;cursor:pointer;white-space:nowrap}
+.sheet{position:absolute;left:0;right:0;bottom:0;z-index:5;background:#121a4e;border-radius:20px 20px 0 0;border-top:1px solid rgba(232,184,74,.35);padding:18px 16px 20px;transform:translateY(105%);transition:transform .3s ease}
+.sheet.on{transform:none}
+.sheet:not(.on),.after:not(.on){pointer-events:none}
+.sheet h3{font:22px 'Do Hyeon',sans-serif;font-weight:400;color:#fff5dc;margin-bottom:4px;white-space:nowrap}
+.sheet p.sub{font-size:13px;color:#9b9cc6;margin-bottom:14px;white-space:nowrap}
+.kts{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px}
+.kt{border:1px solid rgba(232,184,74,.22);background:#18215e;border-radius:12px;padding:6px 2px 8px;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;color:#f6eedb;font:12px 'Gowun Dodum',sans-serif}
+.kt.on{border-color:#e8b84a;background:#2a357e}
+.kt canvas{width:66px;height:62px;pointer-events:none}
+.kt span{white-space:nowrap;letter-spacing:-.3px}
+.wishbox{position:relative;margin-bottom:10px}
+.wishbox textarea{width:100%;height:72px;resize:none;border-radius:12px;border:1px solid rgba(232,184,74,.4);background:#0e1440;color:#fff5dc;font:17px 'Gowun Dodum',sans-serif;padding:12px 14px 22px;outline:none;word-break:keep-all;user-select:text;-webkit-user-select:text}
+.wishbox textarea::placeholder{color:#6f74a6}
+.wishbox .cnt{position:absolute;right:12px;bottom:8px;font-size:12px;color:#6f74a6}
+.chips{display:flex;gap:6px;overflow-x:auto;margin-bottom:16px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid rgba(232,184,74,.3);background:none;color:#e8d9a8;font:13px 'Gowun Dodum',sans-serif;padding:6px 11px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.back{border:0;background:none;color:#9b9cc6;font:13px 'Gowun Dodum',sans-serif;margin-top:12px;width:100%;cursor:pointer}
+.after{position:absolute;left:0;right:0;bottom:0;z-index:4;padding:16px 16px 20px;background:linear-gradient(to top,rgba(9,13,38,.95) 70%,rgba(9,13,38,0));transform:translateY(105%);transition:transform .35s ease}
+.after.on{transform:none}
+.after p{text-align:center;font:20px 'Do Hyeon',sans-serif;color:#fff5dc;margin:10px 0 14px;white-space:nowrap}
+.after .row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.wish{position:absolute;z-index:3;transform:translate(-50%,-100%);white-space:nowrap;text-align:center;font:16px/1.4 'Gowun Dodum',sans-serif;color:#fff5dc;word-break:keep-all;pointer-events:none;padding:6px 12px;border-radius:12px;background:rgba(255,190,90,.16);border:1px solid rgba(255,210,120,.35)}
+.wish.rise{animation:rise 3.2s ease-out forwards}
+.wish.peek{animation:peek 2.4s ease forwards}
+@keyframes rise{0%{opacity:0;margin-top:0}12%{opacity:1}65%{opacity:1}100%{opacity:0;margin-top:-70px}}
+@keyframes peek{0%{opacity:0}12%{opacity:1}80%{opacity:1}100%{opacity:0}}
+.toast{position:absolute;left:50%;transform:translateX(-50%);top:100px;z-index:6;background:#fff5dc;color:#1a1640;font-size:13px;padding:8px 14px;border-radius:10px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s}
+.toast.on{opacity:1}
+.siam{position:absolute;inset:0;z-index:7;display:none;flex-direction:column;background:linear-gradient(#0b1034,#1c2260 70%,#141b52)}
+body[data-mode=siam] .siam{display:flex}
+.siam .top{position:relative;display:flex}
+.siam-stage{position:relative;flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+#sc{width:100%;flex:1;min-height:0;touch-action:none;display:block}
+.siam-q{text-align:center;padding:0 20px;margin-top:4px}
+.siam-q b{display:block;font:24px 'Do Hyeon',sans-serif;font-weight:400;color:#fff5dc;white-space:nowrap}
+.siam-q span{display:block;font-size:14px;color:#9b9cc6;margin-top:6px;white-space:nowrap}
+.siam-bottom{flex:none;padding:14px 16px 20px}
+.hold{position:relative;overflow:hidden}
+.hold i{position:absolute;left:0;top:0;bottom:0;width:0;background:rgba(255,255,255,.35)}
+.stick-no{position:absolute;left:50%;top:13%;transform:translate(-50%,-50%) scale(.6);opacity:0;font:64px 'Do Hyeon',sans-serif;color:#ffd77a;white-space:nowrap;transition:all .4s cubic-bezier(.2,1.6,.4,1);pointer-events:none}
+.stick-no.on{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.result{position:absolute;inset:0;z-index:8;display:none;flex-direction:column;overflow-y:auto;background:#0e1440;padding:64px 16px 0;-webkit-overflow-scrolling:touch}
+.result.on{display:flex}
+.result .top{position:fixed;max-width:430px;margin:0 auto;background:linear-gradient(#0e1440 70%,rgba(14,20,64,0));z-index:2}
+.result img{width:100%;border-radius:10px;display:block}
+.rbtns{display:flex;flex-direction:column;gap:8px;margin-top:16px}
+.rrow{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.rbtns .btn{height:50px}
+.rbtns .btn.small{font-size:17px}
+.bubble{position:absolute;z-index:9;transform:translate(-50%,-100%);background:#fff5dc;color:#1a1640;font-size:13px;padding:7px 12px;border-radius:10px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .2s}
+.bubble.on{opacity:1}
+.bubble::after{content:'';position:absolute;left:50%;bottom:-5px;transform:translateX(-50%);border:5px solid transparent;border-bottom:0;border-top-color:#fff5dc}
+.saveview{position:fixed;inset:0;z-index:20;background:rgba(5,8,25,.92);display:none;flex-direction:column;align-items:center;justify-content:center;padding:20px}
+.saveview.on{display:flex}
+.saveview img{max-width:100%;max-height:75vh;border-radius:8px;-webkit-touch-callout:default;user-select:auto;-webkit-user-select:auto;pointer-events:auto}
+.saveview p{margin-top:14px;font-size:15px;color:#fff5dc;white-space:nowrap}
+.saveview button{margin-top:14px;border:0;background:none;color:#9b9cc6;font-size:14px}
+.topics{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;padding:12px 20px 0;max-width:340px}
+.tp{border:1px solid rgba(232,184,74,.45);background:none;color:#f6eedb;font:16px 'Do Hyeon',sans-serif;padding:7px 14px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.tp.on{background:#e8b84a;border-color:#e8b84a;color:#1a1640}
+.siam.picking #topics{display:flex}.siam:not(.picking) #topics{display:none}
+.modal{position:absolute;inset:0;z-index:12;display:none;align-items:flex-start;justify-content:center;background:rgba(5,8,25,.72);padding:22% 24px 24px}
+.modal.on{display:flex}
+.mbox{width:100%;max-width:330px;background:#fbf1d8;border:3px solid #d9a336;border-radius:18px;padding:24px 20px 20px;text-align:center;color:#3a1f10}
+.mbox h3{font:26px 'Do Hyeon',sans-serif;font-weight:400;color:#8f2420;margin-bottom:12px;white-space:nowrap}
+.mbox p{font-size:15px;line-height:1.6;margin-bottom:10px;white-space:nowrap}
+.mbox .btn{margin-top:8px;background:#8f2420;color:#fbf1d8}
+.lanhold{position:absolute;left:0;right:0;bottom:0;z-index:4;padding:16px 16px 20px;text-align:center;transform:translateY(105%);transition:transform .3s ease;background:linear-gradient(to top,rgba(9,13,38,.9) 60%,rgba(9,13,38,0))}
+.lanhold.on{transform:none}.lanhold:not(.on){pointer-events:none}
+.lanhold p{font-size:14px;color:#c9c2e6;margin:14px 0 12px;white-space:nowrap}
+.globe svg{display:block}
+.langmenu{position:absolute;z-index:30;display:none;flex-direction:column;min-width:150px;background:#fbf1d8;border:2px solid #d9a336;border-radius:14px;padding:6px;}
+.langmenu.on{display:flex}
+.langmenu button{display:flex;justify-content:space-between;align-items:center;gap:16px;border:0;background:none;color:#1a1640;font:16px 'Gowun Dodum','Mitr',sans-serif;padding:10px 12px;border-radius:9px;cursor:pointer;white-space:nowrap}
+.langmenu button span{font-family:'Mitr','Gowun Dodum',sans-serif}
+.langmenu button.on{background:#f1dfae}
+.langmenu button i{font-style:normal;color:#8f2420;font-weight:700}
+body.th,body.th button,body.th textarea,body.th h1,body.th h2,body.th h3,body.th .lumi-ft{font-family:'Mitr',sans-serif!important;font-weight:400}
+body.th .start h1{font-size:50px}
+body.th .lumi-ft{font-family:'Gowun Dodum',sans-serif!important}
+body.en .start h1{font-size:50px}
+.top{gap:8px}
+</style>
+</head>
+<body data-mode="start">
+<div class="app" id="app">
+  <div class="stage" id="stage">
+    <canvas id="cv"></canvas>
+        <div class="ui m-start top"><span class="sp"></span><button class="icon-btn globe" aria-label="language"></button><button class="icon-btn snd" aria-label="sound">♪</button></div>
+    <div class="ui m-start start">
+      <h1 data-i="title">방콕 템플</h1>
+      <p class="sub" data-i="sub">러이끄라통 소원 띄우기</p>
+      <button class="btn" id="enter" data-i="enter">사원 입장하기</button>
+      <footer class="lumi-ft">쓸데없이 진심인 B급 콘텐츠<br><a href="https://lumimori38.github.io/">©루미 오락실</a> · lumimori38</footer>
+    </div>
+        <div class="ui m-home top"><button class="icon-btn" id="toStart" aria-label="back">◀</button><h2 data-i="title">방콕 템플</h2><span class="sp"></span><button class="icon-btn globe" aria-label="language"></button><button class="icon-btn snd" aria-label="sound">♪</button></div>
+        <div class="ui m-deco top"><h2 data-i="deco">마당 꾸미기</h2><span class="sp"></span><button class="pill" id="decoDone" data-i="done">완료</button><button class="icon-btn globe" aria-label="language"></button><button class="icon-btn snd" aria-label="sound">♪</button></div>
+    <div class="ui m-deco blk hint" id="decoHint"></div>
+        <div class="ui m-home m-deco float" id="float"><button class="icon-btn" id="rot" aria-label="rotate">⟳</button><button class="icon-btn" id="fit" aria-label="reset">⤢</button></div>
+    <div class="pop" id="pop"></div>
+        <div class="ui m-kt top"><button class="icon-btn" id="ktBack" aria-label="back">◀</button><h2 data-i="kt">끄라통 띄우기</h2><span class="sp"></span><button class="icon-btn globe" aria-label="language"></button><button class="icon-btn snd" aria-label="sound">♪</button></div>
+    <div class="ui m-kt blk hint hide" id="ktHint" data-i="ktHint">끄라통을 위로 밀어 띄워 보세요</div>
+    <div class="sheet" id="s1">
+      <h3 data-i="ktPick">끄라통을 골라 주세요</h3>
+      <p class="sub" data-i="ktPickSub"></p>
+      <div class="kts" id="kts"></div>
+      <button class="btn" id="next1" data-i="pickOk"></button>
+    </div>
+    <div class="sheet" id="s2">
+      <h3 data-i="wishTitle"></h3>
+      <p class="sub" data-i="ktWishSub"></p>
+      <div class="wishbox"><textarea id="wish" maxlength="30" data-ph="wishPh"></textarea><span class="cnt" id="cnt">0/30</span></div>
+      <div class="chips" id="chips"></div>
+      <button class="btn" id="next2" disabled data-i="ktWishOk"></button>
+      <button class="back" id="back2" data-i="ktRepick"></button>
+    </div>
+    <div class="after" id="after">
+      <p data-i="ktDone"></p>
+      <div class="row"><button class="btn line" id="more" data-i="ktMore"></button><button class="btn" id="ktHome" data-i="toYard"></button></div>
+    </div>
+        <div class="ui m-lan top"><button class="icon-btn" id="lanBack" aria-label="back">◀</button><h2 data-i="lan">콤로이 날리기</h2><span class="sp"></span><button class="icon-btn globe" aria-label="language"></button><button class="icon-btn snd" aria-label="sound">♪</button></div>
+    <div class="sheet" id="l1">
+      <h3 data-i="lanPick"></h3>
+      <p class="sub" data-i="lanPickSub"></p>
+      <div class="kts" id="lans"></div>
+      <button class="btn" id="lnext1" data-i="pickOk"></button>
+    </div>
+    <div class="sheet" id="l2">
+      <h3 data-i="wishTitle"></h3>
+      <p class="sub" data-i="lanWishSub"></p>
+      <div class="wishbox"><textarea id="lwish" maxlength="30" data-ph="wishPh"></textarea><span class="cnt" id="lcnt">0/30</span></div>
+      <div class="chips" id="lchips"></div>
+      <button class="btn" id="lnext2" disabled data-i="lanWishOk"></button>
+      <button class="back" id="lback2" data-i="lanRepick"></button>
+    </div>
+    <div class="lanhold" id="lanhold">
+      <p id="lanTip">불을 붙이면 따뜻한 공기로 떠올라요</p>
+      <button class="btn hold" id="fire"><i id="fireBar"></i><span id="fireTxt">꾹 눌러서 불 붙이기</span></button>
+    </div>
+    <div class="after" id="lafter">
+      <p data-i="lanDone"></p>
+      <div class="row"><button class="btn line" id="lmore" data-i="lanMore"></button><button class="btn" id="lanHome" data-i="toYard"></button></div>
+    </div>
+    <div class="toast" id="toast"></div>
+  </div>
+  <div class="siam" id="siam">
+    <div class="top"><button class="icon-btn" id="siamBack" aria-label="back">◀</button><h2 data-i="siam">씨암시 뽑기</h2><span class="sp"></span><button class="icon-btn" id="siamInfo" aria-label="info">?</button><button class="icon-btn globe" aria-label="language"></button><button class="icon-btn snd" aria-label="sound">♪</button></div>
+    <div class="siam-stage">
+      <canvas id="sc"></canvas>
+      <div class="stick-no" id="stickNo"></div>
+      <div class="siam-q" id="siamQ"><b>어떤 운이 궁금한가요?</b><span>3개를 골라 주세요</span></div>
+      <div class="topics" id="topics"></div>
+    </div>
+    <div class="siam-bottom">
+      <button class="btn hold" id="shake"><i id="holdBar"></i><span id="shakeTxt">꾹 눌러서 흔들기</span></button>
+    </div>
+    <div class="modal" id="siamModal"><div class="mbox">
+      <h3 data-i="mTitle"></h3>
+      <p data-i="m1"></p>
+      <p data-i="m2" data-html></p>
+      <p data-i="m3" data-html></p>
+      <button class="btn" id="modalOk" data-i="mOk"></button>
+    </div></div>
+    <div class="result" id="result">
+      <div class="top"><button class="icon-btn" id="resBack" aria-label="back">◀</button><h2 data-i="resTitle"></h2><span class="sp"></span><button class="icon-btn globe" aria-label="language"></button><button class="icon-btn snd" aria-label="sound">♪</button></div>
+      <img id="resImg" alt="씨암시 점괘">
+      <div class="rbtns">
+        <button class="btn" id="saveBtn" data-i="save"></button>
+        <div class="rrow"><button class="btn line small" id="againBtn" data-i="again"></button><button class="btn line small" id="shareBtn" data-i="share"></button></div>
+        <button class="btn line small" id="toYard" data-i="toYard"></button>
+      </div>
+      <footer class="lumi-ft">쓸데없이 진심인 B급 콘텐츠<br>방콕 템플 × <a href="https://lumimori38.github.io/">©루미 오락실</a> · lumimori38</footer>
+    </div>
+  </div>
+  <div class="bubble" id="bubble"></div>
+  <div class="langmenu" id="langmenu"></div>
+  <div class="saveview" id="saveview"><img id="saveImg" alt="결과 이미지"><p data-i="saveHint"></p><button id="saveClose" data-i="close"></button></div>
+  <div class="ui m-home blk home">
+    <div class="acts">
+      <button class="act main" id="goKt" data-i="kt"></button>
+      <button class="act" id="goLan" data-i="lan"></button>
+      <button class="act" id="goSiam" data-i="siam"></button>
+      <button class="act" id="goDeco" data-i="deco"></button>
+    </div>
+  </div>
+  <div class="ui m-deco blk tray">
+    <div class="tabs" id="tabs"></div>
+    <div class="cards" id="cards"></div>
+  </div>
+</div>
+<script>
+const N=36,C=12;
+const shade=(hex,f)=>{const n=parseInt(hex.slice(1),16);return `rgb(${Math.min(255,(n>>16)*f)|0},${Math.min(255,(n>>8&255)*f)|0},${Math.min(255,(n&255)*f)|0})`};
+function rnd(seed){return()=>{seed=(seed*16807)%2147483647;return seed/2147483647}}
+const isWater=(x,y)=>y>=27||(x>=30&&y>=21);
+function buildBase(V){
+  const box=(x1,x2,y1,y2,z1,z2,col)=>{for(let x=x1;x<=x2;x++)for(let y=y1;y<=y2;y++)for(let z=z1;z<=z2;z++)V(x,y,z,typeof col==='function'?col(x,y,z):col)};
+  for(let x=0;x<N;x++)for(let y=0;y<N;y++){
+    if(isWater(x,y))V(x,y,0,((x*7+y*3)%11===0)?'#2d3a96':'#25308a',{water:1});
+    else{const path=(x>=14&&x<=19&&y>=22);V(x,y,0,path?(((x+y)%2)?'#b9ad8e':'#c8bc9c'):(((x*5+y*3)%7===0)?'#2f4a5e':'#2a4155'))}
+  }
+  box(6,26,3,20,1,1,'#d8ccae');box(7,25,4,20,2,2,(x,y)=>((x+y)%2)?'#efe5c9':'#e7dcbd');
+  box(14,19,21,21,1,1,'#e7dcbd');
+  [13,20].forEach(x=>{box(x,x,20,22,1,1,'#e8b84a');V(x,20,2,'#e8b84a');V(x,22,2,'#f2c55c');V(x,22,3,'#f2c55c');V(x,23,3,'#d9a336')});
+  for(let z=3;z<=10;z++)for(let x=10;x<=23;x++)for(let y=7;y<=18;y++){
+    if(x>10&&x<23&&y>7&&y<18)continue;
+    let col=((z+x+y)%5===0)?'#efe4c8':'#f6eedb';
+    if(z===3)col='#e2d6b6';
+    const win=a=>(a===9||a===10||a===13||a===14);
+    if(y===18||y===7){
+      if(x>=15&&x<=18&&z<=8&&y===18)col=(x===16||x===17)?'#8f2420':'#a82c26';
+      if((x===14||x===19)&&z<=9&&y===18)col='#e8b84a';
+      if(x>=14&&x<=19&&z===9&&y===18)col='#f2c55c';
+      if((x===11||x===12||x===21||x===22)&&z>=5&&z<=7)col='#6e1d1b';
+      if((x===11||x===12||x===21||x===22)&&z===8)col='#e8b84a';
+    }
+    if((x===23||x===10)&&win(y)&&z>=5&&z<=7)col='#6e1d1b';
+    if((x===23||x===10)&&win(y)&&z===8)col='#e8b84a';
+    if(z===10)col='#d9a336';
+    V(x,y,z,col);
+  }
+  [10,13,20,23].forEach(x=>{for(let z=3;z<=9;z++)V(x,20,z,z===3?'#d8ccae':'#fbf5e6');V(x,20,10,'#f2c55c')});
+  const roofAt=(yr,zb)=>{for(let i=0;i<10;i++){const z=zb+i,x1=8+i,x2=25-i;if(x1>x2)break;
+    for(let x=x1;x<=x2;x++)for(let y=yr[0];y<=yr[1];y++){
+      const ex=(x===x1||x===x2),front=y===yr[1],back=y===yr[0];
+      let col=(i===3||i===4)?(ex?'#2f6b55':'#c43e33'):'#c43e33';
+      if(ex&&i!==3&&i!==4)col=(y%2)?'#c43e33':'#b8362f';
+      if((front||back)&&ex)col='#f2c55c';
+      if((front||back)&&!ex){const dx=Math.abs(x-16.5);col=((x+i)%2)?'#b8362f':'#c43e33';if(i>=2&&dx<=5.5-i)col='#d9a336';if(i===3&&dx<1)col='#c43e33'}
+      if(x1===x2-1&&!ex)col='#e8b84a';
+      V(x,y,z,col)}}};
+  roofAt([8,17],11);roofAt([18,20],10);roofAt([6,7],10);
+  [[20,19,1],[17,20,1],[6,19,-1],[7,20,-1]].forEach(([y,z,o])=>{V(16,y,z,'#f2c55c');V(17,y,z,'#f2c55c');V(16,y+o,z+1,'#ffd77a')});
+  [[7,20,10],[26,20,10],[7,6,10],[26,6,10]].forEach(([x,y,z])=>{V(x,y,z,'#f2c55c');V(x,y,z+1,'#f2c55c')});
+  const cx=31,cy=8;
+  box(cx-3,cx+3,cy-3,cy+3,1,1,'#b8862a');box(cx-2,cx+2,cy-2,cy+2,2,2,'#d9a336');
+  for(let z=3;z<=6;z++)for(let x=cx-2;x<=cx+2;x++)for(let y=cy-2;y<=cy+2;y++){const d=Math.abs(x-cx)+Math.abs(y-cy);if(z<=4?d<=3:(z===5?d<=2:d<=1))V(x,y,z,((x+y+z)%2)?'#e8b84a':'#f2c55c')}
+  box(cx-1,cx+1,cy-1,cy+1,7,7,'#d9a336');
+  for(let z=8;z<=14;z++)V(cx,cy,z,(z%2)?'#f2c55c':'#d9a336');V(cx,cy,15,'#ffe08a');
+}
+const G='#e8b84a',G2='#f2c55c',G3='#ffe08a',RED='#c43e33',DK='#8a2a26',STONE='#8d86a8',WH='#fbf5e6',LEAF='#2f8a5f',LEAF2='#3aa06c',WOOD='#7a5640',WOOD2='#6b4a3a';
+const kt=col=>V=>{const L={lift:-.4,bob:1};
+  V(0,0,1,'#3f9b5b',L);V(1,0,1,'#3f9b5b',L);V(0,1,1,'#3f9b5b',L);V(1,1,1,'#3f9b5b',L);
+  V(0,0,2,col,L);V(1,0,2,'#f9c9db',L);V(0,1,2,'#f9c9db',L);V(1,1,2,col,L);V(1,1,3,'#fff5dc',{...L,candle:1})};
+const CATS=[
+ {id:'gate',name:'입구',type:'ground',items:[
+  {id:'yak',name:'약 수호신상',d:V=>{for(let a=0;a<3;a++)for(let b=0;b<3;b++)V(a,b,1,STONE);V(1,1,2,'#2f8a5f');V(0,1,2,'#2f8a5f');V(2,1,2,'#2f8a5f');
+    for(let z=3;z<=5;z++)V(1,1,z,'#3aa06c');V(1,1,3,G);V(0,1,4,'#3aa06c');V(2,1,4,'#3aa06c');V(0,2,4,'#3aa06c');V(2,2,5,WOOD);V(2,2,4,WOOD);V(2,2,3,WOOD);
+    V(1,1,6,'#3aa06c');V(1,2,6,RED);V(1,1,7,G);V(1,1,8,G2);V(1,1,9,G3)}},
+  {id:'singha',name:'싱 사자상',d:V=>{for(let a=0;a<3;a++)for(let b=0;b<3;b++)V(a,b,1,STONE);V(1,0,2,WH);V(1,1,2,WH);V(1,2,2,WH);V(0,2,2,WH);V(2,2,2,WH);
+    V(1,2,3,WH);V(1,2,4,WH);V(0,2,4,G);V(2,2,4,G);V(1,1,4,G);V(1,2,5,G2);V(1,0,3,G)}},
+  {id:'incense',name:'큰 향로',d:V=>{V(0,0,1,'#6b4a20');V(2,0,1,'#6b4a20');V(0,2,1,'#6b4a20');V(2,2,1,'#6b4a20');
+    for(let a=0;a<3;a++)for(let b=0;b<3;b++)V(a,b,2,(a===1&&b===1)?'#5a4a3a':'#b8862a');V(1,1,3,RED);V(0,1,3,RED);V(1,0,3,RED);V(1,1,4,'#e9e4f0',{lift:-.2})}},
+  {id:'candles',name:'초 공양대',d:V=>{V(0,1,1,DK);V(2,1,1,DK);for(let a=0;a<3;a++)V(a,1,2,RED);V(0,1,3,WH,{candle:1});V(1,1,3,WH,{candle:1});V(2,1,3,WH,{candle:1});V(1,0,2,'#f6a21e');V(1,2,2,'#ffc93d')}},
+  {id:'pot',name:'금잔화 화분',d:V=>{V(1,1,1,'#a0522d');V(0,1,1,'#8a4526');[[0,1],[2,1],[1,0],[1,2],[1,1]].forEach(([a,b],i)=>V(a,b,2,i%2?'#f6a21e':'#ffc93d'));V(1,1,3,'#ffd23f')}},
+  {id:'lamp',name:'등불 기둥',d:V=>{for(let z=1;z<=4;z++)V(1,1,z,'#5c5878');V(1,1,5,'#ffb347',{glow:1});V(1,1,6,RED)}},
+ ]},
+ {id:'tree',name:'나무',type:'ground',items:[
+  {id:'palm',name:'야자수',d:V=>{for(let z=1;z<=7;z++)V(1,1,z,z%2?WOOD:WOOD2);
+    [[1,0],[-1,0],[0,1],[0,-1]].forEach(([a,b])=>{for(let k=1;k<=3;k++)V(1+a*k,1+b*k,8-(k===3?1:0),k%2?LEAF:LEAF2)});
+    [[1,1],[-1,-1],[1,-1],[-1,1]].forEach(([a,b])=>V(1+a,1+b,8,LEAF));V(1,1,8,LEAF);V(1,1,9,LEAF2);V(2,1,7,'#7a5a2a')}},
+  {id:'bodhi',name:'오색천 보리수',d:V=>{const cl=['#ffd23f','#f48fb1','#3aa06c','#3b7bd6'];for(let z=1;z<=4;z++)V(1,1,z,z<=3?cl[z]:WOOD);
+    for(let z=5;z<=7;z++)for(let a=-1;a<=3;a++)for(let b=-1;b<=3;b++){const d=Math.abs(a-1)+Math.abs(b-1);if((z===6&&d<=3)||(z!==6&&d<=2))V(a,b,z,((a+b+z)%3)?LEAF:LEAF2)}V(1,1,8,LEAF2)}},
+  {id:'banana',name:'바나나 나무',d:V=>{for(let z=1;z<=4;z++)V(1,1,z,'#8fb04a');[[0,1],[2,1],[1,0],[1,2]].forEach(([a,b])=>{V(a,b,5,'#6cc06a');V(1+(a-1)*2,1+(b-1)*2,4,'#5aa85a')});V(1,1,5,'#7ad07a');V(2,2,3,'#ffd23f');V(2,2,2,'#f2c03a')}},
+  {id:'frangi',name:'릴라와디',d:V=>{for(let z=1;z<=3;z++)V(1,1,z,'#9a8a7a');V(0,1,4,'#9a8a7a');V(2,1,4,'#9a8a7a');V(1,0,4,'#9a8a7a');
+    [[0,1],[2,1],[1,0],[1,2],[0,0],[2,2]].forEach(([a,b],i)=>V(a,b,5,i%2?'#3aa06c':WH));V(1,1,5,'#3aa06c');V(0,1,6,WH);V(2,1,6,'#ffe08a');V(1,0,6,WH);V(1,1,6,WH)}},
+  {id:'bougain',name:'부겐빌레아',d:V=>{for(let a=0;a<3;a++)for(let b=0;b<3;b++){V(a,b,1,(a+b)%2?LEAF:'#d43d8f');V(a,b,2,(a*2+b)%3?'#e0559c':LEAF)}V(1,1,3,'#e0559c');V(0,1,3,'#f07ab4');V(1,0,3,LEAF)}},
+ ]},
+ {id:'yard',name:'마당',type:'ground',items:[
+  {id:'chedi',name:'작은 체디',d:V=>{for(let a=0;a<3;a++)for(let b=0;b<3;b++)V(a,b,1,'#b8862a');[[1,0],[0,1],[1,1],[2,1],[1,2]].forEach(([a,b])=>V(a,b,2,G));V(1,1,3,G2);V(1,1,4,'#d9a336');V(1,1,5,G2);V(1,1,6,G3)}},
+  {id:'spirit',name:'정령의 집',d:V=>{for(let z=1;z<=3;z++)V(1,1,z,WH);for(let a=0;a<3;a++)for(let b=0;b<3;b++)V(a,b,4,(a+b)%2?G:'#d9a336');
+    V(1,1,5,RED);V(0,1,5,WH);V(2,1,5,WH);V(1,0,5,WH);V(1,2,5,'#8f2420');V(1,1,6,RED);V(0,1,6,RED);V(2,1,6,RED);V(1,1,7,G2);V(1,1,8,G3);V(0,2,5,'#f6a21e');V(2,2,5,'#f48fb1')}},
+  {id:'bell',name:'종 누각',d:V=>{for(let z=1;z<=4;z++){V(0,1,z,DK);V(2,1,z,DK)}for(let a=0;a<3;a++)V(a,1,5,RED);V(1,1,6,G2);V(1,1,4,G);V(1,1,3,'#d9a336')}},
+  {id:'drum',name:'큰 북 누각',d:V=>{for(let z=1;z<=4;z++){V(0,0,z,RED);V(2,2,z,RED)}V(1,1,2,'#a0522d');V(1,1,3,'#c8a070');V(0,1,2,'#8a4526');V(2,1,2,'#8a4526');
+    for(let a=0;a<3;a++)for(let b=0;b<3;b++)V(a,b,5,(a===1||b===1)?'#2f6b55':RED);V(1,1,6,G2)}},
+  {id:'jar',name:'연꽃 항아리',d:V=>{for(let a=0;a<3;a++)for(let b=0;b<3;b++){if(a===1&&b===1)continue;V(a,b,1,'#6b4a3a');V(a,b,2,'#7d5a44')}V(1,1,1,'#6b4a3a');V(1,1,2,'#2d3a96');V(0,0,3,'#3f9b5b',{lift:.6});V(1,1,3,'#f48fb1');V(1,1,4,'#ffd0e0',{lift:.3})}},
+  {id:'elephant',name:'코끼리 상',d:V=>{const c='#9a9bb5';[[0,0],[2,0],[0,1],[2,1]].forEach(([a,b])=>V(a,b,1,c));for(let a=0;a<3;a++)for(let b=0;b<2;b++){V(a,b,2,c);V(a,b,3,c)}
+    V(1,2,3,c);V(1,2,4,c);V(0,2,4,'#b4b5cc');V(2,2,4,'#b4b5cc');V(1,2,2,'#8b8ca6');V(1,2,1,'#8b8ca6');V(1,0,4,RED);V(1,1,4,G)}},
+ ]},
+ {id:'fun',name:'골목',type:'ground',items:[
+  {id:'cat',name:'사원 고양이',d:V=>{V(1,1,1,'#f3ead6');V(1,0,1,'#e9dfc6');V(1,1,2,'#f3ead6');V(0,0,1,'#e9dfc6');V(0,0,2,'#e9dfc6',{lift:.4})}},
+  {id:'dog',name:'사원 강아지',d:V=>{V(1,0,1,'#d9a46a');V(1,1,1,'#d9a46a');V(1,2,1,'#e5b67e');V(1,2,2,'#e5b67e');V(0,2,2,'#8a5a3a',{lift:.3});V(2,2,2,'#8a5a3a',{lift:.3});V(1,0,2,'#d9a46a',{lift:.5})}},
+  {id:'tuktuk',name:'툭툭',d:V=>{const B='#3b7bd6';V(0,0,1,'#26244a');V(2,0,1,'#26244a');V(1,2,1,'#26244a');for(let a=0;a<3;a++)for(let b=0;b<3;b++)V(a,b,2,B);
+    V(0,0,3,'#c43e33');V(1,0,3,'#c43e33');V(2,0,3,'#c43e33');V(1,2,3,B);V(0,2,3,'#9fd3ff');V(2,2,3,'#9fd3ff');
+    for(let a=0;a<3;a++)for(let b=0;b<3;b++)V(a,b,4,(b===2)?'#ffd23f':'#3aa06c');V(1,2,5,'#ffd23f',{lift:.6})}},
+  {id:'coconut',name:'코코넛 노점',d:V=>{V(0,0,1,WOOD2);V(2,0,1,WOOD2);V(0,1,1,WOOD2);V(2,1,1,WOOD2);for(let a=0;a<3;a++)for(let b=0;b<2;b++)V(a,b,2,'#a87a4f');
+    V(0,0,3,'#5fae4a');V(1,0,3,'#5fae4a');V(0,1,3,'#fffaf0');V(2,2,3,WOOD);V(2,2,4,WOOD);for(let a=0;a<3;a++)for(let b=0;b<3;b++)V(a,b,5,(a+b)%2?RED:WH)}},
+  {id:'mango',name:'망고 찹쌀밥 수레',d:V=>{V(0,0,1,'#26244a');V(0,2,1,'#26244a');for(let a=0;a<3;a++)for(let b=0;b<3;b++)V(a,b,2,'#c99a5f');
+    V(0,0,3,'#ffc23a');V(1,0,3,'#ffd23f');V(0,1,3,'#ffc23a');V(2,1,3,WH);V(2,0,3,WH);V(1,2,3,'#e9e4f0');V(2,2,3,RED);V(2,2,4,RED)}},
+  {id:'fruit',name:'과일 좌판',d:V=>{for(let a=0;a<3;a++)for(let b=0;b<3;b++)V(a,b,1,'#a87a4f');
+    V(0,0,2,'#d8304a');V(1,0,2,'#6b2a5a');V(2,0,2,'#ff6fae');V(0,1,2,'#c8d04a');V(1,1,2,'#ffd23f');V(2,1,2,'#d8304a');V(0,2,2,'#6b2a5a');V(1,2,2,'#ff8a3d');V(2,2,2,'#5fae4a');V(1,1,3,'#c8d04a')}},
+ ]},
+ {id:'pond',name:'연못',type:'water',items:[
+  {id:'kt1',name:'분홍 끄라통',d:kt('#f48fb1')},
+  {id:'kt2',name:'노랑 끄라통',d:kt('#ffd166')},
+  {id:'kt3',name:'보라 끄라통',d:kt('#c9a7f5')},
+  {id:'lotus',name:'연꽃',d:V=>{V(0,0,0,'#3f9b5b',{water:1,lift:.15,leaf:1});V(1,1,0,'#4aa868',{water:1,lift:.15,leaf:1});V(2,0,0,'#3f9b5b',{water:1,lift:.15,leaf:1});V(1,0,1,'#f48fb1',{lift:-.5});V(0,1,1,'#ffd0e0',{lift:-.5})}},
+  {id:'koi',name:'잉어',d:V=>{V(0,0,0,'#ff8a3d',{water:1,lift:.1,leaf:1});V(1,0,0,'#fff5dc',{water:1,lift:.1,leaf:1});V(1,1,0,'#ff8a3d',{water:1,lift:.1,leaf:1});V(2,2,0,'#fff5dc',{water:1,lift:.1,leaf:1})}},
+  {id:'longtail',name:'롱테일 보트',d:V=>{const L={lift:-.45,bob:1};for(let a=0;a<3;a++)V(a,1,1,'#8a5a3a',L);V(2,1,2,'#8a5a3a',L);V(2,1,3,'#f48fb1',L);V(-1,1,1,'#5c5878',L);V(0,1,2,'#5c5878',L);V(1,1,2,'#3b7bd6',L)}},
+  {id:'market',name:'수상시장 배',d:V=>{const L={lift:-.45,bob:1};for(let a=0;a<3;a++)V(a,1,1,'#7a5640',L);V(0,1,2,'#ff8a3d',L);V(1,1,2,'#5fae4a',L);V(2,1,2,'#ffd23f',L);V(1,0,1,'#7a5640',L);V(1,0,2,'#e8d9a8',L)}},
+  {id:'turtle',name:'거북이',d:V=>{V(1,1,0,'#4a8a5a',{water:1,lift:-.15,leaf:1});V(1,2,0,'#8fc08a',{water:1,lift:.05,leaf:1});V(1,1,1,'#3f7a4f',{lift:-.75})}},
+ ]},
+ {id:'porch',name:'처마',type:'porch',items:[
+  {id:'none',name:'없음',d:()=>{}},
+  {id:'g1',name:'금잔화 꽃줄',d:V=>garland(V,x=>x%2?'#f6a21e':'#ffc93d')},
+  {id:'g2',name:'재스민 꽃줄',d:V=>garland(V,x=>x%3?'#fffaf0':'#5fb37a')},
+  {id:'g3',name:'오색 깃발',d:V=>{const c=['#c43e33','#ffd23f','#3b7bd6','#3aa06c','#fffaf0'];let i=0;for(let x=11;x<=22;x++){if(x===13||x===20||x%2)continue;V(x,21,9,c[i%5]);V(x,21,8,c[i%5]);i++}}},
+  {id:'g4',name:'금종',d:V=>{[11,15,18,22].forEach(x=>{V(x,21,9,DK);V(x,21,8,G2);V(x,21,7,G3)})}},
+  {id:'g5',name:'꼬마 연등 줄',d:V=>{[11,12,14,15,16,17,18,19,21,22].forEach((x,i)=>{V(x,21,9,DK);if(i%2===0)V(x,21,8,'#e0453a');V(x,21,7,'#ffb347')})}},
+  {id:'g6',name:'풍경',d:V=>{[11,14,16,18,21].forEach((x,i)=>{V(x,21,9,G);V(x,21,8,i%2?'#cfd3e8':G2);if(i%2===0)V(x,21,7,'#cfd3e8')})}},
+ ]},
+];
+function garland(V,col){const dz={11:9,12:9,14:9,15:8,16:7,17:7,18:8,19:9,21:9,22:9};
+  for(const x in dz){V(+x,21,dz[x],col(+x));if(dz[x]<9)V(+x,21,dz[x]+1,col(+x+1))}[11,12,21,22].forEach(x=>V(x,21,8,col(x+1)))}
+const ITEM={};CATS.forEach(c=>c.items.forEach(i=>{ITEM[i.id]={...i,type:c.type}}));
+const baseRaw=new Map();buildBase((x,y,z,col,o={})=>baseRaw.set(x+','+y+','+z,{x,y,z,col,...o}));
+const CELL=[];
+for(let cx=0;cx<C;cx++){CELL[cx]=[];for(let cy=0;cy<C;cy++){
+  let w=0,blocked=false;
+  for(let x=cx*3;x<cx*3+3;x++)for(let y=cy*3;y<cy*3+3;y++){if(isWater(x,y))w++;for(let z=1;z<16;z++)if(baseRaw.has(x+','+y+','+z))blocked=true}
+  CELL[cx][cy]=blocked?null:(w===9?'water':(w===0?'ground':null));
+}}
+let placed=[];
+let porch='none';
+let uid=1;
+const occ=(cx,cy)=>placed.find(p=>p.cx===cx&&p.cy===cy);
+let rot=0,list=[],dirty=true,tick=0;
+const tf=(x,y,r=rot)=>{for(let i=0;i<r;i++){const nx=N-1-y;y=x;x=nx}return[x,y]};
+const tfc=(x,y,r=rot)=>{for(let i=0;i<r;i++){const nx=N-y;y=x;x=nx}return[x,y]};
+const itf=(x,y,r=rot)=>{for(let i=0;i<r;i++){const nx=y;y=N-x;x=nx}return[x,y]};
+function localRot(x,y,r){for(let i=0;i<r;i++){const nx=2-y;y=x;x=nx}return[x,y]}
+function itemVox(id,cx,cy,r,extra,put){ITEM[id].d((x,y,z,col,o={})=>{const [lx,ly]=localRot(x,y,r);put(cx*3+lx,cy*3+ly,z,col,{...o,...extra})})}
+function rebuild(){
+  const M=new Map();
+  const put=(x,y,z,col,o={})=>{const [a,b]=tf(x,y);M.set(a+','+b+','+z,{...o,x:a,y:b,z,col})};
+  baseRaw.forEach(v=>{const o={water:v.water,lift:v.lift};if(v.z===0)o.cell=((v.x/3)|0)+','+((v.y/3)|0);put(v.x,v.y,v.z,v.col,o)});
+  placed.forEach(p=>itemVox(p.id,p.cx,p.cy,p.r,{uid:p.uid},put));
+  if(porch!=='none')ITEM[porch].d((x,y,z,col,o={})=>put(x,y,z,col,{...o,uid:'porch'}));
+  list=buildList(M);dirty=true;
+}
+function buildList(M){
+  const has=(x,y,z)=>{const v=M.get(x+','+y+','+z);return v&&!v.water};
+  const arr=[...M.values()];
+  arr.forEach(v=>{v.fT=!has(v.x,v.y,v.z+1)||!!v.lift;v.fL=!has(v.x,v.y+1,v.z);v.fR=!has(v.x+1,v.y,v.z);
+    v.cT=shade(v.col,1.1);v.cL=shade(v.col,.84);v.cR=shade(v.col,.64);v.sides=!v.water||(v.lift&&!v.leaf)});
+  arr.sort((a,b)=>(a.x+a.y)-(b.x+b.y)||a.z-b.z||a.x-b.x);
+  return arr;
+}
+const dropT={};let HL={};
+function drawList(ctx,arr,P,t,now,raise=0){
+  const {HW,HH,ZH,OX,OY}=P;const glows=[];
+  for(const v of arr){
+    let drop=0;if(v.uid&&dropT[v.uid]){const p=(now-dropT[v.uid])/200;if(p<1)drop=(1-p)*(1-p)*2.6}
+    const lift=(v.water?.35:0)+(v.lift||0)-(v.bob?((t%2)*.18):0)-drop-raise;
+    const sx=OX+(v.x-v.y)*HW,sy=OY+(v.x+v.y)*HH-(v.z-lift)*ZH;
+    const fx=drop>0||raise>0;
+    if(v.fT||fx){ctx.fillStyle=(v.cell&&HL[v.cell])?HL[v.cell]:v.cT;ctx.beginPath();ctx.moveTo(sx,sy);ctx.lineTo(sx+HW,sy+HH);ctx.lineTo(sx,sy+2*HH);ctx.lineTo(sx-HW,sy+HH);ctx.closePath();ctx.fill()}
+    if(v.sides){
+      if(v.fL||fx){ctx.fillStyle=v.cL;ctx.beginPath();ctx.moveTo(sx-HW,sy+HH);ctx.lineTo(sx,sy+2*HH);ctx.lineTo(sx,sy+2*HH+ZH);ctx.lineTo(sx-HW,sy+HH+ZH);ctx.closePath();ctx.fill()}
+      if(v.fR||fx){ctx.fillStyle=v.cR;ctx.beginPath();ctx.moveTo(sx+HW,sy+HH);ctx.lineTo(sx,sy+2*HH);ctx.lineTo(sx,sy+2*HH+ZH);ctx.lineTo(sx+HW,sy+HH+ZH);ctx.closePath();ctx.fill()}}
+    if(v.glow||v.candle)glows.push([sx,sy+HH,v.candle]);
+  }
+  glows.forEach(([x,y,cd])=>{const k=HW/5;
+    if(cd){ctx.fillStyle=t%2?'#ffd77a':'#ffb347';ctx.fillRect(x-1*k,y-6*k,2*k,4*k)}
+    const rg=ctx.createRadialGradient(x,y-3*k,0,x,y-3*k,(cd?15:11)*k);rg.addColorStop(0,cd?'rgba(255,185,90,.6)':'rgba(255,185,90,.4)');rg.addColorStop(1,'rgba(255,185,90,0)');ctx.fillStyle=rg;ctx.fillRect(x-16*k,y-19*k,32*k,32*k)});
+}
+const SND={ac:null,master:null,bgm:null,muted:false,next:0,step:0,timer:null};
+try{SND.muted=localStorage.getItem('bkk-sound')==='off'}catch(e){}
+function audioInit(){
+  if(SND.ac){if(SND.ac.state==='suspended')SND.ac.resume();return}
+  const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;
+  SND.ac=new AC();SND.master=SND.ac.createGain();SND.master.gain.value=SND.muted?0:1;SND.master.connect(SND.ac.destination);
+  SND.bgm=SND.ac.createGain();SND.bgm.gain.value=.55;SND.bgm.connect(SND.master);
+  const len=SND.ac.sampleRate*.5,buf=SND.ac.createBuffer(1,len,SND.ac.sampleRate),d=buf.getChannelData(0);for(let i=0;i<len;i++)d[i]=Math.random()*2-1;SND.noise=buf;
+  startBGM();
+}
+function pluck(f,t,dur,vol,out,type='triangle'){const a=SND.ac;
+  [[1,vol,type],[2.005,vol*.35,'sine'],[3.01,vol*.12,'sine']].forEach(([m,v,ty])=>{const o=a.createOscillator(),g=a.createGain();o.type=ty;o.frequency.value=f*m;
+    g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v,t+.004);g.gain.exponentialRampToValueAtTime(.0001,t+dur*(m===1?1:.6));o.connect(g).connect(out);o.start(t);o.stop(t+dur+.05)})}
+function ching(t,vol,open){const a=SND.ac,s=a.createBufferSource(),bp=a.createBiquadFilter(),g=a.createGain();s.buffer=SND.noise;bp.type='bandpass';bp.frequency.value=open?6800:5200;bp.Q.value=open?14:6;
+  g.gain.setValueAtTime(vol,t);g.gain.exponentialRampToValueAtTime(.0001,t+(open?.5:.08));s.connect(bp).connect(g).connect(SND.bgm);s.start(t);s.stop(t+.55);
+  if(open){const o=a.createOscillator(),og=a.createGain();o.frequency.value=3520;o.type='sine';og.gain.setValueAtTime(vol*.25,t);og.gain.exponentialRampToValueAtTime(.0001,t+.6);o.connect(og).connect(SND.bgm);o.start(t);o.stop(t+.65)}}
+function gong(f,t,vol){const a=SND.ac;[[1,vol],[2.76,vol*.3],[5.4,vol*.1]].forEach(([m,v])=>{const o=a.createOscillator(),g=a.createGain();o.type='sine';o.frequency.setValueAtTime(f*m*1.02,t);o.frequency.exponentialRampToValueAtTime(f*m,t+.08);
+  g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v,t+.01);g.gain.exponentialRampToValueAtTime(.0001,t+2.2);o.connect(g).connect(SND.bgm);o.start(t);o.stop(t+2.3)})}
+const SC=[261.63,293.66,329.63,392,440,523.25,587.33,659.25,783.99];
+const MEL=[4,-1,3,2, 3,-1,1,0, 1,2,3,-1, 4,5,4,3, 2,-1,3,4, 5,6,5,4, 3,2,1,-1, 2,1,0,-1,
+           5,-1,4,5, 6,-1,5,4, 3,4,5,-1, 4,3,2,1, 2,-1,1,2, 3,-1,2,1, 0,1,2,-1, 1,-1,0,-1];
+const BASS=[0,-1,-1,-1,-1,-1,-1,-1, 3,-1,-1,-1,-1,-1,-1,-1];
+function startBGM(){const STEP=60/88/2;SND.next=SND.ac.currentTime+.1;
+  clearInterval(SND.timer);SND.timer=setInterval(()=>{if(!SND.ac)return;
+    while(SND.next<SND.ac.currentTime+.25){const t=SND.next,i=SND.step%MEL.length,n=MEL[i];
+      if(n>=0){pluck(SC[n]*2,t,.45,.07,SND.bgm);if(i%4===0)pluck(SC[n],t+STEP*.5,.35,.035,SND.bgm)}
+      const b=BASS[SND.step%16];if(b>=0)pluck(SC[b]/2,t,1.4,.06,SND.bgm,'sine');
+      if(SND.step%4===2)ching(t,.05,true);else if(SND.step%4===0)ching(t,.03,false);
+      if(SND.step%32===0)gong(130.81,t,.09);
+      SND.next+=STEP;SND.step++}},60)}
+const sfx={
+  card(){if(!SND.ac)return;const t=SND.ac.currentTime;pluck(659.25*2,t,.25,.12,SND.master)},
+  lift(){if(!SND.ac)return;const t=SND.ac.currentTime;pluck(523.25*2,t,.2,.12,SND.master);pluck(783.99*2,t+.07,.3,.12,SND.master)},
+  drop(){if(!SND.ac)return;const a=SND.ac,t=a.currentTime,o=a.createOscillator(),g=a.createGain();o.type='sine';o.frequency.setValueAtTime(220,t);o.frequency.exponentialRampToValueAtTime(70,t+.12);
+    g.gain.setValueAtTime(.55,t);g.gain.exponentialRampToValueAtTime(.0001,t+.16);o.connect(g).connect(SND.master);o.start(t);o.stop(t+.2);
+    const s=a.createBufferSource(),lp=a.createBiquadFilter(),ng=a.createGain();s.buffer=SND.noise;lp.type='lowpass';lp.frequency.value=1200;ng.gain.setValueAtTime(.25,t);ng.gain.exponentialRampToValueAtTime(.0001,t+.05);s.connect(lp).connect(ng).connect(SND.master);s.start(t);s.stop(t+.06)},
+  tick(){if(!SND.ac)return;const a=SND.ac,t=a.currentTime;[0,.07].forEach((d,i)=>{const o=a.createOscillator(),g=a.createGain();o.type='square';o.frequency.value=i?1500:1100;
+    g.gain.setValueAtTime(.08,t+d);g.gain.exponentialRampToValueAtTime(.0001,t+d+.035);o.connect(g).connect(SND.master);o.start(t+d);o.stop(t+d+.04)})},
+  spin(){if(!SND.ac)return;const a=SND.ac,t=a.currentTime,o=a.createOscillator(),g=a.createGain();o.type='square';o.frequency.value=1300;g.gain.setValueAtTime(.06,t);g.gain.exponentialRampToValueAtTime(.0001,t+.03);o.connect(g).connect(SND.master);o.start(t);o.stop(t+.04)},
+  del(){if(!SND.ac)return;const t=SND.ac.currentTime;pluck(392*2,t,.2,.1,SND.master);pluck(261.63*2,t+.08,.3,.1,SND.master)},
+  no(){if(!SND.ac)return;const t=SND.ac.currentTime;pluck(293.66,t,.18,.1,SND.master,'square')},
+  porch(){if(!SND.ac)return;const t=SND.ac.currentTime;[0,.06,.12].forEach((d,i)=>pluck([1046.5,1318.5,1568][i],t+d,.5,.07,SND.master))}
+};
+function setMuted(m){SND.muted=m;try{localStorage.setItem('bkk-sound',m?'off':'on')}catch(e){}
+  if(SND.master)SND.master.gain.setTargetAtTime(m?0:1,SND.ac.currentTime,.05);document.querySelectorAll('.snd').forEach(b=>b.classList.toggle('off',m))}
+document.addEventListener('pointerdown',audioInit,{capture:true});
+document.addEventListener('visibilitychange',()=>{if(!SND.ac)return;if(document.hidden)SND.ac.suspend();else SND.ac.resume()});
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.addEventListener('selectstart',e=>e.preventDefault());
+const SIAM=[
+ {lv:'대길',t:'소원 직행 특급열차',d:'올해 빈 소원이 환승 없이 바로 도착해요',w:'생각보다 빨리 이뤄져요',m:'뜻밖의 용돈이 들어와요',f:'티켓팅 첫 클릭에 성공해요',i:'kt2'},
+ {lv:'대길',t:'금빛 체디의 기운',d:'하는 일마다 반짝반짝 빛이 나요',w:'크게 빌수록 크게 돌아와요',m:'지갑이 두꺼워지는 달이에요',f:'최애와 눈이 마주쳐요',i:'chedi'},
+ {lv:'대길',t:'코끼리 등에 탄 운',d:'든든한 운이 당신을 태우고 걸어가요',w:'천천히 그러나 확실하게 이뤄져요',m:'모아 둔 돈이 불어나요',f:'굿즈가 품절 직전에 내 손에',i:'elephant'},
+ {lv:'대길',t:'보름달 아래 끄라통',d:'오늘 띄운 소원이 가장 멀리 흘러가요',w:'간절한 소원부터 이뤄져요',m:'새는 돈이 막혀요',f:'팬싸 응모 당첨 기운',i:'kt1'},
+ {lv:'대길',t:'오색천 보리수의 축복',d:'좋은 인연과 좋은 소식이 함께 와요',w:'누군가 함께 빌어 주고 있어요',m:'선물로 받은 게 돈이 돼요',f:'덕메가 생겨요',i:'bodhi'},
+ {lv:'길',t:'망고 찹쌀밥처럼 달콤',d:'달달한 일이 연달아 생기는 시기예요',w:'작은 소원부터 하나씩 이뤄져요',m:'맛있는 데 쓰면 복이 돼요',f:'떡밥이 연달아 풀려요',i:'mango'},
+ {lv:'길',t:'툭툭 타고 쌩쌩',d:'막혔던 일이 시원하게 뚫려요',w:'미뤄 둔 계획을 시작할 때예요',m:'교통비 아끼는 운',f:'공연장 가는 길이 순조로워요',i:'tuktuk'},
+ {lv:'길',t:'사원 고양이의 낮잠',d:'쉬어 가도 운은 따라와요',w:'조급해하지 않으면 이뤄져요',m:'충동구매만 참으면 괜찮아요',f:'자컨으로 힐링해요',i:'cat'},
+ {lv:'길',t:'금잔화 꽃줄',d:'주변 사람들이 당신을 반겨 줘요',w:'부탁하면 도와줄 사람이 있어요',m:'나눠 쓰면 더 들어와요',f:'함께 덕질할 사람이 늘어요',i:'pot'},
+ {lv:'길',t:'등불 기둥의 밤',d:'어두운 길에도 불이 켜져 있어요',w:'방향만 맞으면 도착해요',m:'계획대로 쓰면 남아요',f:'공지 알림을 놓치지 않아요',i:'lamp'},
+ {lv:'길',t:'롱테일 보트 출항',d:'새로운 곳에서 기회가 와요',w:'떠나야 이뤄지는 소원이에요',m:'여행 경비가 모여요',f:'해외 공연 운이 있어요',i:'longtail'},
+ {lv:'길',t:'연꽃 한 송이',d:'흙탕물에서도 예쁘게 피어나요',w:'힘든 시기 끝에 이뤄져요',m:'적은 돈이 크게 쓰여요',f:'최애가 내 마음을 알아줘요',i:'lotus'},
+ {lv:'길',t:'정령의 집 문이 열림',d:'집안에 좋은 기운이 들어와요',w:'가족과 관련된 소원이 풀려요',m:'집에서 돈이 나와요',f:'택배가 빨리 와요',i:'spirit'},
+ {lv:'중길',t:'코코넛 한 통',d:'겉은 단단해도 속은 시원해요',w:'조금만 더 버티면 돼요',m:'큰돈보단 꾸준한 돈',f:'시즌그리팅은 미리 사 두기',i:'coconut'},
+ {lv:'중길',t:'종 누각의 울림',d:'한 번 낸 소리가 멀리 퍼져요',w:'말로 꺼내야 이뤄져요',m:'광고 문자를 잘 보세요',f:'응원법을 크게 외치면 닿아요',i:'bell'},
+ {lv:'중길',t:'싱 사자의 눈빛',d:'지킬 건 지키는 자세가 필요해요',w:'흔들리지 않으면 이뤄져요',m:'빌려준 돈은 받아 내요',f:'포카는 슬리브에 꼭 넣어 두기',i:'singha'},
+ {lv:'중길',t:'과일 좌판 흥정',d:'조금만 밀어붙이면 원하는 걸 얻어요',w:'협상하면 이뤄져요',m:'할인 쿠폰 운이 좋아요',f:'양도는 신중하게',i:'fruit'},
+ {lv:'중길',t:'바나나 나무 그늘',d:'잠깐 쉬어 갈 곳이 생겨요',w:'급하지 않은 소원부터 풀려요',m:'고정비를 줄일 기회',f:'휴덕해도 괜찮아요',i:'banana'},
+ {lv:'중길',t:'잉어의 꼬리짓',d:'작은 변화가 큰 물결이 돼요',w:'습관 하나만 바꿔 보세요',m:'잔돈 모으기가 효과 있어요',f:'최애 생일 카페 투어 운',i:'koi'},
+ {lv:'중길',t:'큰 북 한 번',d:'때를 기다렸다가 크게 울려요',w:'타이밍이 다 해 줘요',m:'월말에 웃어요',f:'컴백 날짜가 다가와요',i:'drum'},
+ {lv:'소길',t:'초 공양대의 작은 불',d:'작지만 꺼지지 않는 운이에요',w:'천천히 이뤄져요',m:'아껴 쓰면 충분해요',f:'직캠 하나로 일주일 버텨요',i:'candles'},
+ {lv:'소길',t:'부겐빌레아 담장',d:'가시가 있어도 꽃은 피어요',w:'조금 돌아가면 이뤄져요',m:'예상 밖 지출에 대비하세요',f:'취소표를 노려 보세요',i:'bougain'},
+ {lv:'소길',t:'거북이 걸음',d:'느려도 결국 도착해요',w:'포기만 안 하면 이뤄져요',m:'적금은 깨지 마세요',f:'대기 번호가 줄어들어요',i:'turtle'},
+ {lv:'소길',t:'수상시장 배 위에서',d:'흔들려도 장사는 계속돼요',w:'여러 개 중 하나는 이뤄져요',m:'중고 거래 운이 있어요',f:'굿즈 교환이 성사돼요',i:'market'},
+ {lv:'소길',t:'릴라와디 꽃향기',d:'은은하게 좋은 소식이 와요',w:'눈치채지 못한 사이에 이뤄져요',m:'포인트 적립을 잊지 마세요',f:'최애가 내 댓글에 좋아요',i:'frangi'},
+ {lv:'말길',t:'향로 연기에 콜록',d:'운은 있는데 연기에 가려졌어요',w:'한 번 더 빌어 보세요',m:'오늘은 지갑을 닫아 두기',f:'새로고침은 적당히',i:'incense'},
+ {lv:'말길',t:'신발 물고 튄 사원 강아지',d:'작은 소동이 있지만 웃고 끝나요',w:'다시 뽑으면 더 좋아요',m:'잃어버린 물건이 돌아와요',f:'티켓팅은 PC방에서',i:'dog'},
+ {lv:'말길',t:'약 수호신이 하품함',d:'지켜보는 신도 오늘은 좀 졸려요',w:'내일 다시 빌어 보세요',m:'큰 결정은 미뤄 두기',f:'최애 사진 보고 기운 내기',i:'yak'},
+];
+const LV_COL={'대길':'#c43e33','길':'#d9822b','중길':'#2f8a5f','소길':'#3b7bd6','말길':'#7a6aa8'};
+const SITE_URL='https://lumimori38.github.io/bangkok-temple/';const SITE_SHORT='lumimori38.github.io/bangkok-temple/';
+[
+ ['몸이 가벼워져요','집안에 웃을 일이 생겨요','오랜 친구가 먼저 연락해요','마음이 통하는 사람이 나타나요'],
+ ['컨디션이 최고예요','가족이 든든한 편이 돼요','친구 덕에 좋은 기회가 와요','고백하기 좋은 날이에요'],
+ ['꾸준히 걸으면 더 좋아져요','부모님께 효도할 기회','믿을 만한 친구가 곁에 있어요','천천히 깊어지는 사이예요'],
+ ['푹 자면 기운이 돌아와요','가족 여행 운이 있어요','멀어졌던 친구와 다시 가까워져요','달빛 아래 설레는 일'],
+ ['아픈 곳이 나아져요','가족 모두 평안해요','새 친구가 생겨요','좋은 인연이 연결돼요'],
+ ['단 건 조금만','가족과 맛집 운','밥 한번 먹자가 진짜가 돼요','달달한 연락이 와요'],
+ ['움직일수록 건강해져요','가족 일이 술술 풀려요','친구와 즉흥 여행 운','썸이 빠르게 진전돼요'],
+ ['낮잠이 보약이에요','집이 제일 편해요','조용한 친구가 힘이 돼요','편안한 사람이 좋은 사람'],
+ ['몸에 좋은 걸 챙겨 먹어요','가족 모임에 복이 있어요','모임에서 인기 만점','소개팅 운이 있어요'],
+ ['밤늦게 무리하지 않기','가족이 길을 밝혀 줘요','친구의 조언이 정답이에요','어두운 마음에 불이 켜져요'],
+ ['바깥공기가 보약이에요','멀리 사는 가족 소식','새로운 곳에서 친구를 만나요','여행지에서 인연이 와요'],
+ ['힘든 만큼 회복도 빨라요','가족이 내 편이에요','진심이 통하는 친구','진심이 전해져요'],
+ ['집에서 푹 쉬면 좋아져요','집안 분위기가 밝아져요','집들이에 초대받아요','집순이 집돌이끼리 통해요'],
+ ['물을 자주 마셔요','말없이 챙겨 주는 가족','오래된 친구가 제일이에요','겉보다 속이 따뜻한 사람'],
+ ['목 관리가 중요해요','안부 전화 한 통이 복이 돼요','먼저 연락하면 좋아요','마음을 말로 전해 보세요'],
+ ['자세를 바르게','가족을 지켜 주는 힘이 생겨요','친구 편을 들어 주면 좋아요','지켜 주고 싶은 사람이 생겨요'],
+ ['제철 과일이 보약','가족끼리 장보기 운','더치페이가 깔끔해요','밀당은 적당히'],
+ ['쉬는 시간을 꼭 챙겨요','가족과 느긋한 하루','같이 쉬어 주는 친구','쉬어 가는 연애도 괜찮아요'],
+ ['작은 습관이 건강을 바꿔요','가족 사이 작은 변화','친구 관계가 넓어져요','작은 계기로 가까워져요'],
+ ['기다리면 몸이 회복돼요','가족 행사가 잘 풀려요','오래 기다린 약속이 잡혀요','기다리던 연락이 와요'],
+ ['무리하지 않으면 괜찮아요','소소한 가족 행복','작은 선물이 우정을 키워요','작은 관심이 큰 설렘'],
+ ['가벼운 상처 조심','말 한마디를 조심해요','오해는 바로 풀어요','가시 돋친 말은 넣어 두기'],
+ ['천천히 회복돼요','가족과 느리지만 확실하게','오래가는 친구를 알아봐요','천천히 다가가세요'],
+ ['체력 안배가 필요해요','가족과 나눠 쓰면 좋아요','부탁은 들어주되 선은 지키기','여러 사람 중 한 사람이 보여요'],
+ ['향기로운 휴식이 필요해요','은근한 가족의 응원','조용히 챙겨 주는 친구','은근한 호감을 느껴요'],
+ ['환기를 자주 하세요','가족 말은 반만 듣기','친구 고민은 들어만 주기','오늘은 연락 쉬어 가기'],
+ ['넘어지지 않게 조심','가족에게 웃긴 일이 생겨요','친구와 웃을 일이 생겨요','허둥대도 귀엽게 보여요'],
+ ['일찍 자는 게 최고','가족에게 기대어 쉬어요','친구에게 오늘은 맡겨요','내일 다시 연락해 보세요'],
+].forEach(([h,fa,fr,l],i)=>Object.assign(SIAM[i],{h,fa,fr,l}));
+const TOPICS=[['w','소원'],['m','재물'],['h','건강'],['fa','가족'],['fr','우정'],['l','사랑'],['f','덕질']];
+const STR={
+ko:{title:'방콕 템플',sub:'러이끄라통 소원 띄우기',enter:'사원 입장하기',
+ kt:'끄라통 띄우기',lan:'콤로이 날리기',siam:'씨암시 뽑기',deco:'마당 꾸미기',done:'완료',
+ rot:'⟳ 돌리기',cancel:'✕ 취소',del:'✕ 치우기',
+ hintFloatMove:'놓을 곳으로 옮긴 뒤 손을 떼세요',hintFloat:'놓고 싶은 곳을 눌러 주세요',hintDeco:'소품을 고르거나 끌어서 마당에 놓아 보세요',
+ noCell:'놓을 빈칸이 없어요',occupied:'이미 소품이 있는 칸이에요',pondOnly:'연못에만 놓을 수 있어요',groundOnly:'빈 땅에만 놓을 수 있어요',
+ ktPick:'끄라통을 골라 주세요',ktPickSub:'바나나잎 배에 꽃과 초를 올린 작은 등불 배예요',pickOk:'이걸로 할게요',
+ wishTitle:'소원을 적어 주세요',ktWishSub:'끄라통에 담아 연못에 띄워 보낼게요',wishPh:'올해 이루고 싶은 소원',ktWishOk:'소원 담기',ktRepick:'끄라통 다시 고르기',
+ ktHint:'끄라통을 위로 밀어 띄워 보세요',ktDone:'소원을 띄웠어요',ktMore:'하나 더 띄우기',toYard:'마당으로',
+ lanPick:'콤로이를 골라 주세요',lanPickSub:'소원을 적어 하늘로 날려 보내는 종이 풍등이에요',lanWishSub:'풍등에 적어 밤하늘로 날려 보낼게요',lanWishOk:'소원 적기',lanRepick:'콤로이 다시 고르기',
+ lanTip:'불을 붙이면 따뜻한 공기로 떠올라요',fire:'꾹 눌러서 불 붙이기',more:'조금 더 꾹 눌러 주세요',lanDone:'소원을 하늘로 보냈어요',lanMore:'하나 더 날리기',
+ mTitle:'씨암시가 뭐예요?',m1:'태국 사원에서 많이 보는 전통 점괘예요.',m2:'번호 막대가 든 통을 흔들어<br>떨어진 막대 번호로 점괘를 받아요.',m3:'궁금한 운 3가지를 고르고<br>질문을 떠올리며 흔들어 보세요.',mOk:'시작하기',
+ qPick:'어떤 운이 궁금한가요?',qPickSub:'3개를 골라 주세요 ({n}/3)',qReady:'마음속으로 질문을 떠올려 주세요',qReadySub:'통을 흔들면 점괘 막대가 하나 떨어져요',
+ shake:'꾹 눌러서 흔들기',falling:'막대가 떨어지는 중',stickNo:'{n}번',stickOut:'{n}번 막대가 나왔어요',stickOutSub:'점괘 종이를 펼쳐 볼까요?',open:'점괘 보기',max3:'3개까지 고를 수 있어요',
+ resTitle:'오늘의 점괘',save:'결과 이미지 저장하기',saved:'저장했어요!',again:'다시 하기',share:'트위터 공유하기',
+ shareNoText:'문구가 안 들어갔다면 붙여 넣어 주세요',shareNoImg:'이미지는 저장해서 첨부해 주세요',saveHint:'이미지를 꾹 눌러 저장하세요',close:'닫기',
+ lucky:'행운의 소품',shareHead:'[방콕 템플] {t} · 씨암시 {n}번 {lv}'},
+en:{title:'Bangkok Temple',sub:'Float a Wish on Loy Krathong',enter:'Enter the Temple',
+ kt:'Float a Krathong',lan:'Release a Lantern',siam:'Draw Siam Si',deco:'Decorate',done:'Done',
+ rot:'⟳ Rotate',cancel:'✕ Cancel',del:'✕ Remove',
+ hintFloatMove:'Move it, then lift your finger',hintFloat:'Tap where you want to place it',hintDeco:'Pick an item, or drag it into the yard',
+ noCell:'No empty spot left',occupied:'Something is already there',pondOnly:'This goes in the pond',groundOnly:'This goes on empty ground',
+ ktPick:'Choose your krathong',ktPickSub:'A little banana-leaf boat with flowers and a candle',pickOk:'This one',
+ wishTitle:'Write your wish',ktWishSub:'It will float away on the pond',wishPh:'A wish for this year',ktWishOk:'Add my wish',ktRepick:'Choose again',
+ ktHint:'Push the krathong up to float it',ktDone:'Your wish is floating',ktMore:'Float another',toYard:'Back to yard',
+ lanPick:'Choose your lantern',lanPickSub:'A paper lantern that carries wishes to the sky',lanWishSub:'It will fly up into the night sky',lanWishOk:'Write it',lanRepick:'Choose again',
+ lanTip:'Light it and warm air lifts it up',fire:'Hold to light it',more:'Hold a little longer',lanDone:'Your wish is in the sky',lanMore:'Release another',
+ mTitle:'What is Siam Si?',m1:'A fortune-telling tradition at Thai temples.',m2:'Shake a cup of numbered sticks.<br>The stick that falls out is your fortune.',m3:'Pick 3 things you want to know,<br>think of your question, and shake.',mOk:'Start',
+ qPick:'What do you want to know?',qPickSub:'Pick 3 ({n}/3)',qReady:'Think of your question',qReadySub:'Shake the cup and one stick will fall',
+ shake:'Hold to shake',falling:'A stick is falling',stickNo:'No.{n}',stickOut:'Stick No.{n} fell out',stickOutSub:'Shall we open your fortune?',open:'Read my fortune',max3:'You can pick up to 3',
+ resTitle:'Your Fortune',save:'Save Result Image',saved:'Saved!',again:'Try Again',share:'Share on X',
+ shareNoText:'If the text is missing, paste it in',shareNoImg:'Save the image and attach it',saveHint:'Press and hold the image to save',close:'Close',
+ lucky:'Lucky item',shareHead:'[Bangkok Temple] {t} · Siam Si No.{n} {lv}'},
+th:{"title": "วัดบางกอก", "sub": "ลอยกระทง ฝากคำอธิษฐาน", "enter": "เข้าวัด", "kt": "ลอยกระทง", "lan": "ปล่อยโคมลอย", "siam": "เสี่ยงเซียมซี", "deco": "แต่งลานวัด", "done": "เสร็จ", "rot": "⟳ หมุน", "cancel": "✕ ยกเลิก", "del": "✕ เอาออก", "hintFloatMove": "ลากไปวางแล้วปล่อยนิ้ว", "hintFloat": "แตะตรงที่อยากวาง", "hintDeco": "เลือกของแต่ง หรือลากมาวางในลาน", "noCell": "ไม่มีที่ว่างแล้ว", "occupied": "ตรงนี้มีของแล้ว", "pondOnly": "วางได้เฉพาะในสระ", "groundOnly": "วางได้เฉพาะบนพื้นว่าง", "ktPick": "เลือกกระทงกันเลย", "ktPickSub": "กระทงใบตองประดับดอกไม้และเทียน", "pickOk": "เอาอันนี้", "wishTitle": "เขียนคำอธิษฐาน", "ktWishSub": "เดี๋ยวจะลอยไปกับกระทงในสระนะ", "wishPh": "สิ่งที่อยากให้เป็นจริงปีนี้", "ktWishOk": "ฝากคำอธิษฐาน", "ktRepick": "เลือกกระทงใหม่", "ktHint": "ปัดกระทงขึ้นเพื่อปล่อยลอย", "ktDone": "ลอยคำอธิษฐานแล้ว", "ktMore": "ลอยอีกใบ", "toYard": "กลับลานวัด", "lanPick": "เลือกโคมลอยกันเลย", "lanPickSub": "โคมกระดาษที่พาคำอธิษฐานขึ้นฟ้า", "lanWishSub": "เดี๋ยวจะปล่อยขึ้นฟ้ายามค่ำคืนนะ", "lanWishOk": "เขียนเสร็จแล้ว", "lanRepick": "เลือกโคมใหม่", "lanTip": "จุดไฟแล้วลมร้อนจะพาโคมลอยขึ้น", "fire": "กดค้างเพื่อจุดไฟ", "more": "กดค้างอีกนิด", "lanDone": "ส่งคำอธิษฐานขึ้นฟ้าแล้ว", "lanMore": "ปล่อยอีกดวง", "mTitle": "เซียมซีคืออะไร?", "m1": "การเสี่ยงทายแบบไทยๆ ที่เจอได้ตามวัด", "m2": "เขย่ากระบอกไม้ติ้วที่มีเลขกำกับ<br>ไม้ที่หล่นออกมาคือคำทำนายของคุณ", "m3": "เลือกเรื่องที่อยากรู้ 3 อย่าง<br>ตั้งจิตอธิษฐานแล้วเขย่าเลย", "mOk": "เริ่มเลย", "qPick": "อยากรู้เรื่องอะไร?", "qPickSub": "เลือก 3 อย่าง ({n}/3)", "qReady": "ตั้งจิตถามในใจ", "qReadySub": "เขย่ากระบอกแล้วไม้ติ้วจะหล่นมาหนึ่งอัน", "shake": "กดค้างเพื่อเขย่า", "falling": "ไม้ติ้วกำลังหล่น", "stickNo": "เบอร์ {n}", "stickOut": "ได้ไม้ติ้วเบอร์ {n}", "stickOutSub": "เปิดใบเซียมซีกันเลยไหม?", "open": "ดูคำทำนาย", "max3": "เลือกได้สูงสุด 3 อย่าง", "resTitle": "คำทำนายวันนี้", "save": "บันทึกรูปผลลัพธ์", "saved": "บันทึกแล้ว!", "again": "เล่นอีกรอบ", "share": "แชร์ลง X", "shareNoText": "ถ้าข้อความไม่ขึ้น วางเองได้เลย", "shareNoImg": "บันทึกรูปแล้วแนบเองนะ", "saveHint": "กดค้างที่รูปเพื่อบันทึก", "close": "ปิด", "lucky": "ของนำโชค", "shareHead": "[วัดบางกอก] {t} · เซียมซีเบอร์ {n} {lv}"},
+};
+const NAMES={
+ en:{yak:'Yak Guard',singha:'Singha',incense:'Incense Pot',candles:'Candles',pot:'Marigolds',lamp:'Lamp Post',palm:'Palm Tree',bodhi:'Bodhi Tree',banana:'Banana Tree',frangi:'Frangipani',bougain:'Flower Bush',
+  chedi:'Small Chedi',spirit:'Spirit House',bell:'Bell Tower',drum:'Drum Tower',jar:'Lotus Jar',elephant:'Elephant',cat:'Temple Cat',dog:'Temple Dog',tuktuk:'Tuk-tuk',coconut:'Coconuts',mango:'Mango Cart',fruit:'Fruit Stall',
+  kt1:'Pink Float',kt2:'Gold Float',kt3:'Lilac Float',lotus:'Lotus',koi:'Koi',longtail:'Longtail',market:'Market Boat',turtle:'Turtle',
+  none:'None',g1:'Marigolds',g2:'Jasmine',g3:'Flags',g4:'Gold Bells',g5:'Lanterns',g6:'Wind Chimes'},
+ th:{"yak": "ยักษ์", "singha": "สิงห์", "incense": "กระถางธูป", "candles": "เชิงเทียน", "pot": "กระถางดาวเรือง", "lamp": "เสาโคม", "palm": "ต้นมะพร้าว", "bodhi": "ต้นโพธิ์", "banana": "ต้นกล้วย", "frangi": "ลีลาวดี", "bougain": "เฟื่องฟ้า", "chedi": "เจดีย์เล็ก", "spirit": "ศาลพระภูมิ", "bell": "หอระฆัง", "drum": "หอกลอง", "jar": "อ่างบัว", "elephant": "ช้าง", "cat": "แมววัด", "dog": "หมาวัด", "tuktuk": "ตุ๊กตุ๊ก", "coconut": "แผงมะพร้าว", "mango": "รถเข็นข้าวเหนียวมะม่วง", "fruit": "แผงผลไม้", "kt1": "กระทงชมพู", "kt2": "กระทงเหลือง", "kt3": "กระทงม่วง", "lotus": "ดอกบัว", "koi": "ปลาคาร์ป", "longtail": "เรือหางยาว", "market": "เรือตลาดน้ำ", "turtle": "เต่า", "none": "ไม่มี", "g1": "พวงดาวเรือง", "g2": "พวงมะลิ", "g3": "ธงทิว", "g4": "กระดิ่งทอง", "g5": "พวงโคมเล็ก", "g6": "กระดิ่งลม"},
+ cat:{en:{gate:'Gate',tree:'Trees',yard:'Yard',fun:'Street',pond:'Pond',porch:'Eaves'},th:{"gate": "ทางเข้า", "tree": "ต้นไม้", "yard": "ลานวัด", "fun": "ซอย", "pond": "สระน้ำ", "porch": "ชายคา"}},
+ kt:{en:{pink:'Pink Lotus',yellow:'Marigold',purple:'Orchid',gold:'Gold'},th:{"pink": "บัวชมพู", "yellow": "ดาวเรือง", "purple": "กล้วยไม้", "gold": "สีทอง"}},
+ lan:{en:{orange:'Orange',red:'Red',pink:'Pink',white:'White'},th:{"orange": "สีส้ม", "red": "สีแดง", "pink": "สีชมพู", "white": "สีขาว"}},
+ topic:{en:{w:'Wish',m:'Money',h:'Health',fa:'Family',fr:'Friends',l:'Love',f:'Fandom'},th:{"w": "สมหวัง", "m": "การเงิน", "h": "สุขภาพ", "fa": "ครอบครัว", "fr": "เพื่อน", "l": "ความรัก", "f": "ติ่ง"}},
+ lv:{en:{'대길':'Excellent','길':'Good','중길':'Fair','소길':'Modest','말길':'Later'},th:{"대길": "ดีเลิศ", "길": "ดี", "중길": "ปานกลาง", "소길": "พอใช้", "말길": "รอจังหวะ"}},
+};
+const WISHES={ko:['건강하게 해 주세요','최애 팬싸 당첨','시험 합격','부자 되게 해 주세요','올해도 무사히'],
+ en:['Stay healthy','Win the fansign lottery','Pass my exam','Get rich','A safe year'],
+ th:["ขอให้สุขภาพแข็งแรง", "ได้ไปแฟนไซน์เมน", "สอบผ่าน", "รวยๆ", "ปีนี้ขอให้ผ่านไปด้วยดี"]};
+const SIAM_EN=[
+ ['Express Wish Train','Your wish arrives with no transfers','It comes true sooner than you think','Surprise pocket money','You feel light and fresh','Laughter at home','An old friend calls first','Someone who just gets you','You win the ticketing click'],
+ ['Golden Chedi Glow','Everything you touch shines','Wish big, get big','Your wallet gets thicker','Top condition','Family has your back','A friend brings a chance','A good day to confess','Your fave meets your eyes'],
+ ['Riding the Elephant','Steady luck carries you along','Slow but sure','Savings grow','Walking keeps you well','A chance to treat your parents','A trusty friend is near','A bond that deepens slowly','Merch is yours before sellout'],
+ ['Krathong Under the Moon','Tonight\'s wish floats farthest','Your dearest wish comes first','Money leaks get plugged','Sleep well, recharge','Family trip luck','A distant friend comes back','Something sweet under the moon','Fansign lottery vibes'],
+ ['Blessed Bodhi Tree','Good people and good news arrive','Someone is wishing with you','Gifts turn into money','Aches fade away','The whole family is at peace','A new friend appears','A good match is linked','You meet a fandom buddy'],
+ ['Sweet as Mango Sticky Rice','Sweet things keep coming','Small wishes come true one by one','Spending on food is lucky','Go easy on sweets','Good food with family','"Let\'s eat sometime" really happens','A sweet message arrives','Teasers keep dropping'],
+ ['Zooming by Tuk-tuk','Blocked things clear up','Start the plan you put off','You save on fares','Moving keeps you healthy','Family matters go smoothly','A spontaneous trip with friends','Your crush moves fast','Smooth ride to the concert'],
+ ['Temple Cat Nap','Luck follows even when you rest','No rush and it comes true','Skip impulse buys','Naps are medicine','Home is best','A quiet friend is a strength','Comfort is the right person','Healing with fave content'],
+ ['Marigold Garland','People welcome you warmly','Ask and someone will help','Sharing brings more','Eat well','Blessings at family gatherings','Star of the meetup','Blind date luck','More fandom friends'],
+ ['Night of Lamp Posts','There is light on a dark road','Right direction, you\'ll arrive','Spend to plan, save the rest','Don\'t overdo late nights','Family lights your way','Your friend\'s advice is right','A light turns on in your heart','You never miss an alert'],
+ ['Longtail Boat Departs','A chance comes from somewhere new','A wish that comes true on a trip','Travel money gathers','Fresh air is medicine','News from family far away','You meet a friend somewhere new','Romance on the road','Overseas concert luck'],
+ ['A Single Lotus','You bloom even in muddy water','It comes true after hard times','Little money goes far','Recovery comes fast','Family is on your side','A friend who gets your heart','Your sincerity reaches them','Your fave feels your love'],
+ ['Spirit House Opens','Good energy enters your home','Family wishes come true','Money comes from home','Rest at home helps','Home feels brighter','A housewarming invite','Homebodies click','Parcels arrive fast'],
+ ['One Coconut','Hard outside, cool inside','Hang in there a bit more','Steady money, not big money','Drink more water','Family who cares quietly','Old friends are the best','Warm inside, not on the surface','Buy season greetings early'],
+ ['Bell Tower Echo','One sound travels far','Say it out loud to make it real','Check those promo texts','Take care of your throat','One call home is a blessing','Text first','Put your heart into words','Cheer loud and it reaches'],
+ ['Singha\'s Gaze','Protect what matters','Stay steady and it comes true','Get your loan back','Mind your posture','Strength to protect family','Stand by your friend','Someone you want to protect','Sleeve your photocards'],
+ ['Fruit Stall Haggle','Push a little to get what you want','Negotiate and it comes true','Coupon luck','Seasonal fruit is medicine','Grocery luck with family','Splitting the bill goes smooth','Not too much push and pull','Trade with care'],
+ ['Banana Tree Shade','You find a place to rest','Non-urgent wishes come first','Cut fixed costs','Take your breaks','A slow day with family','A friend who rests with you','A slow-paced love is fine','A fandom break is okay'],
+ ['Koi Tail Flick','A small change makes big waves','Change just one habit','Saving coins works','Small habits change health','Little changes at home','Your circle grows','A small trigger brings you close','Birthday cafe tour luck'],
+ ['One Big Drum','Wait, then hit it hard','Timing does everything','You smile at month\'s end','Patience brings recovery','Family events go well','A long-awaited plan is set','The message you waited for','Comeback day is near'],
+ ['Small Altar Flame','Small luck that never goes out','It comes true slowly','Spend wisely and it\'s enough','Fine if you don\'t push','Small family joys','A small gift grows friendship','Small attention, big flutter','One fancam lasts a week'],
+ ['Bougainvillea Wall','Thorns, but still in bloom','A detour gets you there','Prepare for surprise costs','Watch for small cuts','Choose your words','Clear up misunderstandings fast','Keep the sharp words in','Aim for canceled tickets'],
+ ['Turtle Steps','Slow, but you\'ll arrive','Don\'t give up and it comes true','Don\'t break your savings','Steady recovery','Slow but sure with family','You spot a lifelong friend','Approach slowly','Your queue number drops'],
+ ['On a Market Boat','Business goes on through the waves','One of many wishes comes true','Second-hand deal luck','Pace your energy','Share with family','Help, but keep your limits','One person stands out','A merch trade works out'],
+ ['Scent of Frangipani','Good news drifts in softly','It comes true before you notice','Don\'t forget your points','You need a fragrant rest','Quiet cheers from family','A friend who cares quietly','A soft crush','Your fave likes your comment'],
+ ['Coughing at the Incense','Luck is here but hidden by smoke','Wish once more','Keep your wallet shut today','Open the windows','Take family advice halfway','Just listen to your friend','Skip texting today','Refresh in moderation'],
+ ['Temple Dog Ran Off with a Shoe','A little chaos, ending in laughs','Draw again for better','Lost things come back','Watch your step','Something funny at home','Laughs with friends','Even fumbling looks cute','Use a fast PC for tickets'],
+ ['Yak Guard Yawning','Even the guardian is sleepy today','Try again tomorrow','Hold off big decisions','Early sleep is best','Lean on family','Let a friend handle it today','Text again tomorrow','Recharge with fave photos'],
+];
+const SIAM_TH=[["รถไฟด่วนสายสมหวัง", "คำอธิษฐานปีนี้ถึงที่หมายไม่ต้องต่อรถ", "สมหวังเร็วกว่าที่คิด", "ได้เงินพิเศษแบบไม่คาดคิด", "ร่างกายเบาสบาย", "บ้านมีเรื่องให้ยิ้ม", "เพื่อนเก่าทักมาก่อน", "เจอคนที่ใจตรงกัน", "กดบัตรได้ตั้งแต่คลิกแรก"], ["บารมีเจดีย์ทอง", "ทำอะไรก็เปล่งประกาย", "ขอใหญ่ได้ใหญ่", "กระเป๋าตังค์หนาขึ้น", "สุขภาพดีเยี่ยม", "ครอบครัวเป็นแบ็กอัพให้", "เพื่อนพาโอกาสมาให้", "วันดีที่จะสารภาพรัก", "ได้สบตากับเมน"], ["โชคขี่ช้าง", "โชคมั่นคงพาคุณเดินไป", "ช้าแต่ชัวร์", "เงินเก็บงอกเงย", "เดินบ่อยๆ สุขภาพดี", "ได้ตอบแทนพ่อแม่", "มีเพื่อนที่ไว้ใจได้", "ความรักค่อยๆ ลึกซึ้ง", "สอยของทันก่อนหมด"], ["กระทงใต้แสงจันทร์", "คำอธิษฐานคืนนี้ลอยไปได้ไกลที่สุด", "เรื่องที่ตั้งใจที่สุดสมหวังก่อน", "อุดรูรั่วเงินได้", "นอนเต็มอิ่มก็หายเหนื่อย", "ดวงเที่ยวกับครอบครัว", "เพื่อนที่ห่างกลับมาใกล้", "เรื่องหวานใต้แสงจันทร์", "ดวงได้ไปแฟนไซน์"], ["พรจากต้นโพธิ์", "คนดีและข่าวดีมาพร้อมกัน", "มีคนช่วยอธิษฐานให้", "ของขวัญกลายเป็นเงิน", "อาการเจ็บป่วยดีขึ้น", "ครอบครัวสงบสุข", "ได้เพื่อนใหม่", "ด้ายแดงเริ่มผูกกันแล้ว", "ได้เพื่อนติ่ง"], ["หวานเหมือนข้าวเหนียวมะม่วง", "เรื่องหวานๆ มาไม่ขาดสาย", "เรื่องเล็กสมหวังทีละเรื่อง", "ใช้กับของอร่อยแล้วเฮง", "ของหวานพอประมาณ", "ได้ไปร้านอร่อยกับครอบครัว", "นัดกินข้าวที่พูดไว้ ได้ไปจริง", "มีข้อความหวานๆ มา", "ทีเซอร์ปล่อยรัวๆ"], ["นั่งตุ๊กตุ๊กฉิว", "เรื่องที่ติดขัดโล่งขึ้น", "ถึงเวลาเริ่มแผนที่เลื่อนไว้", "ประหยัดค่าเดินทาง", "ขยับตัวบ่อยสุขภาพดี", "เรื่องในบ้านราบรื่น", "ได้ทริปปุบปับกับเพื่อน", "คนคุยขยับไว", "ไปคอนฯ ราบรื่น"], ["แมววัดงีบหลับ", "พักบ้างโชคก็ยังตามมา", "ไม่รีบร้อนก็สมหวัง", "แค่อดใจไม่ช้อปตามอารมณ์ก็รอด", "งีบหลับคือยาบำรุง", "บ้านคือที่ที่สบายที่สุด", "เพื่อนเงียบๆ คือพลัง", "คนที่สบายใจคือคนที่ใช่", "ฮีลใจด้วยคอนเทนต์เมน"], ["พวงดาวเรือง", "คนรอบข้างต้อนรับคุณ", "ลองขอให้ช่วย มีคนพร้อมช่วยแน่", "แบ่งปันแล้วได้มากขึ้น", "กินของมีประโยชน์", "งานรวมญาติมีโชค", "ป็อปสุดในแก๊ง", "ดวงนัดบอด", "เพื่อนติ่งเพิ่มขึ้น"], ["คืนเสาโคม", "ทางมืดก็ยังมีแสงไฟ", "มาถูกทางก็ถึงแน่", "ใช้ตามแผนก็มีเหลือ", "อย่าหักโหมดึกๆ", "ครอบครัวส่องทางให้", "คำแนะนำเพื่อนคือคำตอบ", "ใจที่หม่นๆ กลับมาสว่าง", "ไม่พลาดประกาศสำคัญ"], ["เรือหางยาวออกเดินทาง", "โอกาสมาจากที่ใหม่", "คำอธิษฐานที่สมหวังเมื่อออกเดินทาง", "เก็บเงินเที่ยวได้ครบ", "อากาศข้างนอกคือยา", "ข่าวจากญาติที่อยู่ไกล", "เจอเพื่อนใหม่ในที่ใหม่", "เจอรักระหว่างทาง", "ดวงคอนฯ ต่างประเทศ"], ["บัวหนึ่งดอก", "แม้ในโคลนก็บานสวย", "สมหวังหลังผ่านช่วงยาก", "เงินน้อยใช้ได้คุ้ม", "ฟื้นตัวเร็ว", "ครอบครัวอยู่ข้างคุณ", "เพื่อนที่ใจถึงกัน", "ความจริงใจส่งถึง", "เมนรู้ใจคุณ"], ["ศาลพระภูมิเปิดประตู", "พลังดีๆ เข้าบ้าน", "เรื่องครอบครัวคลี่คลาย", "เงินมาจากบ้าน", "พักที่บ้านแล้วดีขึ้น", "บรรยากาศบ้านสดใส", "ได้รับเชิญไปงานขึ้นบ้านใหม่", "คนติดบ้านเข้ากันได้", "พัสดุมาไว"], ["มะพร้าวหนึ่งลูก", "ข้างนอกแข็ง ข้างในชุ่มชื่น", "อดทนอีกนิด", "เงินไม่มากแต่สม่ำเสมอ", "ดื่มน้ำบ่อยๆ", "ครอบครัวที่ห่วงใยเงียบๆ", "เพื่อนเก่าดีที่สุด", "คนที่อบอุ่นข้างใน", "พรีซีซั่นกรีทติ้งไว้เลย"], ["เสียงหอระฆัง", "เสียงเดียวดังไปไกล", "พูดออกมาแล้วจะสมหวัง", "ดูข้อความโปรโมชันดีๆ", "ดูแลคอให้ดี", "โทรหาที่บ้านสักสายก็นำโชค", "ทักไปก่อนดีกว่า", "บอกความในใจออกไป", "ตะโกนเชียร์ดังๆ ถึงแน่"], ["สายตาสิงห์", "รักษาสิ่งที่ต้องรักษา", "ไม่หวั่นไหวก็สมหวัง", "ทวงเงินคืนได้", "นั่งหลังตรง", "มีพลังปกป้องครอบครัว", "อยู่ข้างเพื่อน", "มีคนที่อยากปกป้อง", "การ์ดต้องใส่สลีฟเสมอ"], ["ต่อรองแผงผลไม้", "ดันอีกนิดได้สิ่งที่ต้องการ", "ต่อรองแล้วสมหวัง", "ดวงคูปองส่วนลด", "ผลไม้ตามฤดูคือยา", "ดวงจ่ายตลาดกับครอบครัว", "หารบิลลงตัว", "เล่นตัวแต่พอดี", "รับ-ปล่อยบัตรต่อต้องระวัง"], ["ร่มเงาต้นกล้วย", "มีที่ให้พักใจ", "เรื่องไม่รีบสมหวังก่อน", "ลดค่าใช้จ่ายประจำ", "พักให้พอ", "วันชิลๆ กับครอบครัว", "เพื่อนที่พักไปด้วยกัน", "รักช้าๆ ก็ดี", "พักติ่งบ้างก็ได้"], ["ปลาคาร์ปสะบัดหาง", "เปลี่ยนนิดเดียวเป็นคลื่นใหญ่", "ลองเปลี่ยนนิสัยสักอย่าง", "เก็บเศษเหรียญได้ผล", "นิสัยเล็กๆ เปลี่ยนสุขภาพ", "บ้านมีความเปลี่ยนแปลงเล็กๆ", "วงเพื่อนกว้างขึ้น", "ใกล้กันเพราะเรื่องเล็กๆ", "ดวงตระเวนคาเฟ่วันเกิดเมน"], ["กลองใหญ่หนึ่งที", "รอจังหวะแล้วตีให้ดัง", "จังหวะคือทุกอย่าง", "ยิ้มได้ตอนสิ้นเดือน", "รอแล้วร่างกายฟื้น", "งานในบ้านลุล่วง", "นัดที่รอนานได้ไปสักที", "ข้อความที่รอมาถึง", "ใกล้วันคัมแบ็กแล้ว"], ["เปลวเทียนเล็กๆ", "โชคเล็กแต่ไม่ดับ", "สมหวังช้าๆ", "ประหยัดก็พอใช้", "ไม่หักโหมก็ไม่เป็นไร", "สุขเล็กๆ ในบ้าน", "ของขวัญเล็กๆ ทำให้สนิทขึ้น", "ใส่ใจนิดเดียวใจเต้นแรง", "แฟนแคมคลิปเดียวอยู่ได้ทั้งอาทิตย์"], ["กำแพงเฟื่องฟ้า", "มีหนามแต่ดอกก็ยังบาน", "อ้อมหน่อยก็ถึง", "เตรียมรับรายจ่ายไม่คาดคิด", "ระวังแผลเล็กๆ", "ระวังคำพูด", "เข้าใจผิดรีบเคลียร์", "เก็บคำแรงๆ ไว้ก่อน", "ลองรอบัตรหลุด"], ["ก้าวแบบเต่า", "ช้าแต่ถึงแน่", "ไม่ยอมแพ้ก็สมหวัง", "อย่าเพิ่งทุบกระปุก", "ค่อยๆ ฟื้นตัว", "ช้าแต่ชัวร์กับครอบครัว", "มองออกว่าใครเพื่อนแท้", "ค่อยๆ เข้าหา", "คิวขยับเร็วขึ้น"], ["บนเรือตลาดน้ำ", "โคลงเคลงแต่ยังค้าขายได้", "หลายเรื่องมีสักเรื่องสมหวัง", "ดวงซื้อขายของมือสอง", "แบ่งแรงให้ดี", "แบ่งปันกับครอบครัว", "ช่วยได้แต่ต้องมีขอบเขต", "มีคนหนึ่งที่โดดเด่น", "แลกของได้สำเร็จ"], ["กลิ่นลีลาวดี", "ข่าวดีลอยมาเบาๆ", "สมหวังโดยไม่ทันรู้ตัว", "อย่าลืมสะสมแต้ม", "พักผ่อนให้หอมชื่นใจ", "ครอบครัวเชียร์อยู่เงียบๆ", "เพื่อนที่ดูแลเงียบๆ", "แอบชอบเบาๆ", "เมนกดไลก์คอมเมนต์เรา"], ["สำลักควันธูป", "โชคมีแต่ควันบังอยู่", "อธิษฐานอีกรอบ", "วันนี้ห้ามเปิดกระเป๋าตังค์", "เปิดหน้าต่างบ่อยๆ", "ฟังครอบครัวครึ่งเดียวพอ", "แค่รับฟังเพื่อนก็พอ", "วันนี้พักแชตก่อน", "รีเฟรชแต่พอดี"], ["หมาวัดคาบรองเท้าหนี", "วุ่นนิดหน่อยแต่จบด้วยเสียงหัวเราะ", "เสี่ยงใหม่จะดีกว่า", "ของหายได้คืน", "ระวังสะดุด", "บ้านมีเรื่องตลก", "หัวเราะกับเพื่อน", "ทำอะไรเปิ่นก็ยังน่ารัก", "กดบัตรที่ร้านเน็ต"], ["ยักษ์เฝ้าวัดหาว", "วันนี้ผู้พิทักษ์ก็ง่วง", "พรุ่งนี้ลองใหม่", "เลื่อนเรื่องใหญ่ไปก่อน", "นอนเร็วดีที่สุด", "ซบครอบครัวพักใจ", "วันนี้ฝากเพื่อนจัดการ", "พรุ่งนี้ค่อยทักใหม่", "ดูรูปเมนเติมพลัง"]];
+const SITE_TH_TAGS='#루미오락실 #방콕템플 #러이끄라통';
+const $=id=>document.getElementById(id);
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const DEFAULT_YARD={placed:[{id:'palm',cx:0,cy:5,r:0},{id:'lamp',cx:3,cy:7,r:0},{id:'lamp',cx:7,cy:7,r:0},{id:'pot',cx:2,cy:7,r:0},{id:'lotus',cx:1,cy:10,r:0},{id:'cat',cx:9,cy:6,r:0}],porch:'g1'};
+{const y=store.get('bkk-yard',DEFAULT_YARD);placed=y.placed.filter(p=>ITEM[p.id]).map(p=>({...p,uid:uid++}));porch=ITEM[y.porch]?y.porch:'none'}
+const saveYard=()=>store.set('bkk-yard',{placed:placed.map(({id,cx,cy,r})=>({id,cx,cy,r})),porch});
+let floated=store.get('bkk-kts',[]);
+const saveKts=()=>store.set('bkk-kts',floated);
+const KTS=[
+  {id:'pink',name:'분홍 연꽃',leaf:'#3f9b5b',a:'#f48fb1',b:'#f9c9db'},
+  {id:'yellow',name:'금잔화',leaf:'#3f9b5b',a:'#ffc23a',b:'#ff9a1f'},
+  {id:'purple',name:'보라 난초',leaf:'#3f9b5b',a:'#c9a7f5',b:'#efe2ff'},
+  {id:'gold',name:'금빛',leaf:'#d9a336',a:'#fffaf0',b:'#f2c55c'},
+];
+function ktVox(k,put){put(0,0,1,k.leaf);put(1,0,1,k.leaf);put(0,1,1,k.leaf);put(1,1,1,k.leaf);
+  put(0,0,2,k.a);put(1,0,2,k.b);put(0,1,2,k.b);put(1,1,2,k.a);put(1,1,3,'#fff5dc',{candle:1})}
+const WISH_EX=['건강하게 해 주세요','최애 팬싸 당첨','시험 합격','부자 되게 해 주세요','올해도 무사히'];
+const inPond=(x,y)=>{for(const [a,b] of [[0,0],[1.98,0],[0,1.98],[1.98,1.98]]){const X=Math.floor(x+a),Y=Math.floor(y+b);if(X<0||Y<0||X>=N||Y>=N||!isWater(X,Y))return false}
+  for(const p of placed){if(ITEM[p.id].type!=='water')continue;if(x+2>p.cx*3&&x<p.cx*3+3&&y+2>p.cy*3&&y<p.cy*3+3)return false}return true};
+function ktList(k,x,y,lift){const M=new Map();ktVox(k,(a,b,z,col,o={})=>{const [u,v]=tfc(x+a+.5,y+b+.5);M.set(a+','+b+','+z,{...o,x:u-.5,y:v-.5,z,col,lift})});return buildList(M)}
+let mode='start';
+const cv=$('cv'),g=cv.getContext('2d');
+let P={},cw=0,ch=0;
+let view={z:1,px:0,py:0},cam=null;
+function layout(){const dpr=window.devicePixelRatio||1;cw=cv.clientWidth;ch=cv.clientHeight;if(!cw||!ch)return;cv.width=Math.round(cw*dpr);cv.height=Math.round(ch*dpr);
+  const k=Math.min(cw/265,(ch-60)/225);P={HW:5*k,HH:2.5*k,ZH:5.8*k,OX:cw/2,OY:60+(ch-60-225*k)/2+55*k+6};
+  if(!cam)view=camFor(mode);dirty=true}
+function camFor(m){
+  if(m==='start')return{z:.95,px:0,py:-ch*.17};
+  if(m==='lan')return{z:.8,px:0,py:ch*.4};
+  if(m==='kt'){const z=1.6;const [u,v]=tfc(20,34);const wx=P.OX+(u-v)*P.HW,wy=P.OY+(u+v)*P.HH;return{z,px:-(wx-cw/2)*z,py:ch*.74-ch/2-(wy-ch/2)*z}}
+  return{z:1,px:0,py:0}}
+function moveCam(to,ms=520){cam={from:{...view},to,t:performance.now(),ms};dirty=true}
+const toWorld=(X,Y)=>[(X-view.px-cw/2)/view.z+cw/2,(Y-view.py-ch/2)/view.z+ch/2];
+const toScreen=(x,y)=>[(x-cw/2)*view.z+cw/2+view.px,(y-ch/2)*view.z+ch/2+view.py];
+const wpt=(x,y,lev=0)=>{const [u,v]=tfc(x,y);return[P.OX+(u-v)*P.HW,P.OY+(u+v)*P.HH-lev*P.ZH]};
+function cellCenter(cx,cy,lev){return wpt(cx*3+1.5,cy*3+1.5,lev)}
+function pickCell(X,Y){const [wx,wy]=toWorld(X,Y);
+  for(const lev of [0,-.35]){const a=(wx-P.OX)/P.HW,b=(wy-P.OY+lev*P.ZH)/P.HH;const u=(a+b)/2,v=(b-a)/2;const [x,y]=itf(u,v);
+    const cx=Math.floor(x/3),cy=Math.floor(y/3);if(cx>=0&&cy>=0&&cx<C&&cy<C){const t=CELL[cx][cy];if(t==='water'&&lev===0)continue;return{cx,cy,type:t}}}
+  return null}
+function pickItem(X,Y){const [wx,wy]=toWorld(X,Y);let best=null,bd=1e9;
+  placed.forEach(p=>{const lev=ITEM[p.id].type==='water'?.6:2.2;const [x,y]=cellCenter(p.cx,p.cy,lev);const d=Math.hypot(x-wx,y-wy);
+    const [u,v]=tfc(p.cx*3+1.5,p.cy*3+1.5);const score=d-(u+v)*.2;if(d<P.HW*3.4&&score<bd){bd=score;best=p}});return best}
+const validCell=(id,c,ign)=>{if(!c||!c.type)return false;const o=occ(c.cx,c.cy);if(o&&o.uid!==ign)return false;return ITEM[id].type===c.type};
+let float=null,popFor=null,ripples=[],cur=null,wishEl=null;
+const FLOAT_UP=3.2;
+function frame(now){
+  if(cam){const p=Math.min(1,(now-cam.t)/cam.ms),e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;
+    view={z:cam.from.z+(cam.to.z-cam.from.z)*e,px:cam.from.px+(cam.to.px-cam.from.px)*e,py:cam.from.py+(cam.to.py-cam.from.py)*e};if(p>=1)cam=null;dirty=true}
+  const busy=lanCur||skyLans.length||cam||float||Object.keys(dropT).length||ripples.length||(cur&&cur.state!=='ready')||floated.length;
+  if(!dirty&&!busy){requestAnimationFrame(frame);return}
+  dirty=false;
+  Object.keys(dropT).forEach(k=>{if(now-dropT[k]>220)delete dropT[k]});
+  const dpr=window.devicePixelRatio||1;
+  g.setTransform(dpr,0,0,dpr,0,0);
+  const sg=g.createLinearGradient(0,0,0,ch);sg.addColorStop(0,'#0b1034');sg.addColorStop(.6,'#232a72');sg.addColorStop(1,'#141b52');g.fillStyle=sg;g.fillRect(0,0,cw,ch);
+  const r=rnd(9);for(let i=0;i<50;i++){g.fillStyle=`rgba(255,255,255,${.25+r()*.6})`;g.fillRect(r()*cw,r()*ch*.45,1.5,1.5)}
+  if(mode!=='kt'){const mx=cw-70,my=120;const mg=g.createRadialGradient(mx,my,0,mx,my,56);mg.addColorStop(0,'rgba(255,233,184,.28)');mg.addColorStop(1,'rgba(255,233,184,0)');g.fillStyle=mg;g.fillRect(mx-56,my-56,112,112);
+    for(let y=-6;y<=6;y++)for(let x=-6;x<=6;x++)if(x*x+y*y<=34){g.fillStyle=(x+y<-3)?'#fffaf0':'#ffe9b8';g.fillRect(mx+x*2.6,my+y*2.6,2.6,2.6)}}
+  [[.1,.3],[.28,.17],[.5,.33]].forEach(([a,b],i)=>{const x=cw*a,y=ch*b-((tick+i)%2)*2;
+    const rg=g.createRadialGradient(x,y,0,x,y,16);rg.addColorStop(0,'rgba(255,170,70,.5)');rg.addColorStop(1,'rgba(255,170,70,0)');g.fillStyle=rg;g.fillRect(x-16,y-16,32,32);
+    g.fillStyle='#ffd27a';g.fillRect(x-3,y-6,6,2);g.fillStyle='#f2953b';g.fillRect(x-3,y-4,6,7)});
+  drawSkyLans(g,now);
+  g.setTransform(dpr*view.z,0,0,dpr*view.z,dpr*(cw/2*(1-view.z)+view.px),dpr*(ch/2*(1-view.z)+view.py));
+  HL={};
+  if(float){const ign=float.from?float.from.uid:null;
+    for(let cx=0;cx<C;cx++)for(let cy=0;cy<C;cy++){const c={cx,cy,type:CELL[cx][cy]};if(validCell(float.id,c,ign))HL[cx+','+cy]=c.type==='water'?'#33429e':'#3c5266'}
+    const ok=validCell(float.id,{cx:float.cx,cy:float.cy,type:CELL[float.cx][float.cy]},ign);
+    HL[float.cx+','+float.cy]=ok?(CELL[float.cx][float.cy]==='water'?'#121a52':'#141c2c'):'#6a2a3a'}
+  drawList(g,list,P,tick,now);
+  ripples=ripples.filter(rp=>now-rp.t<1600);
+  ripples.forEach(rp=>{const p=(now-rp.t)/1600;const [x,y]=wpt(rp.x,rp.y,-.35);g.beginPath();g.ellipse(x,y,P.HW*(1+p*4),P.HH*(1+p*4),0,0,Math.PI*2);g.lineWidth=1.2/view.z;g.strokeStyle=`rgba(190,205,255,${(1-p)*.55})`;g.stroke()});
+  const all=floated.map(f=>({...f,k:KTS.find(k=>k.id===f.k)||KTS[0]})).concat(cur?[cur]:[]);
+  const depth=f=>{const [u,v]=tfc(f.x+1,f.y+1);return u+v};all.sort((a,b)=>depth(a)-depth(b));
+  all.forEach(f=>{const bob=Math.sin(now/520+f.x)*.08;let lift=-.45+bob;
+    if(f===cur&&cur.state==='drop')lift=Math.max(-.45,-.45-(1-(now-cur.t0)/300)*4);
+    const [sx,sy]=wpt(f.x+1,f.y+1,-.35);const rg=g.createRadialGradient(sx,sy,0,sx,sy,P.HW*4);rg.addColorStop(0,'rgba(255,190,90,.22)');rg.addColorStop(1,'rgba(255,190,90,0)');g.fillStyle=rg;g.fillRect(sx-P.HW*4,sy-P.HW*4,P.HW*8,P.HW*8);
+    drawList(g,ktList(f.k,f.x,f.y,lift),P,tick,now)});
+  if(float){const M=new Map();const put=(x,y,z,col,o={})=>{const [a,b]=tf(x,y);M.set(a+','+b+','+z,{...o,x:a,y:b,z,col,bob:0,water:0,leaf:0})};
+    itemVox(float.id,float.cx,float.cy,float.r,{},put);drawList(g,buildList(M),P,tick,now,FLOAT_UP+Math.sin(now/260)*.25)}
+  if(popFor){const p=placed.find(q=>q.uid===popFor);if(p){const lev=ITEM[p.id].type==='water'?-.35:0;
+    const pts=[[0,0],[3,0],[3,3],[0,3]].map(([a,b])=>wpt(p.cx*3+a,p.cy*3+b,lev));
+    g.beginPath();pts.forEach(([a,b],i)=>i?g.lineTo(a,b):g.moveTo(a,b));g.closePath();g.lineWidth=1.6/view.z;g.strokeStyle='#ffd77a';g.stroke()}}
+  g.setTransform(dpr,0,0,dpr,0,0);const dt=Math.min(50,now-(frame.last||now));frame.last=now;stepLan(now,dt);drawCurLan(g,now);
+  stepKt(now);
+  positionPop();
+  requestAnimationFrame(frame);
+}
+function setMode(m){const prev=mode;mode=m;document.body.dataset.mode=m;closePop();
+  if(m!=='deco'&&float)cancelFloat();
+  if(m==='kt'&&rot!==0){rot=0;rebuild()}
+  moveCam(camFor(m),prev==='start'?800:520);
+  if(m==='kt'){$('s1').classList.add('on');$('s2').classList.remove('on');$('after').classList.remove('on');$('ktHint').classList.add('hide')}
+  else{['s1','s2','after'].forEach(i=>$(i).classList.remove('on'))}
+  if(m==='deco'){renderTabs();renderCards();renderHint()}
+  if(m==='lan')lanOpen();else lanClose();
+  if(prev==='deco')saveYard();
+  dirty=true}
+$('enter').onclick=()=>{setMode('home');sfx.lift()};
+$('toStart').onclick=()=>{setMode('start');sfx.spin()};
+$('goDeco').onclick=()=>{setMode('deco');sfx.card()};
+$('decoDone').onclick=()=>{setMode('home');sfx.porch()};
+$('goKt').onclick=()=>{setMode('kt');sfx.card()};
+$('ktBack').onclick=()=>{if(cur&&cur.state!=='glide')cur=null;setMode('home');sfx.spin()};
+function nearestValid(id,X=cw*.42,Y=ch*.74){const [wx,wy]=toWorld(X,Y);let best=null,bd=1e9;
+  for(let cx=0;cx<C;cx++)for(let cy=0;cy<C;cy++){const c={cx,cy,type:CELL[cx][cy]};if(!validCell(id,c,float&&float.from?float.from.uid:null))continue;const [x,y]=cellCenter(cx,cy,0);const d=Math.hypot(x-wx,y-wy);if(d<bd){bd=d;best=c}}
+  return best}
+function startFloat(id,r=0,cell=null,from=null){
+  const c=cell||(float&&validCell(id,{cx:float.cx,cy:float.cy,type:CELL[float.cx][float.cy]})?{cx:float.cx,cy:float.cy}:nearestValid(id));
+  if(!c){toast(L('noCell'));sfx.no();return}
+  float={id,r,cx:c.cx,cy:c.cy,from};closePop();renderHint();markCards();dirty=true}
+function moveFloatTo(c){if(!float||!c||c.type==null)return;if(c.cx!==float.cx||c.cy!==float.cy){float.cx=c.cx;float.cy=c.cy;sfx.spin()}}
+function dropFloat(){if(!float)return false;const ign=float.from?float.from.uid:null;
+  const c={cx:float.cx,cy:float.cy,type:CELL[float.cx][float.cy]};
+  if(!validCell(float.id,c,ign)){
+    if(float.from){const f=float.from;placed.push(f);dropT[f.uid]=performance.now();float=null;rebuild();sfx.drop();renderHint();markCards();return true}
+    toast(occ(c.cx,c.cy)?L('occupied'):(ITEM[float.id].type==='water'?L('pondOnly'):L('groundOnly')));sfx.no();return false}
+  const p=float.from?{...float.from,cx:c.cx,cy:c.cy,r:float.r}:{uid:uid++,id:float.id,cx:c.cx,cy:c.cy,r:float.r};
+  placed.push(p);dropT[p.uid]=performance.now();float=null;rebuild();sfx.drop();saveYard();
+  if(navigator.vibrate)try{navigator.vibrate(12)}catch(e){}
+  renderHint();markCards();return true}
+function cancelFloat(){if(!float)return;if(float.from){placed.push(float.from);rebuild()}float=null;renderHint();markCards();dirty=true}
+const ptrs=new Map();let gest=null,lpTimer=null;
+const rel=e=>{const rc=cv.getBoundingClientRect();return[e.clientX-rc.left,e.clientY-rc.top]};
+const LIFT_OFF=28;
+function nearFloat(X,Y){if(!float)return false;const [sx,sy]=toScreen(...cellCenter(float.cx,float.cy,FLOAT_UP+1.5));const [gx,gy]=toScreen(...cellCenter(float.cx,float.cy,0));
+  return Math.hypot(sx-X,sy-Y)<P.HW*4*view.z||Math.hypot(gx-X,gy-Y)<P.HW*3.2*view.z}
+function nearKt(X,Y,f){const [x,y]=toScreen(...wpt(f.x+1,f.y+1,1.5));return Math.hypot(x-X,y-Y)<Math.max(44,P.HW*4*view.z)}
+const canMove=()=>mode==='home'||mode==='deco';
+cv.addEventListener('pointerdown',e=>{if(mode==='start'||cam)return;cv.setPointerCapture(e.pointerId);const [X,Y]=rel(e);ptrs.set(e.pointerId,{x:e.clientX,y:e.clientY});clearTimeout(lpTimer);
+  if(mode==='kt'){
+    if(cur&&cur.state==='ready'&&nearKt(X,Y,cur)){cur.state='hold';gest={mode:'ktDrag',x:X,y:Y,sx:cur.x,sy:cur.y,hist:[[X,Y,performance.now()]]};sfx.spin();return}
+    gest={mode:'tap',sx:e.clientX,sy:e.clientY};return}
+  if(ptrs.size===1){
+    if(float&&nearFloat(X,Y)){gest={mode:'dragFloat',sx:e.clientX,sy:e.clientY,moved:false};return}
+    gest={mode:'tap',sx:e.clientX,sy:e.clientY,px:view.px,py:view.py};
+    const p=mode==='deco'&&!float&&pickItem(X,Y);
+    if(p)lpTimer=setTimeout(()=>{if(!gest||gest.mode!=='tap')return;
+      placed=placed.filter(q=>q!==p);rebuild();startFloat(p.id,p.r,{cx:p.cx,cy:p.cy},p);gest={mode:'dragFloat',sx:gest.sx,sy:gest.sy,moved:true,lifted:true};sfx.lift();
+      if(navigator.vibrate)try{navigator.vibrate(15)}catch(e){}},380);
+  }else if(ptrs.size===2&&canMove()){const [a,b]=[...ptrs.values()];if(gest&&gest.lifted)return;
+    gest={mode:'pinch',d0:Math.hypot(a.x-b.x,a.y-b.y),z0:view.z,mx:(a.x+b.x)/2,my:(a.y+b.y)/2,px:view.px,py:view.py};closePop()}});
+cv.addEventListener('pointermove',e=>{if(!ptrs.has(e.pointerId))return;ptrs.set(e.pointerId,{x:e.clientX,y:e.clientY});const [X,Y]=rel(e);if(!gest)return;
+  if(gest.mode==='ktDrag'&&cur){gest.hist.push([X,Y,performance.now()]);if(gest.hist.length>6)gest.hist.shift();
+    const a=(X-gest.x)/(P.HW*view.z),b=(Y-gest.y)/(P.HH*view.z);let nx=gest.sx+(a+b)/2,ny=gest.sy+(b-a)/2;
+    const dx=nx-gest.sx,dy=ny-gest.sy,d=Math.hypot(dx,dy);if(d>4){nx=gest.sx+dx/d*4;ny=gest.sy+dy/d*4}
+    if(inPond(nx,ny)){cur.x=nx;cur.y=ny}return}
+  if(gest.mode==='pinch'&&ptrs.size>=2){const rc=cv.getBoundingClientRect();const [a,b]=[...ptrs.values()];const d=Math.hypot(a.x-b.x,a.y-b.y);
+    const z=Math.max(1,Math.min(4,gest.z0*d/gest.d0));const mx=(a.x+b.x)/2-rc.left,my=(a.y+b.y)/2-rc.top,m0x=gest.mx-rc.left,m0y=gest.my-rc.top;
+    const wx=(m0x-gest.px-cw/2)/gest.z0,wy=(m0y-gest.py-ch/2)/gest.z0;view.z=z;view.px=mx-cw/2-wx*z;view.py=my-ch/2-wy*z;clampView();dirty=true;return}
+  const dx=e.clientX-gest.sx,dy=e.clientY-gest.sy;
+  if(gest.mode==='dragFloat'){if(Math.hypot(dx,dy)>6)gest.moved=true;if(gest.moved){moveFloatTo(pickCell(X,Y-LIFT_OFF));dirty=true}return}
+  if(gest.mode==='tap'&&Math.hypot(dx,dy)>8&&canMove()){gest.mode='pan';clearTimeout(lpTimer)}
+  if(gest.mode==='pan'){view.px=gest.px+dx;view.py=gest.py+dy;clampView();dirty=true;closePop()}});
+const endPtr=e=>{if(!ptrs.has(e.pointerId))return;ptrs.delete(e.pointerId);clearTimeout(lpTimer);const [X,Y]=rel(e);
+  if(gest&&ptrs.size===0){
+    if(gest.mode==='ktDrag'&&cur){const h=gest.hist,[x0,y0,t0]=h[0],[x1,y1,t1]=h[h.length-1];const dt=Math.max(16,t1-t0);
+      const vX=(x1-x0)/dt*16,vY=(y1-y0)/dt*16,a=vX/(P.HW*view.z),b=vY/(P.HH*view.z);launch((a+b)/2*.6,(b-a)/2*.6)}
+    else if(gest.mode==='dragFloat')dropFloat();
+    else if(gest.mode==='tap'&&e.type==='pointerup')onTap(X,Y)}
+  if(ptrs.size===0)gest=null;else if(ptrs.size===1&&gest&&gest.mode==='pinch'){const [a]=[...ptrs.values()];gest={mode:'pan',sx:a.x,sy:a.y,px:view.px,py:view.py}}};
+cv.addEventListener('pointerup',endPtr);cv.addEventListener('pointercancel',endPtr);
+cv.addEventListener('wheel',e=>{if(!canMove())return;e.preventDefault();const [mx,my]=rel(e);
+  const z=Math.max(1,Math.min(4,view.z*(e.deltaY<0?1.12:1/1.12)));const wx=(mx-view.px-cw/2)/view.z,wy=(my-view.py-ch/2)/view.z;
+  view.z=z;view.px=mx-cw/2-wx*z;view.py=my-ch/2-wy*z;clampView();dirty=true},{passive:false});
+function clampView(){const lx=cw*(view.z-1)/2+40,ly=ch*(view.z-1)/2+40;view.px=Math.max(-lx,Math.min(lx,view.px));view.py=Math.max(-ly,Math.min(ly,view.py))}
+function onTap(X,Y){
+  if(mode==='home'||mode==='lan'){const sl=pickSkyLan(X,Y);if(sl){peekXY(sl.wish,sl.x*cw,sl.y*ch-30);return}}
+  const f=floated.slice().reverse().find(f=>nearKt(X,Y,f));
+  if(mode==='kt'||mode==='home'){if(f)peek(f);return}
+  if(float){if(nearFloat(X,Y)){dropFloat();return}
+    const c=pickCell(X,Y),ign=float.from?float.from.uid:null;
+    let tgt=validCell(float.id,c,ign)?c:nearestValid(float.id,X,Y);
+    if(tgt){moveFloatTo(tgt);dropFloat()}else{toast(L('noCell'));sfx.no()}return}
+  const p=pickItem(X,Y);
+  if(p){popFor=p.uid;showPop('placed');sfx.card();dirty=true}else{closePop();if(f)peek(f)}
+}
+const pop=$('pop');
+function showPop(kind){pop.dataset.kind=kind;pop.innerHTML=`<button data-a="rot">${L('rot')}</button>`+(kind==='float'?`<button data-a="cancel">${L('cancel')}</button>`:`<button data-a="del">${L('del')}</button>`);pop.classList.add('on')}
+function closePop(){if(popFor){popFor=null;dirty=true}if(pop.dataset.kind==='placed'||mode!=='deco')pop.classList.remove('on')}
+const mzCache={};function maxZ(id){if(mzCache[id]==null){let m=1;ITEM[id].d((x,y,z)=>{if(z>m)m=z});mzCache[id]=m}return mzCache[id]}
+function positionPop(){if(mode!=='deco'){pop.classList.remove('on');return}
+  let tgt=null,top=0;
+  if(float){if((gest&&gest.mode==='dragFloat'&&gest.moved)||cardDrag){pop.classList.remove('on');return}
+    if(pop.dataset.kind!=='float'||!pop.classList.contains('on'))showPop('float');tgt=float;top=maxZ(float.id)+FLOAT_UP+1.6}
+  else{if(pop.dataset.kind==='float')pop.classList.remove('on');if(!popFor)return;const p=placed.find(q=>q.uid===popFor);if(!p){closePop();return}tgt=p;top=ITEM[p.id].type==='water'?1.5:Math.min(9,maxZ(p.id)+1)}
+  const [X,Y]=toScreen(...cellCenter(tgt.cx,tgt.cy,top));
+  const hw=pop.offsetWidth/2+8;pop.style.left=Math.max(hw,Math.min(cw-hw,X))+'px';pop.style.top=Math.max(110,Y-6)+'px'}
+pop.addEventListener('click',e=>{const a=e.target.dataset.a;if(!a)return;
+  if(pop.dataset.kind==='float'){if(a==='rot'&&float){float.r=(float.r+1)%4;sfx.spin();dirty=true}if(a==='cancel'){cancelFloat();sfx.del()}return}
+  const p=placed.find(q=>q.uid===popFor);if(!p)return;
+  if(a==='rot'){p.r=(p.r+1)%4;dropT[p.uid]=performance.now()-120;rebuild();sfx.spin();saveYard()}
+  if(a==='del'){placed=placed.filter(q=>q!==p);closePop();rebuild();sfx.del();saveYard()}});
+let curCat=CATS[0].id,cardDrag=false;
+const tabsEl=$('tabs'),cardsEl=$('cards');
+function renderTabs(){tabsEl.innerHTML='';CATS.forEach(c=>{const b=document.createElement('button');b.className='tab'+(c.id===curCat?' on':'');b.textContent=catName(c);b.onclick=()=>{curCat=c.id;renderTabs();renderCards();sfx.spin()};tabsEl.appendChild(b)})}
+function renderCards(){cardsEl.innerHTML='';const cat=CATS.find(c=>c.id===curCat);
+  cat.items.forEach(it=>{const b=document.createElement('div');b.className='card';b.dataset.id=it.id;
+    const c=document.createElement('canvas');c.width=128;c.height=108;b.appendChild(c);const sp=document.createElement('span');sp.textContent=itemName(it.id);b.appendChild(sp);
+    preview(c,it,cat.type);attachCard(b,it,cat.type);cardsEl.appendChild(b)});markCards()}
+function markCards(){cardsEl.querySelectorAll('.card').forEach(c=>c.classList.toggle('on',(float&&!float.from&&c.dataset.id===float.id)||(curCat==='porch'&&c.dataset.id===porch)))}
+function renderHint(){$('decoHint').textContent=float?(float.from?L('hintFloatMove'):L('hintFloat')):L('hintDeco')}
+function attachCard(el,it,type){
+  let st=null;
+  el.addEventListener('pointerdown',e=>{st={x:e.clientX,y:e.clientY,drag:false}});
+  el.addEventListener('pointermove',e=>{if(!st||type==='porch')return;const dy=e.clientY-st.y,dx=e.clientX-st.x;
+    if(!st.drag&&dy<-14&&Math.abs(dy)>Math.abs(dx)){st.drag=true;cardDrag=true;el.setPointerCapture(e.pointerId);startFloat(it.id,0);sfx.lift()}
+    if(st.drag&&float){const rc=cv.getBoundingClientRect();moveFloatTo(pickCell(e.clientX-rc.left,e.clientY-rc.top-LIFT_OFF));dirty=true}});
+  const end=e=>{if(!st)return;cardDrag=false;
+    if(st.drag){const rc=cv.getBoundingClientRect();if(e.clientY<rc.bottom)dropFloat()}
+    else if(e.type==='pointerup'){
+      if(type==='porch'){porch=it.id;rebuild();markCards();saveYard();if(it.id!=='none')sfx.porch();else sfx.del()}
+      else if(float&&!float.from&&float.id===it.id){cancelFloat();sfx.del()}
+      else{if(float&&float.from)cancelFloat();startFloat(it.id,0);sfx.lift()}}
+    st=null};
+  el.addEventListener('pointerup',end);el.addEventListener('pointercancel',e=>{if(st&&st.drag)return end(e);st=null});
+}
+function preview(c,it,type,cap=16){
+  const x=c.getContext('2d');x.setTransform(1,0,0,1,0,0);x.clearRect(0,0,c.width,c.height);const M=new Map();
+  const put=(a,b,z,col,o={})=>M.set(a+','+b+','+z,{...o,x:a,y:b,z,col});
+  if(type==='porch'){for(let xx=10;xx<=23;xx++)put(xx,20,10,'#d9a336');[10,13,20,23].forEach(xx=>{for(let z=6;z<=9;z++)put(xx,20,z,'#fbf5e6')})}
+  else if(type==='water'){for(let a=-1;a<4;a++)for(let b=-1;b<4;b++)put(a,b,0,'#25308a',{water:1})}
+  else{for(let a=0;a<3;a++)for(let b=0;b<3;b++)put(a,b,0,'#2a4155')}
+  it.d(put);
+  const arr=buildList(M);
+  let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9,lit=false;arr.forEach(v=>{if(v.candle||v.glow)lit=true;const sx=(v.x-v.y),sy=(v.x+v.y)*.5-(v.z-(v.lift||0)-(v.water?.35:0))*1.16;x0=Math.min(x0,sx-1);x1=Math.max(x1,sx+1);y0=Math.min(y0,sy);y1=Math.max(y1,sy+1+1.16)});
+  if(lit)y0-=2.6;
+  const s=Math.min((c.width-14)/(x1-x0),(c.height-14)/(y1-y0),type==='porch'?99:cap);
+  drawList(x,arr,{HW:s,HH:s/2,ZH:s*1.16,OX:c.width/2-(x0+x1)/2*s,OY:c.height/2-(y0+y1)/2*s},1,0);
+}
+let pick=KTS[0];
+function renderKts(){const box=$('kts');box.innerHTML='';
+  KTS.forEach(k=>{const b=document.createElement('button');b.className='kt'+(k===pick?' on':'');
+    const c=document.createElement('canvas');c.width=132;c.height=124;b.appendChild(c);const s=document.createElement('span');s.textContent=ktName(k);b.appendChild(s);
+    const M=new Map();for(let a=-1;a<3;a++)for(let bb=-1;bb<3;bb++)M.set(a+','+bb+',0',{x:a,y:bb,z:0,col:'#25308a',water:1});ktVox(k,(a,bb,z,col,o={})=>M.set(a+','+bb+','+z,{...o,x:a,y:bb,z,col,lift:-.3}));
+    drawList(c.getContext('2d'),buildList(M),{HW:13,HH:6.5,ZH:15,OX:66,OY:62},1,0);
+    b.onclick=()=>{pick=k;renderKts();sfx.card()};box.appendChild(b)})}
+function renderKtChips(){$('chips').innerHTML='';wishes().forEach(t=>{const b=document.createElement('button');b.className='chip';b.textContent=t;b.onclick=()=>{$('wish').value=t;onWish();sfx.card()};$('chips').appendChild(b)})}
+function onWish(){const v=$('wish').value;$('cnt').textContent=v.length+'/30';$('next2').disabled=!v.trim()}
+$('wish').addEventListener('input',onWish);
+$('next1').onclick=()=>{$('s1').classList.remove('on');$('s2').classList.add('on');sfx.lift()};
+$('back2').onclick=()=>{$('s2').classList.remove('on');$('s1').classList.add('on');sfx.spin()};
+function startSpot(){const cands=[[17,33],[14,33],[20,33],[11,33],[23,33],[17,30],[8,33],[26,33]];
+  for(const [x,y] of cands){if(inPond(x,y)&&!floated.some(f=>Math.hypot(f.x-x,f.y-y)<2.4))return[x,y]}return[17,33]}
+$('next2').onclick=()=>{$('wish').blur();$('s2').classList.remove('on');const [x,y]=startSpot();
+  cur={k:pick,wish:$('wish').value.trim(),x,y,vx:0,vy:0,state:'drop',t0:performance.now(),lastRip:0};
+  setTimeout(()=>{sfx.drop();if(cur)ripples.push({x:cur.x+1,y:cur.y+1,t:performance.now()})},280)};
+$('more').onclick=()=>{$('after').classList.remove('on');$('wish').value='';onWish();$('s1').classList.add('on');sfx.spin()};
+$('ktHome').onclick=()=>{setMode('home');sfx.spin()};
+function launch(vx,vy){if(!cur)return;
+  const sp=Math.hypot(vx,vy);if(sp<.06){vx=-.11;vy=-.13}else if(sp>.35){vx=vx/sp*.35;vy=vy/sp*.35}
+  cur.vx=vx;cur.vy=vy;cur.state='glide';$('ktHint').classList.add('hide');sfx.splash();ripples.push({x:cur.x+1,y:cur.y+1,t:performance.now()});
+  wishEl=document.createElement('div');wishEl.className='wish rise';wishEl.textContent=cur.wish;$('stage').appendChild(wishEl);
+  setTimeout(()=>sfx.wish(),350);const el=wishEl;setTimeout(()=>{el.remove();if(wishEl===el)wishEl=null},3300)}
+function stepKt(now){
+  if(!cur)return;
+  if(cur.state==='drop'&&now-cur.t0>300){cur.state='ready';$('ktHint').classList.remove('hide')}
+  if(cur.state==='glide'){
+    let nx=cur.x+cur.vx,ny=cur.y+cur.vy;
+    if(!inPond(nx,cur.y)){cur.vx*=-.35;nx=cur.x}
+    if(!inPond(cur.x,ny)){cur.vy*=-.35;ny=cur.y}
+    floated.forEach(f=>{const dx=nx-f.x,dy=ny-f.y,d=Math.hypot(dx,dy);if(d<2.3&&d>0){nx+=dx/d*.05;ny+=dy/d*.05;cur.vx*=.9;cur.vy*=.9}});
+    if(inPond(nx,ny)){cur.x=nx;cur.y=ny}
+    cur.vx*=.968;cur.vy*=.968;
+    if(now-cur.lastRip>500){ripples.push({x:cur.x+1,y:cur.y+1,t:now});cur.lastRip=now}
+    if(Math.hypot(cur.vx,cur.vy)<.004){floated.push({k:cur.k.id,wish:cur.wish,x:+cur.x.toFixed(2),y:+cur.y.toFixed(2)});saveKts();cur=null;if(mode==='kt')$('after').classList.add('on')}
+  }
+  if(wishEl&&cur){const [x,y]=toScreen(...wpt(cur.x+1,cur.y+1,3.6));wishEl.style.left=x+'px';wishEl.style.top=y+'px'}
+}
+function peekXY(w,x,y){const el=document.createElement('div');el.className='wish peek';el.textContent=w;$('stage').appendChild(el);el.style.left=Math.max(el.offsetWidth/2+10,Math.min(cw-el.offsetWidth/2-10,x))+'px';el.style.top=y+'px';sfx.card();setTimeout(()=>el.remove(),2500)}
+function peek(f){const el=document.createElement('div');el.className='wish peek';el.textContent=f.wish;$('stage').appendChild(el);
+  const [x,y]=toScreen(...wpt(f.x+1,f.y+1,3.6));el.style.left=x+'px';el.style.top=y+'px';sfx.card();setTimeout(()=>el.remove(),2500)}
+sfx.splash=()=>{if(!SND.ac)return;const a=SND.ac,t=a.currentTime,s=a.createBufferSource(),lp=a.createBiquadFilter(),gn=a.createGain();s.buffer=SND.noise;lp.type='lowpass';lp.frequency.setValueAtTime(1400,t);lp.frequency.exponentialRampToValueAtTime(200,t+.45);
+  gn.gain.setValueAtTime(.35,t);gn.gain.exponentialRampToValueAtTime(.0001,t+.5);s.connect(lp).connect(gn).connect(SND.master);s.start(t);s.stop(t+.5);
+  const o=a.createOscillator(),og=a.createGain();o.frequency.setValueAtTime(160,t);o.frequency.exponentialRampToValueAtTime(60,t+.18);og.gain.setValueAtTime(.4,t);og.gain.exponentialRampToValueAtTime(.0001,t+.22);o.connect(og).connect(SND.master);o.start(t);o.stop(t+.25)};
+sfx.wish=()=>{if(!SND.ac)return;const t=SND.ac.currentTime;[523.25,587.33,659.25,783.99,880,1046.5].forEach((f,i)=>pluck(f*2,t+i*.09,.6,.06,SND.master));gong(261.63,t+.55,.06)};
+$('rot').onclick=()=>{rot=(rot+1)%4;closePop();rebuild();sfx.tick()};
+$('fit').onclick=()=>{moveCam(camFor(mode),300);closePop();sfx.spin()};
+document.querySelectorAll('.snd').forEach(b=>b.onclick=()=>setMuted(!SND.muted));
+let tt;function toast(m){const t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),1600)}
+setInterval(()=>{tick++;dirty=true},650);
+rebuild();setMuted(SND.muted);layout();
+if(window.ResizeObserver)new ResizeObserver(()=>layout()).observe($('stage'));
+requestAnimationFrame(frame);
+const sc=$('sc'),sg2=sc.getContext('2d');
+let SI={state:'idle',hold:0,holdStart:0,no:0,stick:null,raf:0};
+const HOLD_MS=1600;
+function siamVox(){const M=new Map(),put=(x,y,z,col,o={})=>M.set(x+','+y+','+z,{...o,x,y,z,col});
+  for(let x=-3;x<=3;x++)for(let y=-3;y<=3;y++){const d=x*x+y*y;if(d>10)continue;
+    for(let z=1;z<=9;z++){if(z===9&&d<=4)continue;if(z>1&&z<9&&d<=4)continue;
+      let col=(x+y+z)%2?'#c43e33':'#b8362f';if(z===2||z===8)col=(x+y)%2?'#e8b84a':'#f2c55c';if(z===9)col='#f2c55c';if(z===5&&(x===0||y===0)&&d>=9)col='#f2c55c';put(x,y,z,col)}}
+  const r=SI.state==='shake'?rnd(Math.floor(performance.now()/70)):rnd(5);
+  [[-1,-1],[0,-1],[1,-1],[-1,0],[0,0],[1,0],[-1,1],[0,1],[1,1],[0,-2],[-2,0],[2,0],[0,2]].forEach(([x,y],i)=>{
+    const h=8+Math.floor(r()*3)+(SI.state==='shake'?Math.floor(r()*2):0);for(let z=3;z<=h+2;z++)put(x,y,z,z===h+2?'#c43e33':((z+i)%2?'#e8c98a':'#dcb878'))});
+  for(let x=-5;x<=5;x++)for(let y=-5;y<=5;y++)if(x*x+y*y<=30)put(x,y,0,(x+y)%2?'#5a3a2a':'#4a3022');
+  return buildList(M)}
+function siamFrame(now){
+  if(mode!=='siam'){SI.raf=0;return}
+  const dpr=window.devicePixelRatio||1,w=sc.clientWidth,h=sc.clientHeight;
+  if(sc.width!==Math.round(w*dpr)||sc.height!==Math.round(h*dpr)){sc.width=Math.round(w*dpr);sc.height=Math.round(h*dpr)}
+  sg2.setTransform(dpr,0,0,dpr,0,0);sg2.clearRect(0,0,w,h);
+  const k=Math.min(w/150,h/170)*.62;
+  let ox=0,oy=0,tilt=0;
+  if(SI.state==='shake'){const p=Math.min(1,(now-SI.holdStart)/HOLD_MS);ox=(Math.random()-.5)*8*(.4+p);oy=(Math.random()-.5)*5*(.4+p);$('holdBar').style.width=(p*100)+'%';
+    if(p>=1)popStick(now)}
+  const cx=w/2,cy=h*.76;const rg=sg2.createRadialGradient(cx,cy,0,cx,cy,90*k);rg.addColorStop(0,'rgba(255,190,90,.25)');rg.addColorStop(1,'rgba(255,190,90,0)');sg2.fillStyle=rg;sg2.fillRect(0,0,w,h);
+  drawList(sg2,siamVox(),{HW:9*k,HH:4.5*k,ZH:10.4*k,OX:cx+ox,OY:cy-10*k+oy},tick,now);
+  if(SI.stick){const s=SI.stick,p=Math.min(1,(now-s.t)/900);
+    const x=cx+p*70*k,y=cy-150*k+(-Math.sin(p*Math.PI)*70+p*p*170)*k,ang=-1.2+p*2.75;
+    sg2.save();sg2.translate(x,y);sg2.rotate(ang);sg2.fillStyle='#e8c98a';sg2.fillRect(-4*k,-46*k,8*k,92*k);sg2.fillStyle='#dcb878';sg2.fillRect(0,-46*k,4*k,92*k);sg2.fillStyle='#c43e33';sg2.fillRect(-4*k,-46*k,8*k,12*k);sg2.restore();
+    if(p>=1&&!s.landed){s.landed=true;sfx.drop();const el=$('stickNo');el.textContent=L('stickNo',{n:SI.no});el.classList.add('on');
+      $('siamQ').innerHTML=`<b>${L('stickOut',{n:SI.no})}</b><span>${L('stickOutSub')}</span>`;$('shakeTxt').textContent=L('open');SI.state='done';sfx.wish()}}
+  SI.raf=requestAnimationFrame(siamFrame)}
+function siamReset(){SI.state='idle';$('siam').classList.add('picking');renderTopics();SI.stick=null;$('holdBar').style.width='0';$('stickNo').classList.remove('on');$('shakeTxt').textContent=L('shake');
+  setQ();$('result').classList.remove('on')}
+let picked=['w','m','f'];
+function setQ(){$('siamQ').innerHTML=picked.length===3?`<b>${L('qReady')}</b><span>${L('qReadySub')}</span>`:`<b>${L('qPick')}</b><span>${L('qPickSub',{n:picked.length})}</span>`;$('shake').disabled=picked.length!==3}
+function renderTopics(){const box=$('topics');box.innerHTML='';TOPICS.forEach(([k])=>{const b=document.createElement('button');b.className='tp'+(picked.includes(k)?' on':'');b.textContent=topicName(k);
+  b.onclick=()=>{if(SI.state!=='idle')return;if(picked.includes(k))picked=picked.filter(x=>x!==k);else if(picked.length<3)picked.push(k);else{bubble(b,L('max3'));sfx.no();return}
+    picked.sort((a,b)=>TOPICS.findIndex(t=>t[0]===a)-TOPICS.findIndex(t=>t[0]===b));renderTopics();setQ();sfx.card()};box.appendChild(b)})}
+function siamOpen(){siamReset();$('siamModal').classList.add('on');if(!SI.raf)SI.raf=requestAnimationFrame(siamFrame)}
+let rattle=null;
+function holdStart(){if(SI.state==='done'){showResult();return}if(SI.state!=='idle'||picked.length!==3)return;$('siam').classList.remove('picking');SI.state='shake';SI.holdStart=performance.now();
+  clearInterval(rattle);rattle=setInterval(()=>sfx.rattle(),75)}
+function holdEnd(){if(SI.state!=='shake')return;clearInterval(rattle);SI.state='idle';$('siam').classList.add('picking');$('holdBar').style.width='0';$('shakeTxt').textContent=L('more');setTimeout(()=>{if(SI.state==='idle')$('shakeTxt').textContent=L('shake')},1400)}
+function popStick(now){clearInterval(rattle);SI.state='pop';SI.no=1+Math.floor(Math.random()*SIAM.length);SI.stick={t:now,landed:false};$('holdBar').style.width='0';$('shakeTxt').textContent=L('falling');
+  if(navigator.vibrate)try{navigator.vibrate(30)}catch(e){}}
+['shake','sc'].forEach(id=>{const el=$(id);el.addEventListener('pointerdown',e=>{e.preventDefault();holdStart()});['pointerup','pointercancel','pointerleave'].forEach(t=>el.addEventListener(t,holdEnd))});
+sfx.rattle=()=>{if(!SND.ac)return;const a=SND.ac,t=a.currentTime+Math.random()*.03,s=a.createBufferSource(),bp=a.createBiquadFilter(),gn=a.createGain();s.buffer=SND.noise;bp.type='bandpass';bp.frequency.value=1800+Math.random()*1800;bp.Q.value=8;
+  gn.gain.setValueAtTime(.5,t);gn.gain.exponentialRampToValueAtTime(.0001,t+.03);s.connect(bp).connect(gn).connect(SND.master);s.start(t,Math.random()*.4);s.stop(t+.04)};
+function wrap(ctx,text,maxW){const words=text.split(' ');const lines=[];let line='';
+  words.forEach(w=>{const t=line?line+' '+w:w;if(ctx.measureText(t).width>maxW&&line){lines.push(line);line=w}else line=t});if(line)lines.push(line);return lines}
+const TWC={};
+function textW(ctx,txt){const fsm=ctx.font.match(/([\d.]+)px/),fs=fsm?parseFloat(fsm[1]):30;let w=ctx.measureText(txt).width;
+  if(w>=fs*txt.length*.3)return w;const k=ctx.font+'|'+txt;if(TWC[k]!=null)return TWC[k];
+  const c=document.createElement('canvas');c.width=Math.ceil(fs*txt.length*1.3+40);c.height=Math.ceil(fs*2.4);const g=c.getContext('2d');g.font=ctx.font;g.textBaseline='alphabetic';g.textAlign='left';g.fillStyle='#000';g.fillText(txt,20,fs*1.6);
+  const d=g.getImageData(0,0,c.width,c.height).data;let l=c.width,r=-1;for(let x=0;x<c.width;x++)for(let y=0;y<c.height;y++)if(d[(y*c.width+x)*4+3]>20){if(x<l)l=x;if(x>r)r=x;break}
+  return TWC[k]=r<0?w:Math.max(w,r-20+1)}
+const KANOK=new Path2D('M0 0 C0 -9 6 -15 12 -14 C8 -12 7 -7 10 -5 C13 -3 17 -6 15 -12 C21 -7 20 2 12 4 C7 5 2 3 0 0Z');
+async function drawCard(n){
+  const f=siamF(n),W=1080,H=1350,c=document.createElement('canvas');c.width=W;c.height=H;const x=c.getContext('2d');
+  const allTxt=[f.t,f.d,lvName(f.lv),itemName(f.i),STR[LANG].lucky,'SIAM SI No.0123456789',...picked.map(k=>topicName(k)+f[k])].join('');
+  try{await Promise.all(["'Do Hyeon'","'Gowun Dodum'","'Mitr'"].map(fm=>document.fonts.load('400 40px '+fm,allTxt)));await document.fonts.load("400 26px 'Gowun Dodum'",'방콕 템플 × 루미 오락실 · @lumimori38')}catch(e){}
+  const DH=FONT_T(),GD=FONT_B(),col=LV_COL[f.lv];
+  const gold=(x0,y0,x1,y1)=>{const g=x.createLinearGradient(x0,y0,x1,y1);g.addColorStop(0,'#fbe6a2');g.addColorStop(.45,'#d9a842');g.addColorStop(.7,'#f7d98a');g.addColorStop(1,'#c08a2c');return g};
+  const G=gold(0,0,W,H);
+  const kanok=(px,py,sc,rot,flip=1)=>{x.save();x.translate(px,py);x.rotate(rot);x.scale(sc*flip,sc);x.fill(KANOK);x.restore()};
+  const fit=(txt,font,size,min,maxW)=>{let z=size;do{x.font=`400 ${z}px ${font}`;z-=2}while(textW(x,txt)>maxW&&z>=min)};
+  const ct=(txt,cx,y)=>{const w=textW(x,txt);x.textAlign='left';x.fillText(txt,cx-w/2,y)};
+  const bg=x.createRadialGradient(W/2,H*.45,80,W/2,H*.45,900);bg.addColorStop(0,'#c23a31');bg.addColorStop(1,'#5e1418');x.fillStyle=bg;x.fillRect(0,0,W,H);
+  x.save();x.globalAlpha=.10;x.strokeStyle='#f7d98a';x.lineWidth=2;for(let i=-H;i<W+H;i+=54){x.beginPath();x.moveTo(i,0);x.lineTo(i+H,H);x.stroke();x.beginPath();x.moveTo(i,H);x.lineTo(i+H,0);x.stroke()}x.restore();
+  x.strokeStyle=G;x.lineWidth=10;x.strokeRect(30,30,W-60,H-60);x.lineWidth=3;x.strokeRect(50,50,W-100,H-100);
+  x.fillStyle=G;
+  for(let i=120;i<W-150;i+=30){x.beginPath();x.moveTo(i,58);x.lineTo(i+15,84);x.lineTo(i+30,58);x.fill();x.beginPath();x.moveTo(i,H-58);x.lineTo(i+15,H-84);x.lineTo(i+30,H-58);x.fill()}
+  [[50,50,0],[W-50,50,Math.PI/2],[W-50,H-50,Math.PI],[50,H-50,-Math.PI/2]].forEach(([cx,cy,r])=>{x.save();x.translate(cx,cy);x.rotate(r);
+    x.beginPath();x.arc(30,30,16,0,Math.PI*2);x.fill();kanok(54,26,2.4,0);kanok(26,54,2.4,Math.PI/2,-1);x.restore()});
+  for(let yy=200;yy<H-200;yy+=110){kanok(76,yy,2,Math.PI/2,1);kanok(76,yy+55,2,Math.PI/2,-1);kanok(W-76,yy,2,-Math.PI/2,-1);kanok(W-76,yy+55,2,-Math.PI/2,1)}
+  x.save();const rr=rnd(n*7+3);for(let i=0;i<40;i++){const sx=100+rr()*(W-200),sy=100+rr()*(H-200),z=2+rr()*5;x.globalAlpha=.25+rr()*.5;x.beginPath();x.moveTo(sx,sy-z*2);x.lineTo(sx+z*.5,sy);x.lineTo(sx,sy+z*2);x.lineTo(sx-z*.5,sy);x.closePath();x.moveTo(sx-z*2,sy);x.lineTo(sx,sy+z*.5);x.lineTo(sx+z*2,sy);x.lineTo(sx,sy-z*.5);x.fill()}x.restore();
+  const L=120,R=W-120,T=230,B=1170,pk=150;
+  const arch=()=>{x.beginPath();x.moveTo(L,B);x.lineTo(L,T+150);x.bezierCurveTo(L,T+20,W/2-170,T+40,W/2,pk);x.bezierCurveTo(W/2+170,T+40,R,T+20,R,T+150);x.lineTo(R,B);x.closePath()};
+  arch();x.fillStyle='#fbf1d8';x.fill();x.strokeStyle=G;x.lineWidth=8;x.stroke();
+  x.save();x.translate(W/2,(pk+B)/2);x.scale(.965,.975);x.translate(-W/2,-(pk+B)/2);arch();x.lineWidth=2.5;x.strokeStyle='#d9a842';x.stroke();x.restore();
+  x.fillStyle=G;x.beginPath();x.moveTo(W/2,62);x.quadraticCurveTo(W/2+22,110,W/2+14,150);x.lineTo(W/2-14,150);x.quadraticCurveTo(W/2-22,110,W/2,62);x.fill();
+  kanok(W/2+26,140,3,-.3);kanok(W/2-26,140,3,.3,-1);
+  x.beginPath();x.arc(W/2,96,9,0,Math.PI*2);x.fillStyle='#fbf1d8';x.fill();
+  x.textAlign='center';x.fillStyle='#a8781d';x.font="400 34px 'Do Hyeon',sans-serif";ct(('SIAM SI   No.'+n).split('').join('\u200A'),W/2,300);
+  const my=445;x.fillStyle=G;for(let i=0;i<32;i++){const a=i/32*Math.PI*2,a2=a+Math.PI/32;x.beginPath();x.moveTo(W/2+Math.cos(a)*92,my+Math.sin(a)*92);x.lineTo(W/2+Math.cos(a+Math.PI/64)*(i%2?122:138),my+Math.sin(a+Math.PI/64)*(i%2?122:138));x.lineTo(W/2+Math.cos(a2)*92,my+Math.sin(a2)*92);x.fill()}
+  x.beginPath();x.arc(W/2,my,96,0,Math.PI*2);x.fill();x.beginPath();x.arc(W/2,my,80,0,Math.PI*2);x.fillStyle=col;x.fill();
+  x.beginPath();x.arc(W/2,my,72,0,Math.PI*2);x.lineWidth=2;x.strokeStyle='rgba(255,240,200,.7)';x.stroke();
+  x.textAlign='center';x.fillStyle='#fff6dc';fit(lvName(f.lv),DH,f.lv.length>1||LANG!=='ko'?60:72,26,138);ct(lvName(f.lv),W/2,my+20);
+  x.textAlign='center';x.fillStyle='#7a1c1c';fit(f.t,DH,76,48,R-L-80);ct(f.t,W/2,640);
+  x.fillStyle='#6a5240';fit(f.d,GD,38,28,R-L-100);ct(f.d,W/2,700);
+  x.fillStyle=G;x.fillRect(L+70,748,R-L-140,3);x.save();x.translate(W/2,749);x.rotate(Math.PI/4);x.fillRect(-12,-12,24,24);x.restore();
+  kanok(W/2-34,750,1.6,Math.PI,1);kanok(W/2+34,750,1.6,0,1);
+  let y=830;x.textAlign='left';
+  picked.forEach(k=>{const name=topicName(k);
+    x.fillStyle='#8f2420';x.beginPath();x.roundRect(L+60,y-44,124,60,30);x.fill();x.strokeStyle=G;x.lineWidth=3;x.stroke();
+    x.fillStyle='#fbe6a2';fit(name,DH,34,20,108);ct(name,L+122,y-3);
+    x.fillStyle='#2a1a14';fit(f[k],GD,40,28,R-L-260);x.fillText(f[k],L+210,y-2);y+=78});
+  const it=ITEM[f.i],iy=1090;
+  x.fillStyle='#f3e0b0';x.beginPath();x.roundRect(L+60,iy-62,R-L-120,118,59);x.fill();x.strokeStyle=G;x.lineWidth=3;x.stroke();
+  const t=document.createElement('canvas');t.width=150;t.height=120;preview(t,it,it.type,30);x.drawImage(t,L+80,iy-62);
+  x.fillStyle='#a8781d';x.font=`400 32px ${DH}`;x.fillText(STR[LANG].lucky,L+250,iy-8);
+  x.fillStyle='#7a1c1c';fit(itemName(f.i),DH,46,28,R-L-330);x.fillText(itemName(f.i),L+250,iy+38);
+  x.textAlign='center';x.fillStyle='rgba(251,230,162,.7)';x.font="400 26px 'Gowun Dodum',sans-serif";ct('방콕 템플 × 루미 오락실 · @lumimori38',W/2,1226);
+  return c.toDataURL('image/png')}
+let resURL='';
+async function showResult(quiet){resURL=await drawCard(SI.no);$('resImg').src=resURL;if(quiet)return;$('result').classList.add('on');$('result').scrollTop=0;sfx.porch()}
+function resultText(){const f=siamF(SI.no);return `${L('shareHead',{t:f.t,n:SI.no,lv:lvName(f.lv)})}\n${f.d}\n\n${SITE_SHORT}\n\n#루미오락실 #방콕템플 #러이끄라통`}
+function flashBtn(b,txt){const o=b.textContent;b.textContent=txt;setTimeout(()=>b.textContent=o,1500)}
+function bubble(b,txt){const el=$('bubble'),r=b.getBoundingClientRect(),ar=$('app').getBoundingClientRect();el.textContent=txt;el.style.left=(r.left-ar.left+r.width/2)+'px';el.style.top=(r.top-ar.top-8)+'px';el.classList.add('on');clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('on'),2000)}
+$('saveBtn').onclick=()=>{const ua=navigator.userAgent;const ios=/iPhone|iPad|iPod/.test(ua)||(/Mac/.test(ua)&&'ontouchend' in document);const inapp=/KAKAOTALK|Instagram|FBAN|FBAV|Twitter|Line\//i.test(ua);
+  if(ios||inapp){$('saveImg').src=resURL;$('saveview').classList.add('on')}
+  else{const a=document.createElement('a');a.href=resURL;a.download='bangkok-temple-siamsi-'+SI.no+'.png';document.body.appendChild(a);a.click();a.remove()}
+  flashBtn($('saveBtn'),L('saved'));sfx.card()};
+$('saveClose').onclick=()=>$('saveview').classList.remove('on');
+async function copyText(t){try{await navigator.clipboard.writeText(t);return true}catch(e){}
+  const ta=document.createElement('textarea');ta.value=t;ta.style.cssText='position:fixed;opacity:0';document.body.appendChild(ta);ta.select();let ok=false;try{ok=document.execCommand('copy')}catch(e){}ta.remove();return ok}
+$('shareBtn').onclick=async()=>{const t=resultText(),b=$('shareBtn');await copyText(t);sfx.card();
+  try{const blob=await (await fetch(resURL)).blob();const file=new File([blob],'bangkok-temple-siamsi.png',{type:'image/png'});
+    if(navigator.canShare&&navigator.canShare({files:[file]})){bubble(b,L('shareNoText'));await navigator.share({files:[file],text:t});return}}catch(e){if(e&&e.name==='AbortError')return}
+  const a=document.createElement('a');a.href='https://x.com/intent/post?text='+encodeURIComponent(t);a.target='_blank';a.rel='noopener';document.body.appendChild(a);a.click();a.remove();
+  bubble(b,L('shareNoImg'))};
+$('againBtn').onclick=()=>{siamReset();sfx.spin()};
+$('toYard').onclick=()=>{setMode('home');sfx.spin()};
+$('resBack').onclick=()=>{setMode('home');sfx.spin()};
+$('modalOk').onclick=()=>{$('siamModal').classList.remove('on');sfx.card()};
+$('siamInfo').onclick=()=>{$('siamModal').classList.add('on');sfx.card()};
+$('siamBack').onclick=()=>{clearInterval(rattle);setMode('home');sfx.spin()};
+$('goSiam').onclick=()=>{setMode('siam');siamOpen();sfx.card()};
+const LANS=[
+  {id:'orange',name:'주황',a:'#f2953b',b:'#f7b45a'},
+  {id:'red',name:'빨강',a:'#d8453a',b:'#ef6a55'},
+  {id:'pink',name:'분홍',a:'#f07ab4',b:'#f9a8cf'},
+  {id:'white',name:'하양',a:'#f3ead6',b:'#fffaf0'},
+];
+let skyLans=store.get('bkk-lans',[]);
+const saveLans=()=>store.set('bkk-lans',skyLans.slice(-30));
+function lanModel(l,heat=0){const M=new Map(),put=(x,y,z,col,o={})=>M.set(x+','+y+','+z,{...o,x,y,z,col});
+  for(let x=0;x<3;x++)for(let y=0;y<3;y++)for(let z=1;z<=5;z++){
+    let col=(z>=4)?l.b:l.a;if(z===1)col='#e8c98a';if(z===5&&x===1&&y===1)col=l.b;
+    if(heat>0&&z<5)col=mix(col,'#fff2b0',heat*.45);put(x,y,z,col)}
+  return buildList(M)}
+function mix(a,b,t){const p=h=>[parseInt(h.slice(1,3),16),parseInt(h.slice(3,5),16),parseInt(h.slice(5,7),16)];const A=p(a),B=p(b);
+  return '#'+A.map((v,i)=>Math.round(v+(B[i]-v)*t).toString(16).padStart(2,'0')).join('')}
+function drawLan(ctx,l,cx,cy,s,heat,now,t,noGlow){
+  const glow=.35+heat*.65,r=s*16;
+  if(!noGlow){const rg=ctx.createRadialGradient(cx,cy-s*6,0,cx,cy-s*6,r);rg.addColorStop(0,`rgba(255,180,80,${.55*glow})`);rg.addColorStop(1,'rgba(255,180,80,0)');ctx.fillStyle=rg;ctx.fillRect(cx-r,cy-s*6-r,r*2,r*2)}
+  drawList(ctx,lanModel(l,heat),{HW:s,HH:s/2,ZH:s*1.25,OX:cx,OY:cy-s*2.6},t,now);
+  if(heat>0.02){const fh=s*(.8+heat*1.4)*(1+Math.sin(now/60)*.12);ctx.fillStyle='#ffd77a';ctx.fillRect(cx-s*.35,cy+s*.2,s*.7,fh*.6);ctx.fillStyle='#ff9a3d';ctx.fillRect(cx-s*.2,cy+s*.2+fh*.3,s*.4,fh*.35)}}
+function drawSkyLans(ctx,now){
+  skyLans.forEach((L,i)=>{const l=LANS.find(q=>q.id===L.c)||LANS[0];const x=L.x*cw+Math.sin(now/1700+i)*3,y=L.y*ch+Math.sin(now/1100+i*2)*3;drawLan(ctx,l,x,y,1.9,.6,now,tick)})}
+let lanPick=LANS[0],lanCur=null; // {l,wish,heat,state:'ready'|'fire'|'rise',t0,tx,ty}
+let lanWishEl=null,fireHum=null;
+function renderLanCards(){const box=$('lans');box.innerHTML='';
+  LANS.forEach(l=>{const b=document.createElement('button');b.className='kt'+(l===lanPick?' on':'');
+    const c=document.createElement('canvas');c.width=132;c.height=124;b.appendChild(c);const s=document.createElement('span');s.textContent=lanName(l);b.appendChild(s);
+    drawLan(c.getContext('2d'),l,66,98,10,.4,0,1,true);
+    b.onclick=()=>{lanPick=l;renderLanCards();sfx.card()};box.appendChild(b)})}
+function renderLanChips(){$('lchips').innerHTML='';wishes().forEach(t=>{const b=document.createElement('button');b.className='chip';b.textContent=t;b.onclick=()=>{$('lwish').value=t;onLWish();sfx.card()};$('lchips').appendChild(b)})}
+function onLWish(){const v=$('lwish').value;$('lcnt').textContent=v.length+'/30';$('lnext2').disabled=!v.trim()}
+$('lwish').addEventListener('input',onLWish);
+function lanOpen(){lanCur=null;['l2','lafter','lanhold'].forEach(i=>$(i).classList.remove('on'));$('l1').classList.add('on');renderLanCards()}
+function lanClose(){['l1','l2','lafter','lanhold'].forEach(i=>$(i).classList.remove('on'));stopHum();if(lanCur&&lanCur.state!=='rise')lanCur=null}
+$('lnext1').onclick=()=>{$('l1').classList.remove('on');$('l2').classList.add('on');sfx.lift()};
+$('lback2').onclick=()=>{$('l2').classList.remove('on');$('l1').classList.add('on');sfx.spin()};
+$('lnext2').onclick=()=>{$('lwish').blur();$('l2').classList.remove('on');lanCur={l:lanPick,wish:$('lwish').value.trim(),heat:0,state:'ready'};
+  $('fireTxt').textContent=L('fire');$('fireBar').style.width='0';$('lanTip').textContent=L('lanTip');$('lanhold').classList.add('on');sfx.lift();dirty=true};
+$('lmore').onclick=()=>{$('lafter').classList.remove('on');$('lwish').value='';onLWish();$('l1').classList.add('on');sfx.spin()};
+$('lanHome').onclick=()=>{setMode('home');sfx.spin()};
+$('lanBack').onclick=()=>{setMode('home');sfx.spin()};
+$('goLan').onclick=()=>{setMode('lan');sfx.card()};
+const fire=$('fire');
+fire.addEventListener('pointerdown',e=>{e.preventDefault();if(!lanCur||lanCur.state==='rise')return;lanCur.state='fire';startHum()});
+['pointerup','pointercancel','pointerleave'].forEach(t=>fire.addEventListener(t,()=>{if(lanCur&&lanCur.state==='fire'){lanCur.state='ready';stopHum();
+  if(lanCur.heat<1){$('fireTxt').textContent=L('more');setTimeout(()=>{if(lanCur&&lanCur.state==='ready')$('fireTxt').textContent=L('fire')},1400)}}}));
+function startHum(){if(!SND.ac)return;stopHum();const a=SND.ac,s=a.createBufferSource(),lp=a.createBiquadFilter(),g=a.createGain();s.buffer=SND.noise;s.loop=true;lp.type='lowpass';lp.frequency.value=500;g.gain.value=0;s.connect(lp).connect(g).connect(SND.master);s.start();g.gain.linearRampToValueAtTime(.18,a.currentTime+.3);fireHum={s,g,lp}}
+function stopHum(){if(!fireHum)return;const {s,g}=fireHum;try{g.gain.setTargetAtTime(0,SND.ac.currentTime,.08);s.stop(SND.ac.currentTime+.4)}catch(e){}fireHum=null}
+function lanStart(){return[cw/2,ch*.6]}
+function stepLan(now,dt){
+  if(!lanCur)return;
+  if(lanCur.state==='fire'){lanCur.heat=Math.min(1,lanCur.heat+dt/2000);if(fireHum)fireHum.lp.frequency.value=500+lanCur.heat*900;
+    if(lanCur.heat>=1)launchLan(now)}
+  else if(lanCur.state==='ready'&&lanCur.heat>0)lanCur.heat=Math.max(0,lanCur.heat-dt/3000);
+  $('fireBar').style.width=(lanCur.heat*100)+'%';
+  if(lanCur.state==='rise'&&now-lanCur.t0>4200){skyLans.push({c:lanCur.l.id,wish:lanCur.wish,x:+lanCur.tx.toFixed(3),y:+lanCur.ty.toFixed(3)});saveLans();lanCur=null;if(mode==='lan')$('lafter').classList.add('on')}
+}
+function launchLan(now){stopHum();lanCur.state='rise';lanCur.t0=now;
+  let best=null,bd=-1;for(let i=0;i<40;i++){const x=.1+Math.random()*.75,y=.2+Math.random()*.22;if(Math.hypot(x*cw-(cw-70),y*ch-120)<70)continue;const d=Math.min(1,...skyLans.map(L=>Math.hypot(L.x-x,(L.y-y)*1.6)),...[[.1,.3],[.28,.17],[.5,.33]].map(([a,b])=>Math.hypot(a-x,(b-y)*1.6)));if(d>bd){bd=d;best=[x,y]}}
+  lanCur.tx=best[0];lanCur.ty=best[1];
+  $('lanhold').classList.remove('on');sfx.wish();if(navigator.vibrate)try{navigator.vibrate(20)}catch(e){}
+  lanWishEl=document.createElement('div');lanWishEl.className='wish rise';lanWishEl.textContent=lanCur.wish;$('stage').appendChild(lanWishEl);const el=lanWishEl;setTimeout(()=>{el.remove();if(lanWishEl===el)lanWishEl=null},3300)}
+function drawCurLan(ctx,now){if(!lanCur)return;const [sx,sy]=lanStart();
+  if(lanCur.state!=='rise'){const bob=Math.sin(now/500)*2-lanCur.heat*10;drawLan(ctx,lanCur.l,sx,sy+bob,9,lanCur.heat,now,tick);if(lanWishEl)lanWishEl.style.display='none';return}
+  const p=Math.min(1,(now-lanCur.t0)/4200),e=1-Math.pow(1-p,2.2);
+  const x=sx+(lanCur.tx*cw-sx)*e+Math.sin(p*9)*14*(1-p),y=sy-10+(lanCur.ty*ch-sy+10)*e,s=9+(1.9-9)*e;
+  drawLan(ctx,lanCur.l,x,y,s,1-p*.4,now,tick);
+  if(lanWishEl){lanWishEl.style.display='';lanWishEl.style.left=Math.max(lanWishEl.offsetWidth/2+10,Math.min(cw-lanWishEl.offsetWidth/2-10,x))+'px';lanWishEl.style.top=(y-s*9)+'px'}}
+function pickSkyLan(X,Y){return skyLans.find(L=>Math.hypot(L.x*cw-X,L.y*ch-6-Y)<22)}
+let LANG=(()=>{try{const s=localStorage.getItem('bkk-lang');if(s)return s}catch(e){}const n=(navigator.language||'').toLowerCase();return n.startsWith('th')?'th':n.startsWith('ko')?'ko':'en'})();
+function L(k,v={}){let s=(STR[LANG]&&STR[LANG][k])||STR.ko[k]||k;for(const x in v)s=s.split('{'+x+'}').join(v[x]);return s}
+const itemName=id=>LANG==='ko'?ITEM[id].name:(NAMES[LANG][id]||ITEM[id].name);
+const catName=c=>LANG==='ko'?c.name:NAMES.cat[LANG][c.id];
+const ktName=k=>LANG==='ko'?k.name:NAMES.kt[LANG][k.id];
+const lanName=l=>LANG==='ko'?l.name:NAMES.lan[LANG][l.id];
+const topicName=k=>LANG==='ko'?TOPICS.find(t=>t[0]===k)[1]:NAMES.topic[LANG][k];
+const lvName=lv=>LANG==='ko'?lv:NAMES.lv[LANG][lv];
+const wishes=()=>WISHES[LANG];
+function siamF(n){const b=SIAM[n-1];if(LANG==='ko')return b;const a=(LANG==='th'?SIAM_TH:SIAM_EN)[n-1];
+  return{lv:b.lv,i:b.i,t:a[0],d:a[1],w:a[2],m:a[3],h:a[4],fa:a[5],fr:a[6],l:a[7],f:a[8]}}
+const FONT_T=()=>LANG==='th'?"'Mitr',sans-serif":"'Do Hyeon',sans-serif";
+const FONT_B=()=>LANG==='th'?"'Mitr',sans-serif":"'Gowun Dodum',sans-serif";
+const GLOBE='<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z"/></svg>';
+document.querySelectorAll('.globe').forEach(b=>{b.innerHTML=GLOBE;b.onclick=e=>{e.stopPropagation();openLangMenu(b)}});
+const lm=$('langmenu');
+function openLangMenu(btn){if(lm.classList.contains('on')&&lm._btn===btn){closeLangMenu();return}
+  lm._btn=btn;lm.innerHTML='';[['ko','한국어'],['en','English'],['th','ไทย']].forEach(([k,n])=>{const b=document.createElement('button');b.innerHTML=`<span>${n}</span><i>${k===LANG?'✓':''}</i>`;if(k===LANG)b.className='on';
+    b.onclick=e=>{e.stopPropagation();closeLangMenu();if(k!==LANG){setLang(k);sfx.card()}};lm.appendChild(b)});
+  const r=btn.getBoundingClientRect(),ar=$('app').getBoundingClientRect();lm.style.top=(r.bottom-ar.top+6)+'px';lm.style.right=(ar.right-r.right)+'px';lm.classList.add('on');sfx.spin()}
+function closeLangMenu(){lm.classList.remove('on')}
+document.addEventListener('pointerdown',e=>{if(lm.classList.contains('on')&&!lm.contains(e.target)&&!e.target.closest('.globe'))closeLangMenu()},true);
+function setLang(k){LANG=k;try{localStorage.setItem('bkk-lang',k)}catch(e){}applyLang()}
+function fitLabels(root=document){root.querySelectorAll('.card span,.kt span,.tab,.act,.btn,.tp').forEach(el=>{el.style.fontSize='';
+  if(!el.offsetParent)return;const max=el.clientWidth||el.parentElement.clientWidth;let fs=parseFloat(getComputedStyle(el).fontSize),min=fs*.68;
+  if(el.matches('.card span,.kt span')){el.style.whiteSpace='';el.style.lineHeight='';const box=el.parentElement.clientWidth-6;while(el.scrollWidth>box&&fs>min){fs-=.5;el.style.fontSize=fs+'px'}
+    if(el.scrollWidth>box){el.style.fontSize='11px';el.style.whiteSpace='normal';el.style.lineHeight='1.15';el.style.textAlign='center';el.style.marginTop='-4px'}}
+  else{while(el.scrollWidth>el.clientWidth+1&&fs>min){fs-=.5;el.style.fontSize=fs+'px'}}})}
+new MutationObserver(()=>{clearTimeout(fitLabels._t);fitLabels._t=setTimeout(()=>fitLabels(),30)}).observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['data-mode','class']});
+function applyLang(){
+  document.documentElement.lang=LANG;document.body.classList.remove('ko','en','th');document.body.classList.add(LANG);
+  document.querySelectorAll('[data-i]').forEach(el=>{const v=L(el.dataset.i);if(el.hasAttribute('data-html'))el.innerHTML=v;else el.textContent=v});
+  document.querySelectorAll('[data-ph]').forEach(el=>el.placeholder=L(el.dataset.ph));
+  renderKtChips();renderLanChips();renderKts();renderLanCards();
+  if(mode==='deco'){renderTabs();renderCards();renderHint()}
+  renderTopics();if(SI.state==='idle')setQ();
+  if(SI.state==='done'){$('stickNo').textContent=L('stickNo',{n:SI.no});$('siamQ').innerHTML=`<b>${L('stickOut',{n:SI.no})}</b><span>${L('stickOutSub')}</span>`;$('shakeTxt').textContent=L('open')}
+  else if(SI.state==='idle')$('shakeTxt').textContent=L('shake');
+  if(lanCur&&lanCur.state!=='rise')$('fireTxt').textContent=L('fire');$('lanTip').textContent=L('lanTip');
+  if(pop.classList.contains('on'))showPop(pop.dataset.kind);
+  if($('result').classList.contains('on'))showResult(true);
+  setTimeout(fitLabels,50);
+}
+applyLang();
+</script>
+</body>
+</html>
