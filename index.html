@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <title>방콕 템플 - 러이끄라통 소원 띄우기 | 루미 오락실</title>
-<meta name="description" content="끄라통 띄우고 씨암시 뽑는 블록 태국 사원">
+<meta name="description" content="끄라통 띄우고 점괘 뽑는 힐링 태국 사원">
 <meta name="author" content="lumimori38">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="루미 오락실">
 <meta property="og:title" content="방콕 템플 - 러이끄라통 소원 띄우기 | 루미 오락실">
-<meta property="og:description" content="끄라통 띄우고 씨암시 뽑는 블록 태국 사원">
+<meta property="og:description" content="끄라통 띄우고 점괘 뽑는 힐링 태국 사원">
 <meta property="og:url" content="https://lumimori38.github.io/bangkok-temple/">
 <meta property="og:image" content="https://lumimori38.github.io/bangkok-temple/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -136,6 +136,7 @@ body[data-mode=siam] .siam{display:flex}
 .mbox{width:100%;max-width:330px;background:#fbf1d8;border:3px solid #d9a336;border-radius:18px;padding:24px 20px 20px;text-align:center;color:#3a1f10}
 .mbox h3{font:26px 'Do Hyeon',sans-serif;font-weight:400;color:#8f2420;margin-bottom:12px;white-space:nowrap}
 .mbox p{font-size:15px;line-height:1.6;margin-bottom:10px;white-space:nowrap}
+body.en .mbox p,body.th .mbox p{white-space:normal;word-break:keep-all}
 .mbox .btn{margin-top:8px;background:#8f2420;color:#fbf1d8}
 .lanhold{position:absolute;left:0;right:0;bottom:0;z-index:4;padding:16px 16px 20px;text-align:center;transform:translateY(105%);transition:transform .3s ease;background:linear-gradient(to top,rgba(9,13,38,.9) 60%,rgba(9,13,38,0))}
 .lanhold.on{transform:none}.lanhold:not(.on){pointer-events:none}
@@ -177,7 +178,7 @@ document.addEventListener('dblclick',e=>e.preventDefault(),{passive:false});
     <div class="ui m-deco blk hint" id="decoHint"></div>
         <div class="ui m-home m-deco float" id="float"><button class="icon-btn" id="rot" aria-label="rotate">⟳</button><button class="icon-btn" id="fit" aria-label="reset">⤢</button></div>
     <div class="pop" id="pop"></div>
-        <div class="ui m-kt top"><button class="icon-btn" id="ktBack" aria-label="back">◀</button><h2 data-i="kt">끄라통 띄우기</h2><span class="sp"></span><button class="icon-btn globe" aria-label="language"></button><button class="icon-btn snd" aria-label="sound">♪</button></div>
+        <div class="ui m-kt top"><button class="icon-btn" id="ktBack" aria-label="back">◀</button><h2 data-i="kt">끄라통 띄우기</h2><span class="sp"></span><button class="icon-btn info" data-info="kt" aria-label="info">?</button><button class="icon-btn globe" aria-label="language"></button><button class="icon-btn snd" aria-label="sound">♪</button></div>
     <div class="ui m-kt blk hint hide" id="ktHint" data-i="ktHint">끄라통을 위로 밀어 띄워 보세요</div>
     <div class="sheet" id="s1">
       <h3 data-i="ktPick">끄라통을 골라 주세요</h3>
@@ -197,7 +198,7 @@ document.addEventListener('dblclick',e=>e.preventDefault(),{passive:false});
       <p data-i="ktDone"></p>
       <div class="row"><button class="btn line" id="more" data-i="ktMore"></button><button class="btn" id="ktHome" data-i="toYard"></button></div>
     </div>
-        <div class="ui m-lan top"><button class="icon-btn" id="lanBack" aria-label="back">◀</button><h2 data-i="lan">콤로이 날리기</h2><span class="sp"></span><button class="icon-btn globe" aria-label="language"></button><button class="icon-btn snd" aria-label="sound">♪</button></div>
+        <div class="ui m-lan top"><button class="icon-btn" id="lanBack" aria-label="back">◀</button><h2 data-i="lan">콤로이 날리기</h2><span class="sp"></span><button class="icon-btn info" data-info="lan" aria-label="info">?</button><button class="icon-btn globe" aria-label="language"></button><button class="icon-btn snd" aria-label="sound">♪</button></div>
     <div class="sheet" id="l1">
       <h3 data-i="lanPick"></h3>
       <p class="sub" data-i="lanPickSub"></p>
@@ -220,6 +221,10 @@ document.addEventListener('dblclick',e=>e.preventDefault(),{passive:false});
       <p data-i="lanDone"></p>
       <div class="row"><button class="btn line" id="lmore" data-i="lanMore"></button><button class="btn" id="lanHome" data-i="toYard"></button></div>
     </div>
+    <div class="modal" id="infoModal"><div class="mbox">
+      <h3 id="infoT"></h3><p id="info1"></p><p id="info2"></p><p id="info3"></p>
+      <button class="btn" id="infoOk" data-i="infoOk"></button>
+    </div></div>
     <div class="toast" id="toast"></div>
   </div>
   <div class="siam" id="siam">
@@ -637,6 +642,7 @@ const SIAM_EN=[
 ];
 const SIAM_TH=[["รถไฟด่วนสายสมหวัง", "คำอธิษฐานปีนี้ถึงที่หมายไม่ต้องต่อรถ", "สมหวังเร็วกว่าที่คิด", "ได้เงินพิเศษแบบไม่คาดคิด", "ร่างกายเบาสบาย", "บ้านมีเรื่องให้ยิ้ม", "เพื่อนเก่าทักมาก่อน", "เจอคนที่ใจตรงกัน", "กดบัตรได้ตั้งแต่คลิกแรก"], ["บารมีเจดีย์ทอง", "ทำอะไรก็เปล่งประกาย", "ขอใหญ่ได้ใหญ่", "กระเป๋าตังค์หนาขึ้น", "สุขภาพดีเยี่ยม", "ครอบครัวเป็นแบ็กอัพให้", "เพื่อนพาโอกาสมาให้", "วันดีที่จะสารภาพรัก", "ได้สบตากับเมน"], ["โชคขี่ช้าง", "โชคมั่นคงพาคุณเดินไป", "ช้าแต่ชัวร์", "เงินเก็บงอกเงย", "เดินบ่อยๆ สุขภาพดี", "ได้ตอบแทนพ่อแม่", "มีเพื่อนที่ไว้ใจได้", "ความรักค่อยๆ ลึกซึ้ง", "สอยของทันก่อนหมด"], ["กระทงใต้แสงจันทร์", "คำอธิษฐานคืนนี้ลอยไปได้ไกลที่สุด", "เรื่องที่ตั้งใจที่สุดสมหวังก่อน", "อุดรูรั่วเงินได้", "นอนเต็มอิ่มก็หายเหนื่อย", "ดวงเที่ยวกับครอบครัว", "เพื่อนที่ห่างกลับมาใกล้", "เรื่องหวานใต้แสงจันทร์", "ดวงได้ไปแฟนไซน์"], ["พรจากต้นโพธิ์", "คนดีและข่าวดีมาพร้อมกัน", "มีคนช่วยอธิษฐานให้", "ของขวัญกลายเป็นเงิน", "อาการเจ็บป่วยดีขึ้น", "ครอบครัวสงบสุข", "ได้เพื่อนใหม่", "ด้ายแดงเริ่มผูกกันแล้ว", "ได้เพื่อนติ่ง"], ["หวานเหมือนข้าวเหนียวมะม่วง", "เรื่องหวานๆ มาไม่ขาดสาย", "เรื่องเล็กสมหวังทีละเรื่อง", "ใช้กับของอร่อยแล้วเฮง", "ของหวานพอประมาณ", "ได้ไปร้านอร่อยกับครอบครัว", "นัดกินข้าวที่พูดไว้ ได้ไปจริง", "มีข้อความหวานๆ มา", "ทีเซอร์ปล่อยรัวๆ"], ["นั่งตุ๊กตุ๊กฉิว", "เรื่องที่ติดขัดโล่งขึ้น", "ถึงเวลาเริ่มแผนที่เลื่อนไว้", "ประหยัดค่าเดินทาง", "ขยับตัวบ่อยสุขภาพดี", "เรื่องในบ้านราบรื่น", "ได้ทริปปุบปับกับเพื่อน", "คนคุยขยับไว", "ไปคอนฯ ราบรื่น"], ["แมววัดงีบหลับ", "พักบ้างโชคก็ยังตามมา", "ไม่รีบร้อนก็สมหวัง", "แค่อดใจไม่ช้อปตามอารมณ์ก็รอด", "งีบหลับคือยาบำรุง", "บ้านคือที่ที่สบายที่สุด", "เพื่อนเงียบๆ คือพลัง", "คนที่สบายใจคือคนที่ใช่", "ฮีลใจด้วยคอนเทนต์เมน"], ["พวงดาวเรือง", "คนรอบข้างต้อนรับคุณ", "ลองขอให้ช่วย มีคนพร้อมช่วยแน่", "แบ่งปันแล้วได้มากขึ้น", "กินของมีประโยชน์", "งานรวมญาติมีโชค", "ป็อปสุดในแก๊ง", "ดวงนัดบอด", "เพื่อนติ่งเพิ่มขึ้น"], ["คืนเสาโคม", "ทางมืดก็ยังมีแสงไฟ", "มาถูกทางก็ถึงแน่", "ใช้ตามแผนก็มีเหลือ", "อย่าหักโหมดึกๆ", "ครอบครัวส่องทางให้", "คำแนะนำเพื่อนคือคำตอบ", "ใจที่หม่นๆ กลับมาสว่าง", "ไม่พลาดประกาศสำคัญ"], ["เรือหางยาวออกเดินทาง", "โอกาสมาจากที่ใหม่", "คำอธิษฐานที่สมหวังเมื่อออกเดินทาง", "เก็บเงินเที่ยวได้ครบ", "อากาศข้างนอกคือยา", "ข่าวจากญาติที่อยู่ไกล", "เจอเพื่อนใหม่ในที่ใหม่", "เจอรักระหว่างทาง", "ดวงคอนฯ ต่างประเทศ"], ["บัวหนึ่งดอก", "แม้ในโคลนก็บานสวย", "สมหวังหลังผ่านช่วงยาก", "เงินน้อยใช้ได้คุ้ม", "ฟื้นตัวเร็ว", "ครอบครัวอยู่ข้างคุณ", "เพื่อนที่ใจถึงกัน", "ความจริงใจส่งถึง", "เมนรู้ใจคุณ"], ["ศาลพระภูมิเปิดประตู", "พลังดีๆ เข้าบ้าน", "เรื่องครอบครัวคลี่คลาย", "เงินมาจากบ้าน", "พักที่บ้านแล้วดีขึ้น", "บรรยากาศบ้านสดใส", "ได้รับเชิญไปงานขึ้นบ้านใหม่", "คนติดบ้านเข้ากันได้", "พัสดุมาไว"], ["มะพร้าวหนึ่งลูก", "ข้างนอกแข็ง ข้างในชุ่มชื่น", "อดทนอีกนิด", "เงินไม่มากแต่สม่ำเสมอ", "ดื่มน้ำบ่อยๆ", "ครอบครัวที่ห่วงใยเงียบๆ", "เพื่อนเก่าดีที่สุด", "คนที่อบอุ่นข้างใน", "พรีซีซั่นกรีทติ้งไว้เลย"], ["เสียงหอระฆัง", "เสียงเดียวดังไปไกล", "พูดออกมาแล้วจะสมหวัง", "ดูข้อความโปรโมชันดีๆ", "ดูแลคอให้ดี", "โทรหาที่บ้านสักสายก็นำโชค", "ทักไปก่อนดีกว่า", "บอกความในใจออกไป", "ตะโกนเชียร์ดังๆ ถึงแน่"], ["สายตาสิงห์", "รักษาสิ่งที่ต้องรักษา", "ไม่หวั่นไหวก็สมหวัง", "ทวงเงินคืนได้", "นั่งหลังตรง", "มีพลังปกป้องครอบครัว", "อยู่ข้างเพื่อน", "มีคนที่อยากปกป้อง", "การ์ดต้องใส่สลีฟเสมอ"], ["ต่อรองแผงผลไม้", "ดันอีกนิดได้สิ่งที่ต้องการ", "ต่อรองแล้วสมหวัง", "ดวงคูปองส่วนลด", "ผลไม้ตามฤดูคือยา", "ดวงจ่ายตลาดกับครอบครัว", "หารบิลลงตัว", "เล่นตัวแต่พอดี", "รับ-ปล่อยบัตรต่อต้องระวัง"], ["ร่มเงาต้นกล้วย", "มีที่ให้พักใจ", "เรื่องไม่รีบสมหวังก่อน", "ลดค่าใช้จ่ายประจำ", "พักให้พอ", "วันชิลๆ กับครอบครัว", "เพื่อนที่พักไปด้วยกัน", "รักช้าๆ ก็ดี", "พักติ่งบ้างก็ได้"], ["ปลาคาร์ปสะบัดหาง", "เปลี่ยนนิดเดียวเป็นคลื่นใหญ่", "ลองเปลี่ยนนิสัยสักอย่าง", "เก็บเศษเหรียญได้ผล", "นิสัยเล็กๆ เปลี่ยนสุขภาพ", "บ้านมีความเปลี่ยนแปลงเล็กๆ", "วงเพื่อนกว้างขึ้น", "ใกล้กันเพราะเรื่องเล็กๆ", "ดวงตระเวนคาเฟ่วันเกิดเมน"], ["กลองใหญ่หนึ่งที", "รอจังหวะแล้วตีให้ดัง", "จังหวะคือทุกอย่าง", "ยิ้มได้ตอนสิ้นเดือน", "รอแล้วร่างกายฟื้น", "งานในบ้านลุล่วง", "นัดที่รอนานได้ไปสักที", "ข้อความที่รอมาถึง", "ใกล้วันคัมแบ็กแล้ว"], ["เปลวเทียนเล็กๆ", "โชคเล็กแต่ไม่ดับ", "สมหวังช้าๆ", "ประหยัดก็พอใช้", "ไม่หักโหมก็ไม่เป็นไร", "สุขเล็กๆ ในบ้าน", "ของขวัญเล็กๆ ทำให้สนิทขึ้น", "ใส่ใจนิดเดียวใจเต้นแรง", "แฟนแคมคลิปเดียวอยู่ได้ทั้งอาทิตย์"], ["กำแพงเฟื่องฟ้า", "มีหนามแต่ดอกก็ยังบาน", "อ้อมหน่อยก็ถึง", "เตรียมรับรายจ่ายไม่คาดคิด", "ระวังแผลเล็กๆ", "ระวังคำพูด", "เข้าใจผิดรีบเคลียร์", "เก็บคำแรงๆ ไว้ก่อน", "ลองรอบัตรหลุด"], ["ก้าวแบบเต่า", "ช้าแต่ถึงแน่", "ไม่ยอมแพ้ก็สมหวัง", "อย่าเพิ่งทุบกระปุก", "ค่อยๆ ฟื้นตัว", "ช้าแต่ชัวร์กับครอบครัว", "มองออกว่าใครเพื่อนแท้", "ค่อยๆ เข้าหา", "คิวขยับเร็วขึ้น"], ["บนเรือตลาดน้ำ", "โคลงเคลงแต่ยังค้าขายได้", "หลายเรื่องมีสักเรื่องสมหวัง", "ดวงซื้อขายของมือสอง", "แบ่งแรงให้ดี", "แบ่งปันกับครอบครัว", "ช่วยได้แต่ต้องมีขอบเขต", "มีคนหนึ่งที่โดดเด่น", "แลกของได้สำเร็จ"], ["กลิ่นลีลาวดี", "ข่าวดีลอยมาเบาๆ", "สมหวังโดยไม่ทันรู้ตัว", "อย่าลืมสะสมแต้ม", "พักผ่อนให้หอมชื่นใจ", "ครอบครัวเชียร์อยู่เงียบๆ", "เพื่อนที่ดูแลเงียบๆ", "แอบชอบเบาๆ", "เมนกดไลก์คอมเมนต์เรา"], ["สำลักควันธูป", "โชคมีแต่ควันบังอยู่", "อธิษฐานอีกรอบ", "วันนี้ห้ามเปิดกระเป๋าตังค์", "เปิดหน้าต่างบ่อยๆ", "ฟังครอบครัวครึ่งเดียวพอ", "แค่รับฟังเพื่อนก็พอ", "วันนี้พักแชตก่อน", "รีเฟรชแต่พอดี"], ["หมาวัดคาบรองเท้าหนี", "วุ่นนิดหน่อยแต่จบด้วยเสียงหัวเราะ", "เสี่ยงใหม่จะดีกว่า", "ของหายได้คืน", "ระวังสะดุด", "บ้านมีเรื่องตลก", "หัวเราะกับเพื่อน", "ทำอะไรเปิ่นก็ยังน่ารัก", "กดบัตรที่ร้านเน็ต"], ["ยักษ์เฝ้าวัดหาว", "วันนี้ผู้พิทักษ์ก็ง่วง", "พรุ่งนี้ลองใหม่", "เลื่อนเรื่องใหญ่ไปก่อน", "นอนเร็วดีที่สุด", "ซบครอบครัวพักใจ", "วันนี้ฝากเพื่อนจัดการ", "พรุ่งนี้ค่อยทักใหม่", "ดูรูปเมนเติมพลัง"]];
 const SITE_TH_TAGS='#루미오락실 #방콕템플 #러이끄라통';
+Object.entries({"ko": {"infoOk": "알겠어요", "ktT": "러이끄라통이 뭐예요?", "kt1": "매년 11월 보름밤에 열리는 태국 축제예요.", "kt2": "바나나잎 배에 꽃과 초를 올린 끄라통을<br>물에 띄워 보내며 소원을 빌어요.", "kt3": "근심은 물에 흘려보내고<br>좋은 일만 오길 비는 마음이에요.", "lanT": "콤로이가 뭐예요?", "lan1": "러이끄라통 무렵 태국 북부의<br>이펭 축제에서 날리는 종이 풍등이에요.", "lan2": "불을 붙인 풍등을 하늘로 띄우며<br>불운은 날려 보내고 행운을 빌어요.", "lan3": "소원을 적고 꾹 눌러 불을 붙여 보세요."}, "en": {"infoOk": "Got it", "ktT": "What is Loy Krathong?", "kt1": "A Thai festival held on the full moon of November.", "kt2": "People float krathongs, little banana-leaf boats with flowers and candles, and make a wish.", "kt3": "Let your worries float away and welcome good things in.", "lanT": "What is Khom Loi?", "lan1": "Paper lanterns released at the Yi Peng festival in northern Thailand, around Loy Krathong.", "lan2": "Light one and let it rise, sending bad luck away and wishing for good.", "lan3": "Write a wish, then hold to light it."}, "th": {"infoOk": "เข้าใจแล้ว", "ktT": "ลอยกระทงคืออะไร?", "kt1": "เทศกาลไทยในคืนวันเพ็ญเดือนสิบสอง", "kt2": "ลอยกระทงใบตองประดับดอกไม้และเทียน พร้อมอธิษฐานขอพร", "kt3": "ปล่อยความทุกข์ลอยไปกับสายน้ำ แล้วรับสิ่งดีๆ เข้ามา", "lanT": "โคมลอยคืออะไร?", "lan1": "โคมกระดาษที่ปล่อยในงานยี่เป็งทางภาคเหนือ ช่วงลอยกระทง", "lan2": "จุดไฟให้โคมลอยขึ้นฟ้า ปล่อยเคราะห์ร้ายไปและขอพรสิ่งดีๆ", "lan3": "เขียนคำอธิษฐานแล้วกดค้างเพื่อจุดไฟ"}}).forEach(([k,v])=>Object.assign(STR[k],v));
 const $=id=>document.getElementById(id);
 const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 const DEFAULT_YARD={placed:[{id:'palm',cx:0,cy:5,r:0},{id:'lamp',cx:3,cy:7,r:0},{id:'lamp',cx:7,cy:7,r:0},{id:'pot',cx:2,cy:7,r:0},{id:'lotus',cx:1,cy:10,r:0},{id:'cat',cx:9,cy:6,r:0}],porch:'g1'};
@@ -1160,6 +1166,11 @@ function applyLang(){
   setTimeout(fitLabels,50);
 }
 applyLang();
+let infoKind=null;
+function fillInfo(){if(!infoKind)return;const k=infoKind;$('infoT').textContent=L(k+'T');[1,2,3].forEach(n=>$('info'+n).innerHTML=L(k+n))}
+document.querySelectorAll('.info').forEach(b=>b.onclick=()=>{infoKind=b.dataset.info;fillInfo();$('infoModal').classList.add('on');sfx.card()});
+$('infoOk').onclick=()=>{$('infoModal').classList.remove('on');sfx.card()};
+const _apply=applyLang;applyLang=function(){_apply();fillInfo()};
 </script>
 </body>
 </html>
