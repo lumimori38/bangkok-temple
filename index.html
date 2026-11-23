@@ -273,10 +273,10 @@ document.addEventListener('dblclick',e=>e.preventDefault(),{passive:false});
   </div>
 </div>
 <script>
-const N=36,C=12;
+const N=48,C=16;
 const shade=(hex,f)=>{const n=parseInt(hex.slice(1),16);return `rgb(${Math.min(255,(n>>16)*f)|0},${Math.min(255,(n>>8&255)*f)|0},${Math.min(255,(n&255)*f)|0})`};
 function rnd(seed){return()=>{seed=(seed*16807)%2147483647;return seed/2147483647}}
-const isWater=(x,y)=>y>=27||(x>=30&&y>=21);
+const isWater=(x,y)=>y>=33||(x>=36&&y>=21);
 function buildBase(V){
   const box=(x1,x2,y1,y2,z1,z2,col)=>{for(let x=x1;x<=x2;x++)for(let y=y1;y<=y2;y++)for(let z=z1;z<=z2;z++)V(x,y,z,typeof col==='function'?col(x,y,z):col)};
   for(let x=0;x<N;x++)for(let y=0;y<N;y++){
@@ -645,8 +645,10 @@ const SITE_TH_TAGS='#루미오락실 #방콕템플 #러이끄라통';
 Object.entries({"ko": {"infoOk": "알겠어요", "ktT": "러이끄라통이 뭐예요?", "kt1": "매년 11월 보름밤에 열리는 태국 축제예요.", "kt2": "바나나잎 배에 꽃과 초를 올린 끄라통을<br>물에 띄워 보내며 소원을 빌어요.", "kt3": "근심은 물에 흘려보내고<br>좋은 일만 오길 비는 마음이에요.", "lanT": "콤로이가 뭐예요?", "lan1": "러이끄라통 무렵 태국 북부의<br>이펭 축제에서 날리는 종이 풍등이에요.", "lan2": "불을 붙인 풍등을 하늘로 띄우며<br>불운은 날려 보내고 행운을 빌어요.", "lan3": "소원을 적고 꾹 눌러 불을 붙여 보세요."}, "en": {"infoOk": "Got it", "ktT": "What is Loy Krathong?", "kt1": "A Thai festival held on the full moon of November.", "kt2": "People float krathongs, little banana-leaf boats with flowers and candles, and make a wish.", "kt3": "Let your worries float away and welcome good things in.", "lanT": "What is Khom Loi?", "lan1": "Paper lanterns released at the Yi Peng festival in northern Thailand, around Loy Krathong.", "lan2": "Light one and let it rise, sending bad luck away and wishing for good.", "lan3": "Write a wish, then hold to light it."}, "th": {"infoOk": "เข้าใจแล้ว", "ktT": "ลอยกระทงคืออะไร?", "kt1": "เทศกาลไทยในคืนวันเพ็ญเดือนสิบสอง", "kt2": "ลอยกระทงใบตองประดับดอกไม้และเทียน พร้อมอธิษฐานขอพร", "kt3": "ปล่อยความทุกข์ลอยไปกับสายน้ำ แล้วรับสิ่งดีๆ เข้ามา", "lanT": "โคมลอยคืออะไร?", "lan1": "โคมกระดาษที่ปล่อยในงานยี่เป็งทางภาคเหนือ ช่วงลอยกระทง", "lan2": "จุดไฟให้โคมลอยขึ้นฟ้า ปล่อยเคราะห์ร้ายไปและขอพรสิ่งดีๆ", "lan3": "เขียนคำอธิษฐานแล้วกดค้างเพื่อจุดไฟ"}}).forEach(([k,v])=>Object.assign(STR[k],v));
 const $=id=>document.getElementById(id);
 const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
-const DEFAULT_YARD={placed:[{id:'palm',cx:0,cy:5,r:0},{id:'lamp',cx:3,cy:7,r:0},{id:'lamp',cx:7,cy:7,r:0},{id:'pot',cx:2,cy:7,r:0},{id:'lotus',cx:1,cy:10,r:0},{id:'cat',cx:9,cy:6,r:0}],porch:'g1'};
-{const y=store.get('bkk-yard',DEFAULT_YARD);placed=y.placed.filter(p=>ITEM[p.id]).map(p=>({...p,uid:uid++}));porch=ITEM[y.porch]?y.porch:'none'}
+function migCell(p){const t=ITEM[p.id].type;if(t==='porch')return p;const ok=(cx,cy)=>cx>=0&&cy>=0&&cx<C&&cy<C&&CELL[cx][cy]===t;
+  if(ok(p.cx,p.cy))return p;if(t==='water'&&ok(p.cx+2,p.cy+2))return{...p,cx:p.cx+2,cy:p.cy+2};return null}
+const DEFAULT_YARD={placed:[{id:'palm',cx:0,cy:5,r:0},{id:'lamp',cx:3,cy:7,r:0},{id:'lamp',cx:7,cy:7,r:0},{id:'pot',cx:2,cy:7,r:0},{id:'lotus',cx:1,cy:12,r:0},{id:'cat',cx:9,cy:6,r:0}],porch:'g1'};
+{const y=store.get('bkk-yard',DEFAULT_YARD);placed=y.placed.filter(p=>ITEM[p.id]).map(p=>migCell(p)).filter(Boolean).map(p=>({...p,uid:uid++}));porch=ITEM[y.porch]?y.porch:'none'}
 const saveYard=()=>store.set('bkk-yard',{placed:placed.map(({id,cx,cy,r})=>({id,cx,cy,r})),porch});
 let floated=store.get('bkk-kts',[]);
 const saveKts=()=>store.set('bkk-kts',floated);
@@ -672,7 +674,7 @@ function layout(){const dpr=window.devicePixelRatio||1;cw=cv.clientWidth;ch=cv.c
 function camFor(m){
   if(m==='start')return{z:.95,px:0,py:-ch*.17};
   if(m==='lan')return{z:.8,px:0,py:ch*.4};
-  if(m==='kt'){const z=1.6;const [u,v]=tfc(20,34);const wx=P.OX+(u-v)*P.HW,wy=P.OY+(u+v)*P.HH;return{z,px:-(wx-cw/2)*z,py:ch*.74-ch/2-(wy-ch/2)*z}}
+  if(m==='kt'){const z=1.6;const [u,v]=tfc(20,40);const wx=P.OX+(u-v)*P.HW,wy=P.OY+(u+v)*P.HH;return{z,px:-(wx-cw/2)*z,py:ch*.74-ch/2-(wy-ch/2)*z}}
   return{z:1,px:0,py:0}}
 function moveCam(to,ms=520){cam={from:{...view},to,t:performance.now(),ms};dirty=true}
 const toWorld=(X,Y)=>[(X-view.px-cw/2)/view.z+cw/2,(Y-view.py-ch/2)/view.z+ch/2];
@@ -791,7 +793,7 @@ cv.addEventListener('pointermove',e=>{if(!ptrs.has(e.pointerId))return;ptrs.set(
     const dx=nx-gest.sx,dy=ny-gest.sy,d=Math.hypot(dx,dy);if(d>4){nx=gest.sx+dx/d*4;ny=gest.sy+dy/d*4}
     if(inPond(nx,ny)){cur.x=nx;cur.y=ny}return}
   if(gest.mode==='pinch'&&ptrs.size>=2){const rc=cv.getBoundingClientRect();const [a,b]=[...ptrs.values()];const d=Math.hypot(a.x-b.x,a.y-b.y);
-    const z=Math.max(1,Math.min(4,gest.z0*d/gest.d0));const mx=(a.x+b.x)/2-rc.left,my=(a.y+b.y)/2-rc.top,m0x=gest.mx-rc.left,m0y=gest.my-rc.top;
+    const z=Math.max(minZ(),Math.min(4,gest.z0*d/gest.d0));const mx=(a.x+b.x)/2-rc.left,my=(a.y+b.y)/2-rc.top,m0x=gest.mx-rc.left,m0y=gest.my-rc.top;
     const wx=(m0x-gest.px-cw/2)/gest.z0,wy=(m0y-gest.py-ch/2)/gest.z0;view.z=z;view.px=mx-cw/2-wx*z;view.py=my-ch/2-wy*z;clampView();dirty=true;return}
   const dx=e.clientX-gest.sx,dy=e.clientY-gest.sy;
   if(gest.mode==='dragFloat'){if(Math.hypot(dx,dy)>6)gest.moved=true;if(gest.moved){moveFloatTo(pickCell(X,Y-LIFT_OFF));dirty=true}return}
@@ -806,9 +808,14 @@ const endPtr=e=>{if(!ptrs.has(e.pointerId))return;ptrs.delete(e.pointerId);clear
   if(ptrs.size===0)gest=null;else if(ptrs.size===1&&gest&&gest.mode==='pinch'){const [a]=[...ptrs.values()];gest={mode:'pan',sx:a.x,sy:a.y,px:view.px,py:view.py}}};
 cv.addEventListener('pointerup',endPtr);cv.addEventListener('pointercancel',endPtr);
 cv.addEventListener('wheel',e=>{if(!canMove())return;e.preventDefault();const [mx,my]=rel(e);
-  const z=Math.max(1,Math.min(4,view.z*(e.deltaY<0?1.12:1/1.12)));const wx=(mx-view.px-cw/2)/view.z,wy=(my-view.py-ch/2)/view.z;
+  const z=Math.max(minZ(),Math.min(4,view.z*(e.deltaY<0?1.12:1/1.12)));const wx=(mx-view.px-cw/2)/view.z,wy=(my-view.py-ch/2)/view.z;
   view.z=z;view.px=mx-cw/2-wx*z;view.py=my-ch/2-wy*z;clampView();dirty=true},{passive:false});
-function clampView(){const lx=cw*(view.z-1)/2+40,ly=ch*(view.z-1)/2+40;view.px=Math.max(-lx,Math.min(lx,view.px));view.py=Math.max(-ly,Math.min(ly,view.py))}
+function minZ(){const fit=Math.min(cw/(2*N*P.HW),ch/(2*N*P.HH+16*P.ZH))*1.08;return Math.min(1,Math.max(.6,fit))}
+function clampView(){const z=view.z,m=40/z;
+  const ax=(c,lo,hi,half)=>{let a=lo+half/z-m,b=hi-half/z+m;if(a>b)a=b=(a+b)/2;a=Math.min(a,c);b=Math.max(b,c);return[a,b]};
+  const [x0,x1]=ax(cw/2,P.OX-N*P.HW,P.OX+N*P.HW,cw/2),[y0,y1]=ax(ch/2,P.OY-16*P.ZH,P.OY+2*N*P.HH,ch/2);
+  let wx=cw/2-view.px/z,wy=ch/2-view.py/z;wx=Math.max(x0,Math.min(x1,wx));wy=Math.max(y0,Math.min(y1,wy));
+  view.px=(cw/2-wx)*z;view.py=(ch/2-wy)*z}
 function onTap(X,Y){
   if(mode==='home'||mode==='lan'){const sl=pickSkyLan(X,Y);if(sl){peekXY(sl.wish,sl.x*cw,sl.y*ch-30);return}}
   const f=floated.slice().reverse().find(f=>nearKt(X,Y,f));
@@ -885,8 +892,8 @@ function onWish(){const v=$('wish').value;$('cnt').textContent=v.length+'/30';$(
 $('wish').addEventListener('input',onWish);
 $('next1').onclick=()=>{$('s1').classList.remove('on');$('s2').classList.add('on');sfx.lift()};
 $('back2').onclick=()=>{$('s2').classList.remove('on');$('s1').classList.add('on');sfx.spin()};
-function startSpot(){const cands=[[17,33],[14,33],[20,33],[11,33],[23,33],[17,30],[8,33],[26,33]];
-  for(const [x,y] of cands){if(inPond(x,y)&&!floated.some(f=>Math.hypot(f.x-x,f.y-y)<2.4))return[x,y]}return[17,33]}
+function startSpot(){const cands=[[17,39],[14,39],[20,39],[11,39],[23,39],[17,36],[8,39],[26,39]];
+  for(const [x,y] of cands){if(inPond(x,y)&&!floated.some(f=>Math.hypot(f.x-x,f.y-y)<2.4))return[x,y]}return[17,39]}
 $('next2').onclick=()=>{$('wish').blur();$('s2').classList.remove('on');const [x,y]=startSpot();
   cur={k:pick,wish:$('wish').value.trim(),x,y,vx:0,vy:0,state:'drop',t0:performance.now(),lastRip:0};
   setTimeout(()=>{sfx.drop();if(cur)ripples.push({x:cur.x+1,y:cur.y+1,t:performance.now()})},280)};
@@ -924,6 +931,8 @@ $('fit').onclick=()=>{moveCam(camFor(mode),300);closePop();sfx.spin()};
 document.querySelectorAll('.snd').forEach(b=>b.onclick=()=>setMuted(!SND.muted));
 let tt;function toast(m){const t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),1600)}
 setInterval(()=>{tick++;dirty=true},650);
+floated=floated.map(f=>inPond(f.x,f.y)?f:inPond(f.x,f.y+6)?{...f,y:f.y+6,_m:1}:inPond(f.x+6,f.y+6)?{...f,x:f.x+6,y:f.y+6,_m:1}:null).filter(Boolean);
+if(floated.some(f=>f._m)){floated=floated.map(({_m,...f})=>f);saveKts()}
 rebuild();setMuted(SND.muted);layout();
 if(window.ResizeObserver)new ResizeObserver(()=>layout()).observe($('stage'));
 requestAnimationFrame(frame);
